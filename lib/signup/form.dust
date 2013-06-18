@@ -1,0 +1,88 @@
+<!-- BEGIN STANDARD HEADER -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="/run/Lib/css/demo.css" />
+  <link rel="stylesheet" type="text/css" href="wiki.css" />
+
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <script type="text/javascript" src="/run/Lib/js/util.js"></script>
+<script type="text/javascript" src="/run/Lib/js/ajaxCaller.js"></script>
+<script type="text/javascript" src="wiki.js"></script>
+
+  <title>Ajax Wiki Demo</title>
+</head>
+<body>
+  <div id="header">
+    <div class="spacer">
+      &nbsp;
+    </div>
+    <div id="headerImage">
+      <img style="vertical-align: middle;" src="/favicon.ico"/>
+    </div>
+    <div id="headerNav">
+      <div>
+        <a href="http://ajaxpatterns.org">ajaxpatterns.org</a>
+      </div>
+      <div>
+        <div id="earlierDemos"><a href='././..'>All Demos</a> <span class='gt'>&gt;</span>&nbsp;</div>
+        <div id="demoTitle"><a id='selfLink' href='.'>Ajax Wiki Demo</a>&nbsp;<span class='gt'>&gt;</span>&nbsp;</div>
+        <div id="laterDemos"><a class='laterVersion' href='./events/'>events</a>&nbsp;&nbsp; <a class='laterVersion' href='./separateJS/'>separateJS</a>&nbsp;&nbsp; <a class='laterVersion' href='./status/'>status</a>&nbsp;&nbsp; <a class='laterVersion' href='./streaming/'>streaming</a>&nbsp;&nbsp; <a class='laterVersion' href='./timeout/'>timeout</a>&nbsp;&nbsp; </div>
+      </div>
+      <div class="spacer">
+        &nbsp;
+      </div>
+      <div>
+        <strong>Source Code: </strong> <a href='/run/Lib/js/util.js'>util.js</a>&nbsp;&nbsp;<a href='/run/Lib/js/ajaxCaller.js'>ajaxCaller.js</a>&nbsp;&nbsp;<a href='wiki.js'>wiki.js</a>&nbsp;&nbsp;
+      </div>
+    </div>
+    <div class="spacer">
+      &nbsp;
+    </div>
+  </div>
+  {{type}}
+  <p id="demoSummary">A Wiki-Chat Fusion illustrating some <a href='http://www.ajaxpatterns.org/Special:Search?search=wiki+demo&go=Go'>Ajax Patterns</a>. After five seconds of inactivity (no item under edit), the browser synchronises with the server - pending edits are uploaded and new messages from other users are downloaded.</p>
+  <!-- END STANDARD HEADER -->
+
+  {{category}}
+
+  <form id="authorIdForm">
+    <fieldset>
+      Please choose a unique Author Id:
+      <input id="authorIdSpec" type="text" size="12" />
+    </fieldset>
+  </form>
+
+  <div class="spacer">&nbsp;</div>
+  <div id="messages"></div>
+  <div class="spacer">&nbsp;</div>
+
+
+
+
+  <!-- BEGIN STANDARD FOOTER -->
+  <div id="footer">
+    <strong class="feedback">Feedback:</strong> Please provide any comments and
+    bug reports. Feedback is added to the public <a
+    href="http://www.ajaxify.com/run/Feedback/demoFeedback.php">Feedback RSS
+    feed</a>. (This is a standard form submission, no Ajax here! Mail michael@mahemoff.com if any problems with the form.)
+    <form id="feedback" action="/run/Feedback/demoFeedback.php" method="post">
+      <div>
+        <img width="120" height="30" src="/run/Lib/php/button.php" border="1">
+        Please copy the number in the image:
+        <input maxlength="5" size="5" name="userdigit" type="text" value=""/><br/>
+        <p>
+        Your feedback:<br/>
+        <textarea name="message" rows="2" cols="60"></textarea>
+        <input type="hidden" name="category" value="wiki"/>
+        <input type="submit" value="Submit feedback" />
+      </div>
+    </form>
+  </div>
+
+</body>
+</html>
+<!-- END STANDARD FOOTER -->

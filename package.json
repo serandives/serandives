@@ -1,0 +1,12 @@
+{
+    "name": "serandives",
+    "version": "0.0.1",
+    "dependencies": {
+        "dust": "*",
+        "express": "*",
+        "node-uuid": "*",
+        "mongoose": "*",
+        "mongoose-schema-extend": "*",
+        "async": "*"
+    }
+}
