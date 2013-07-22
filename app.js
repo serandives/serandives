@@ -21,7 +21,9 @@ db.once('open', function callback() {
 
     app.use('/apis', require('user-service'));
     app.use('/apis', require('vehicle-service'));
-    app.use(require('pages'));
+
+    app.use('/', require('./sites/auto/lib/boot'));
+    //app.use(require('pages'));
 
     var fs = require('fs');
 

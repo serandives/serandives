@@ -1,0 +1,17 @@
+{
+  "name": "boot",
+  "description": "bootstrap component",
+  "dependencies": {
+    "visionmedia/page.js": "1.3.6",
+    "yields/k": "0.0.1",
+    "component/top": "*"
+  },
+  "local": [],
+  "scripts": ["boot.js"],
+  "styles": ["index.styl"],
+  "images": [
+    "images/logo.png",
+    "images/logo@2x.png"
+  ],
+  "main": "boot.js"
+}

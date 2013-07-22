@@ -1,0 +1,15 @@
+{
+  "name": "keycode",
+  "repo": "yields/keycode",
+  "description": "keycode map.",
+  "version": "0.1.0",
+  "keywords": [
+    "keycode"
+  ],
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}

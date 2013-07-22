@@ -1,0 +1,25 @@
+{
+  "name": "top",
+  "repo": "component/top",
+  "description": "Transient back-to-top on scroll link",
+  "version": "0.0.2",
+  "keywords": [
+    "top",
+    "back",
+    "scroll"
+  ],
+  "dependencies": {
+    "matthewmueller/debounce": "0.0.1",
+    "component/event": "0.1.0",
+    "component/domify": "1.0.0"
+  },
+  "development": {},
+  "license": "MIT",
+  "scripts": [
+    "index.js",
+    "template.js"
+  ],
+  "styles": [
+    "top.css"
+  ]
+}
