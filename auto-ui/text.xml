@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:MessageID>urn:uuid:43cb1497-4532-4c38-a2e2-be7813b2d0e6</wsa:MessageID>
+        <wsa:Action>urn:getQuote</wsa:Action>
+    </soapenv:Header>
+    <soapenv:Body>
+        <m0:getQuote xmlns:m0="http://services.samples">
+            <m0:request>
+                <m0:symbol>Foo</m0:symbol>
+            </m0:request>
+        </m0:getQuote>
+    </soapenv:Body>
+</soapenv:Envelope>

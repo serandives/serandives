@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>component - modular javascript framework</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/app.css">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+</head>
+<body>
+<div id="content"></div>
+<script src="/jquery.js"></script>
+<script src="/bootstrap.min.js"></script>
+<script src="/app.js"></script>
+<script>require('boot')</script>
+</body>
+</html>

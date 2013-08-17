@@ -1,0 +1,12 @@
+{
+  "name": "boot",
+  "description": "bootstrap component",
+  "local": ["serand", "layout", "user", "search"],
+  "scripts": ["boot.js"],
+  "styles": ["index.styl"],
+  "images": [
+    "images/logo.png",
+    "images/logo@2x.png"
+  ],
+  "main": "boot.js"
+}

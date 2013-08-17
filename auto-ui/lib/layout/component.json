@@ -1,0 +1,8 @@
+{
+    "name": "layout",
+    "description": "layout component",
+    "local": ["serand"],
+    "scripts": ["index.js"],
+    "templates" : ["3-column.html"],
+    "main": "index.js"
+}

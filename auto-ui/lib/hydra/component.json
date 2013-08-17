@@ -1,0 +1,6 @@
+{
+  "name": "hydra",
+  "description": "hydra.js framework",
+  "scripts": ["jquery-1.10.2.js", "hydra.min.js", "ajax.js", "dom.js", "events.js", "index.js"],
+  "main": "index.js"
+}

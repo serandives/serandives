@@ -1,0 +1,7 @@
+{
+    "name": "auto-list",
+    "description": "vehicle listing component",
+    "local": ["hydra"],
+    "scripts": ["index.js"],
+    "main": "index.js"
+}

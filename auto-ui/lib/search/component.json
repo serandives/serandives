@@ -1,0 +1,10 @@
+{
+  "name": "search",
+  "description": "component search",
+  "local": ["serand"],
+  "dependencies": {},
+  "scripts": ["search.js"],
+  "styles": [],
+  "templates": ["template.html"],
+  "main": "search.js"
+}

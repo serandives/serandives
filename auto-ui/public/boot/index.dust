@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>component - modular javascript framework</title>
+    <link rel="stylesheet" href="/app.css">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+</head>
+<body>
+<a id="logo" href="/" title="Back to the index">component.js</a>
+
+<div id="content"></div>
+<script src="/app.js"></script>
+<script>require('boot')</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "name": "module-user",
+    "description": "module-user component",
+    "dependencies": {
+        "visionmedia/page.js": "*"
+    },
+    "local": ["auto-list"],
+    "scripts": ["index.js", "login.js"],
+    "templates" : ["login-ui.html"],
+    "main": "index.js"
+}
