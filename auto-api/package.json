@@ -5,6 +5,7 @@
         "express": "*",
         "node-uuid": "*",
         "mongoose": "*",
+        "connect": "*",
         "mongoose-schema-extend": "*",
         "async": "*",
         "consolidate": "*",

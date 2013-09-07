@@ -1,10 +1,17 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var user = mongoose.Schema({
+var user = Schema({
     email: String,
     hash: String,
     salt: String,
-    alias: String
+    alias: String,
+    firstname: String,
+    lastname: String,
+    birthday: Date,
+    addresses: [{ type: Schema.Types.ObjectId, ref: 'Location' }],
+    mobiles:[String],
+    socials:{}
 });
 
 user.set('toJSON', {
@@ -25,14 +32,14 @@ user.virtual('password').set(function (password) {
     this.salt = '******';
 });
 /*
-user.statics.find = function (options, callback) {
-    if (options.email) {
-        this.findOne({
-            email: email
-        }, callback);
-        return;
-    }
-    callback(null);
-};*/
+ user.statics.find = function (options, callback) {
+ if (options.email) {
+ this.findOne({
+ email: email
+ }, callback);
+ return;
+ }
+ callback(null);
+ };*/
 
 module.exports = mongoose.model('User', user);

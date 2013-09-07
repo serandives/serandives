@@ -1,3 +1,7 @@
+var utils = require('utils');
+var location = require('location');
+var sanitizer = require('./sanitizer');
+
 var express = require('express');
 var app = module.exports = express();
 
@@ -6,18 +10,16 @@ app.use(express.bodyParser());
 /**
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
-app.post('/apis/location/add', function (req, res) {
-    var um = require('user').models;
-    var user = um.User(req.body);
-    user.save(function (err) {
+app.post('/locations', function (req, res) {
+    location.create(req.body, function (err) {
         if (err) {
-            console.log('signup error');
+            //TODO: send proper HTTP code
+            console.log('location create error');
             res.send({
                 error: true
             });
             return;
         }
-        console.log('signup success');
         res.send({
             error: false
         });
@@ -25,20 +27,54 @@ app.post('/apis/location/add', function (req, res) {
 });
 
 /**
- * { "email": "ruchira@serandives.com", "password": "mypassword" }
+ * /users/51bfd3bd5a51f1722d000001
  */
-app.post('/apis/location/update', function (req, res) {
-    res.send({
-        error: false
+app.get('/locations/:id', function (req, res) {
+    location.findOne({
+        _id: req.params.id
+    }, function (err, location) {
+        if (err) {
+            console.log('location find error');
+            res.send({
+                error: true
+            });
+            return;
+        }
+        res.send(location);
     });
 });
 
+var paging = {
+    start: 0,
+    count: 10,
+    sort: ''
+};
+
+var fields = {
+    '*': true
+};
+
 /**
- * { "email": "ruchira@serandives.com" }
+ * /users?data={}
  */
-app.post('/apis/location/get', function (req, res) {
-    var User = require('user').models.User;
-    User.find(req.body.email, function (err, user) {
-        res.send(user.toJSON());
+app.get('/locations', function (req, res) {
+    var data = req.query.data ? JSON.parse(req.query.data) : {};
+    sanitizer.clean(data.criteria || (data.criteria = {}));
+    utils.merge(data.paging || (data.paging = {}), paging);
+    utils.merge(data.fields || (data.fields = {}), fields);
+    location.find(data.criteria)
+        .skip(data.paging.start)
+        .limit(data.paging.count)
+        .sort(data.paging.sort)
+        .exec(function (err, locations) {
+        if (err) {
+            //TODO: send proper HTTP code
+            console.log('user find error');
+            res.send({
+                error: true
+            });
+            return;
+        }
+        res.send(locations);
     });
 });
