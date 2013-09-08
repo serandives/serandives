@@ -1,5 +1,5 @@
 var utils = require('utils');
-var user = require('user');
+var User = require('user');
 var sanitizer = require('./sanitizer');
 
 var express = require('express');
@@ -11,7 +11,7 @@ app.use(express.bodyParser());
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
 app.post('/user/login', function (req, res) {
-    user.authenticate(req.body, function (err) {
+    User.authenticate(req.body, function (err) {
         if (err) {
             console.log('user login error');
             res.send({
@@ -30,7 +30,7 @@ app.post('/user/login', function (req, res) {
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
 app.post('/users', function (req, res) {
-    user.create(req.body, function (err) {
+    User.create(req.body, function (err) {
         if (err) {
             //TODO: send proper HTTP code
             console.log('user create error');
@@ -49,10 +49,9 @@ app.post('/users', function (req, res) {
  * /users/51bfd3bd5a51f1722d000001
  */
 app.get('/users/:id', function (req, res) {
-    user.findOne({
+    User.findOne({
         _id: req.params.id
     })
-        .populate('addresses')
         .exec(function (err, user) {
             if (err) {
                 console.log('user find error');
@@ -61,7 +60,19 @@ app.get('/users/:id', function (req, res) {
                 });
                 return;
             }
-            res.send(user);
+            var name;
+            var opts = [];
+            for (name in user.addresses) {
+                if (user.addresses.hasOwnProperty(name)) {
+                    opts.push({
+                        model: 'Location',
+                        path: 'addresses.' + name + '.location'
+                    });
+                }
+            }
+            User.populate(user, opts, function (err, u) {
+                res.send(u);
+            });
         });
 });
 
@@ -83,7 +94,7 @@ app.get('/users', function (req, res) {
     sanitizer.clean(data.criteria || (data.criteria = {}));
     utils.merge(data.paging || (data.paging = {}), paging);
     utils.merge(data.fields || (data.fields = {}), fields);
-    user.find(data.criteria)
+    User.find(data.criteria)
         .skip(data.paging.start)
         .limit(data.paging.count)
         .sort(data.paging.sort)

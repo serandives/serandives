@@ -9,7 +9,7 @@ var user = Schema({
     firstname: String,
     lastname: String,
     birthday: Date,
-    addresses: [{ type: Schema.Types.ObjectId, ref: 'Location' }],
+    addresses: {},
     mobiles:[String],
     socials:{}
 });
