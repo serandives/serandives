@@ -686,8 +686,7 @@ page('*', function (ctx, next) {
 });
 
 serand.on('user', 'register', function() {
-    console.log('user is being registered');
-    alert('user is being registered');
+
 });
 /*
 

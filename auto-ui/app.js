@@ -19,8 +19,8 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback() {
     console.log('connected to mongodb : ' + mongourl);
 
-    app.use('/apis', require('user-service'));
-    app.use('/apis', require('vehicle-service'));
+    //app.use('/apis', require('user-service'));
+    //app.use('/apis', require('vehicle-service'));
 
     app.use('/', require('./sites/auto/lib/boot'));
     //app.use(require('pages'));

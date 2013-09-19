@@ -16,6 +16,7 @@ db.once('open', function callback() {
     console.log('connected to mongodb : ' + mongourl);
 
     app.use('/apis', require('user-service'));
+    app.use('/apis', require('client-service'));
     app.use('/apis', require('vehicle-service'));
     app.use('/apis', require('location-service'));
 

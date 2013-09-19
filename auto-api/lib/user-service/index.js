@@ -7,6 +7,16 @@ var app = module.exports = express();
 
 app.use(express.bodyParser());
 
+var paging = {
+    start: 0,
+    count: 10,
+    sort: ''
+};
+
+var fields = {
+    '*': true
+};
+
 /**
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
@@ -76,16 +86,6 @@ app.get('/users/:id', function (req, res) {
         });
 });
 
-var paging = {
-    start: 0,
-    count: 10,
-    sort: ''
-};
-
-var fields = {
-    '*': true
-};
-
 /**
  * /users?data={}
  */
@@ -101,7 +101,7 @@ app.get('/users', function (req, res) {
         .exec(function (err, users) {
             if (err) {
                 //TODO: send proper HTTP code
-                console.log('user find error');
+                console.error('user find error');
                 res.send({
                     error: true
                 });
