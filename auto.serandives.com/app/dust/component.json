@@ -1,0 +1,9 @@
+{
+    "name": "dust",
+    "description": "dust component",
+    "dependencies": {},
+    "local": [],
+    "scripts": ["dust.js", "index.js"],
+    "templates" : [],
+    "main": "index.js"
+}

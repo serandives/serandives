@@ -1,0 +1,8 @@
+{
+    "name": "navigation",
+    "description": "navigation component",
+    "local": ["serand"],
+    "scripts": ["index.js"],
+    "templates" : ["nav-ui.html"],
+    "main": "index.js"
+}

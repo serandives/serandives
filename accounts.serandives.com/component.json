@@ -1,0 +1,5 @@
+{
+  "name": "accounts.serandives.com",
+  "paths": ["lib"],
+  "local": ["boot"]
+}
