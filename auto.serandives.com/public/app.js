@@ -199,6 +199,453 @@ require.relative = function(parent) {
 
   return localRequire;
 };
+require.register("visionmedia-page.js/index.js", function(exports, require, module){
+
+;(function(){
+
+  /**
+   * Perform initial dispatch.
+   */
+
+  var dispatch = true;
+
+  /**
+   * Base path.
+   */
+
+  var base = '';
+
+  /**
+   * Running flag.
+   */
+
+  var running;
+
+  /**
+   * Register `path` with callback `fn()`,
+   * or route `path`, or `page.start()`.
+   *
+   *   page(fn);
+   *   page('*', fn);
+   *   page('/user/:id', load, user);
+   *   page('/user/' + user.id, { some: 'thing' });
+   *   page('/user/' + user.id);
+   *   page();
+   *
+   * @param {String|Function} path
+   * @param {Function} fn...
+   * @api public
+   */
+
+  function page(path, fn) {
+    // <callback>
+    if ('function' == typeof path) {
+      return page('*', path);
+    }
+
+    // route <path> to <callback ...>
+    if ('function' == typeof fn) {
+      var route = new Route(path);
+      for (var i = 1; i < arguments.length; ++i) {
+        page.callbacks.push(route.middleware(arguments[i]));
+      }
+    // show <path> with [state]
+    } else if ('string' == typeof path) {
+      page.show(path, fn);
+    // start [options]
+    } else {
+      page.start(path);
+    }
+  }
+
+  /**
+   * Callback functions.
+   */
+
+  page.callbacks = [];
+
+  /**
+   * Get or set basepath to `path`.
+   *
+   * @param {String} path
+   * @api public
+   */
+
+  page.base = function(path){
+    if (0 == arguments.length) return base;
+    base = path;
+  };
+
+  /**
+   * Bind with the given `options`.
+   *
+   * Options:
+   *
+   *    - `click` bind to click events [true]
+   *    - `popstate` bind to popstate [true]
+   *    - `dispatch` perform initial dispatch [true]
+   *
+   * @param {Object} options
+   * @api public
+   */
+
+  page.start = function(options){
+    options = options || {};
+    if (running) return;
+    running = true;
+    if (false === options.dispatch) dispatch = false;
+    if (false !== options.popstate) window.addEventListener('popstate', onpopstate, false);
+    if (false !== options.click) window.addEventListener('click', onclick, false);
+    if (!dispatch) return;
+    var url = location.pathname + location.search + location.hash;
+    page.replace(url, null, true, dispatch);
+  };
+
+  /**
+   * Unbind click and popstate event handlers.
+   *
+   * @api public
+   */
+
+  page.stop = function(){
+    running = false;
+    removeEventListener('click', onclick, false);
+    removeEventListener('popstate', onpopstate, false);
+  };
+
+  /**
+   * Show `path` with optional `state` object.
+   *
+   * @param {String} path
+   * @param {Object} state
+   * @param {Boolean} dispatch
+   * @return {Context}
+   * @api public
+   */
+
+  page.show = function(path, state, dispatch){
+    var ctx = new Context(path, state);
+    if (false !== dispatch) page.dispatch(ctx);
+    if (!ctx.unhandled) ctx.pushState();
+    return ctx;
+  };
+
+  /**
+   * Replace `path` with optional `state` object.
+   *
+   * @param {String} path
+   * @param {Object} state
+   * @return {Context}
+   * @api public
+   */
+
+  page.replace = function(path, state, init, dispatch){
+    var ctx = new Context(path, state);
+    ctx.init = init;
+    if (null == dispatch) dispatch = true;
+    if (dispatch) page.dispatch(ctx);
+    ctx.save();
+    return ctx;
+  };
+
+  /**
+   * Dispatch the given `ctx`.
+   *
+   * @param {Object} ctx
+   * @api private
+   */
+
+  page.dispatch = function(ctx){
+    var i = 0;
+
+    function next() {
+      var fn = page.callbacks[i++];
+      if (!fn) return unhandled(ctx);
+      fn(ctx, next);
+    }
+
+    next();
+  };
+
+  /**
+   * Unhandled `ctx`. When it's not the initial
+   * popstate then redirect. If you wish to handle
+   * 404s on your own use `page('*', callback)`.
+   *
+   * @param {Context} ctx
+   * @api private
+   */
+
+  function unhandled(ctx) {
+    var current = window.location.pathname + window.location.search;
+    if (current == ctx.canonicalPath) return;
+    page.stop();
+    ctx.unhandled = true;
+    window.location = ctx.canonicalPath;
+  }
+
+  /**
+   * Initialize a new "request" `Context`
+   * with the given `path` and optional initial `state`.
+   *
+   * @param {String} path
+   * @param {Object} state
+   * @api public
+   */
+
+  function Context(path, state) {
+    if ('/' == path[0] && 0 != path.indexOf(base)) path = base + path;
+    var i = path.indexOf('?');
+
+    this.canonicalPath = path;
+    this.path = path.replace(base, '') || '/';
+
+    this.title = document.title;
+    this.state = state || {};
+    this.state.path = path;
+    this.querystring = ~i ? path.slice(i + 1) : '';
+    this.pathname = ~i ? path.slice(0, i) : path;
+    this.params = [];
+
+    // fragment
+    this.hash = '';
+    if (!~this.path.indexOf('#')) return;
+    var parts = this.path.split('#');
+    this.path = parts[0];
+    this.hash = parts[1] || '';
+    this.querystring = this.querystring.split('#')[0];
+  }
+
+  /**
+   * Expose `Context`.
+   */
+
+  page.Context = Context;
+
+  /**
+   * Push state.
+   *
+   * @api private
+   */
+
+  Context.prototype.pushState = function(){
+    history.pushState(this.state, this.title, this.canonicalPath);
+  };
+
+  /**
+   * Save the context state.
+   *
+   * @api public
+   */
+
+  Context.prototype.save = function(){
+    history.replaceState(this.state, this.title, this.canonicalPath);
+  };
+
+  /**
+   * Initialize `Route` with the given HTTP `path`,
+   * and an array of `callbacks` and `options`.
+   *
+   * Options:
+   *
+   *   - `sensitive`    enable case-sensitive routes
+   *   - `strict`       enable strict matching for trailing slashes
+   *
+   * @param {String} path
+   * @param {Object} options.
+   * @api private
+   */
+
+  function Route(path, options) {
+    options = options || {};
+    this.path = path;
+    this.method = 'GET';
+    this.regexp = pathtoRegexp(path
+      , this.keys = []
+      , options.sensitive
+      , options.strict);
+  }
+
+  /**
+   * Expose `Route`.
+   */
+
+  page.Route = Route;
+
+  /**
+   * Return route middleware with
+   * the given callback `fn()`.
+   *
+   * @param {Function} fn
+   * @return {Function}
+   * @api public
+   */
+
+  Route.prototype.middleware = function(fn){
+    var self = this;
+    return function(ctx, next){
+      if (self.match(ctx.path, ctx.params)) return fn(ctx, next);
+      next();
+    };
+  };
+
+  /**
+   * Check if this route matches `path`, if so
+   * populate `params`.
+   *
+   * @param {String} path
+   * @param {Array} params
+   * @return {Boolean}
+   * @api private
+   */
+
+  Route.prototype.match = function(path, params){
+    var keys = this.keys
+      , qsIndex = path.indexOf('?')
+      , pathname = ~qsIndex ? path.slice(0, qsIndex) : path
+      , m = this.regexp.exec(pathname);
+
+    if (!m) return false;
+
+    for (var i = 1, len = m.length; i < len; ++i) {
+      var key = keys[i - 1];
+
+      var val = 'string' == typeof m[i]
+        ? decodeURIComponent(m[i])
+        : m[i];
+
+      if (key) {
+        params[key.name] = undefined !== params[key.name]
+          ? params[key.name]
+          : val;
+      } else {
+        params.push(val);
+      }
+    }
+
+    return true;
+  };
+
+  /**
+   * Normalize the given path string,
+   * returning a regular expression.
+   *
+   * An empty array should be passed,
+   * which will contain the placeholder
+   * key names. For example "/user/:id" will
+   * then contain ["id"].
+   *
+   * @param  {String|RegExp|Array} path
+   * @param  {Array} keys
+   * @param  {Boolean} sensitive
+   * @param  {Boolean} strict
+   * @return {RegExp}
+   * @api private
+   */
+
+  function pathtoRegexp(path, keys, sensitive, strict) {
+    if (path instanceof RegExp) return path;
+    if (path instanceof Array) path = '(' + path.join('|') + ')';
+    path = path
+      .concat(strict ? '' : '/?')
+      .replace(/\/\(/g, '(?:/')
+      .replace(/(\/)?(\.)?:(\w+)(?:(\(.*?\)))?(\?)?/g, function(_, slash, format, key, capture, optional){
+        keys.push({ name: key, optional: !! optional });
+        slash = slash || '';
+        return ''
+          + (optional ? '' : slash)
+          + '(?:'
+          + (optional ? slash : '')
+          + (format || '') + (capture || (format && '([^/.]+?)' || '([^/]+?)')) + ')'
+          + (optional || '');
+      })
+      .replace(/([\/.])/g, '\\$1')
+      .replace(/\*/g, '(.*)');
+    return new RegExp('^' + path + '$', sensitive ? '' : 'i');
+  }
+
+  /**
+   * Handle "populate" events.
+   */
+
+  function onpopstate(e) {
+    if (e.state) {
+      var path = e.state.path;
+      page.replace(path, e.state);
+    }
+  }
+
+  /**
+   * Handle "click" events.
+   */
+
+  function onclick(e) {
+    if (1 != which(e)) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (e.defaultPrevented) return;
+
+    // ensure link
+    var el = e.target;
+    while (el && 'A' != el.nodeName) el = el.parentNode;
+    if (!el || 'A' != el.nodeName) return;
+
+    // ensure non-hash for the same path
+    var link = el.getAttribute('href');
+    if (el.pathname == location.pathname && (el.hash || '#' == link)) return;
+
+    // check target
+    if (el.target) return;
+
+    // x-origin
+    if (!sameOrigin(el.href)) return;
+
+    // rebuild path
+    var path = el.pathname + el.search + (el.hash || '');
+
+    // same page
+    var orig = path + el.hash;
+
+    path = path.replace(base, '');
+    if (base && orig == path) return;
+
+    e.preventDefault();
+    page.show(orig);
+  }
+
+  /**
+   * Event button.
+   */
+
+  function which(e) {
+    e = e || window.event;
+    return null == e.which
+      ? e.button
+      : e.which;
+  }
+
+  /**
+   * Check if `href` is the same origin.
+   */
+
+  function sameOrigin(href) {
+    var origin = location.protocol + '//' + location.hostname;
+    if (location.port) origin += ':' + location.port;
+    return 0 == href.indexOf(origin);
+  }
+
+  /**
+   * Expose `page`.
+   */
+
+  if ('undefined' == typeof module) {
+    window.page = page;
+  } else {
+    module.exports = page;
+  }
+
+})();
+
+});
 require.register("dust/dust.js", function(exports, require, module){
 //
 // Dust - Asynchronous Templating v2.1.0
@@ -211,9 +658,7 @@ require.register("dust/dust.js", function(exports, require, module){
 var dust = {};
 
 function getGlobal(){
-  return (function(){
-    return this.dust;
-  }).call(null);
+    return dust;
 }
 
 (function(dust) {
@@ -3953,486 +4398,66 @@ dust.parse = parser.parse;
 
 module.exports = getGlobal();
 });
+require.register("dust/helpers.js", function(exports, require, module){
+module.exports = {
+    slice: function (chunk, context, bodies, params) {
+        return chunk.map(function (chunk) {
+            var ctx = context.current(),
+                length = ctx.length,
+                start = parseInt(params.start, 10) || 0,
+                end = parseInt(params.end, 10) || length,
+                count = parseInt(params.count, 10) || length,
+                size = parseInt(params.size, 10) || length,
+                i = start,
+                c = 0;
+            while (i < end && c++ < count) {
+                console.log(ctx.slice(i, (i + size)));
+                chunk.render(bodies.block, context.push(ctx.slice(i, (i += size))));
+            }
+            chunk.end();
+        });
+    },
+    dump: function (chunk, context) {
+        console.log(context);
+        return chunk.write(JSON.stringify(context));
+    }
+};
+});
 require.register("dust/index.js", function(exports, require, module){
 module.exports = function (helpers) {
     var dust = require('./dust');
     var render = dust.render;
+    var renderSource = dust.renderSource;
     var stream = dust.stream;
-    var compileFn = dust.compileFn;
+
+    dust.helpers = require('./helpers');
     helpers = helpers || {};
 
     dust.render = function () {
         var args = Array.prototype.slice.call(arguments);
         var base = dust.makeBase(helpers);
-        args[1] = base.push(args[1]);
+        //args[1] = base.push(args[1]);
         return render.apply(dust, args);
     };
+/*
 
-    dust.steam = function () {
+    dust.renderSource = function () {
         var args = Array.prototype.slice.call(arguments);
         var base = dust.makeBase(helpers);
-        args[1] = base.push(args[1]);
-        return stream.apply(dust, args);
+        //args[1] = base.push(args[1]);
+        return renderSource.apply(dust, args);
     };
+*/
 
-    dust.compileFn = function () {
-        var fn = compileFn.apply(dust, Array.prototype.slice.call(arguments));
-        return function (context, f) {
-            var base = dust.makeBase(helpers);
-            context = base.push(context);
-            return fn(context, f);
-        };
+    dust.stream = function () {
+        var args = Array.prototype.slice.call(arguments);
+        var base = dust.makeBase(helpers);
+        //args[1] = base.push(args[1]);
+        return stream.apply(dust, args);
     };
 
     return dust;
 };
-});
-require.register("visionmedia-page.js/index.js", function(exports, require, module){
-
-;(function(){
-
-  /**
-   * Perform initial dispatch.
-   */
-
-  var dispatch = true;
-
-  /**
-   * Base path.
-   */
-
-  var base = '';
-
-  /**
-   * Running flag.
-   */
-
-  var running;
-
-  /**
-   * Register `path` with callback `fn()`,
-   * or route `path`, or `page.start()`.
-   *
-   *   page(fn);
-   *   page('*', fn);
-   *   page('/user/:id', load, user);
-   *   page('/user/' + user.id, { some: 'thing' });
-   *   page('/user/' + user.id);
-   *   page();
-   *
-   * @param {String|Function} path
-   * @param {Function} fn...
-   * @api public
-   */
-
-  function page(path, fn) {
-    // <callback>
-    if ('function' == typeof path) {
-      return page('*', path);
-    }
-
-    // route <path> to <callback ...>
-    if ('function' == typeof fn) {
-      var route = new Route(path);
-      for (var i = 1; i < arguments.length; ++i) {
-        page.callbacks.push(route.middleware(arguments[i]));
-      }
-    // show <path> with [state]
-    } else if ('string' == typeof path) {
-      page.show(path, fn);
-    // start [options]
-    } else {
-      page.start(path);
-    }
-  }
-
-  /**
-   * Callback functions.
-   */
-
-  page.callbacks = [];
-
-  /**
-   * Get or set basepath to `path`.
-   *
-   * @param {String} path
-   * @api public
-   */
-
-  page.base = function(path){
-    if (0 == arguments.length) return base;
-    base = path;
-  };
-
-  /**
-   * Bind with the given `options`.
-   *
-   * Options:
-   *
-   *    - `click` bind to click events [true]
-   *    - `popstate` bind to popstate [true]
-   *    - `dispatch` perform initial dispatch [true]
-   *
-   * @param {Object} options
-   * @api public
-   */
-
-  page.start = function(options){
-    options = options || {};
-    if (running) return;
-    running = true;
-    if (false === options.dispatch) dispatch = false;
-    if (false !== options.popstate) window.addEventListener('popstate', onpopstate, false);
-    if (false !== options.click) window.addEventListener('click', onclick, false);
-    if (!dispatch) return;
-    var url = location.pathname + location.search + location.hash;
-    page.replace(url, null, true, dispatch);
-  };
-
-  /**
-   * Unbind click and popstate event handlers.
-   *
-   * @api public
-   */
-
-  page.stop = function(){
-    running = false;
-    removeEventListener('click', onclick, false);
-    removeEventListener('popstate', onpopstate, false);
-  };
-
-  /**
-   * Show `path` with optional `state` object.
-   *
-   * @param {String} path
-   * @param {Object} state
-   * @param {Boolean} dispatch
-   * @return {Context}
-   * @api public
-   */
-
-  page.show = function(path, state, dispatch){
-    var ctx = new Context(path, state);
-    if (false !== dispatch) page.dispatch(ctx);
-    if (!ctx.unhandled) ctx.pushState();
-    return ctx;
-  };
-
-  /**
-   * Replace `path` with optional `state` object.
-   *
-   * @param {String} path
-   * @param {Object} state
-   * @return {Context}
-   * @api public
-   */
-
-  page.replace = function(path, state, init, dispatch){
-    var ctx = new Context(path, state);
-    ctx.init = init;
-    if (null == dispatch) dispatch = true;
-    if (dispatch) page.dispatch(ctx);
-    ctx.save();
-    return ctx;
-  };
-
-  /**
-   * Dispatch the given `ctx`.
-   *
-   * @param {Object} ctx
-   * @api private
-   */
-
-  page.dispatch = function(ctx){
-    var i = 0;
-
-    function next() {
-      var fn = page.callbacks[i++];
-      if (!fn) return unhandled(ctx);
-      fn(ctx, next);
-    }
-
-    next();
-  };
-
-  /**
-   * Unhandled `ctx`. When it's not the initial
-   * popstate then redirect. If you wish to handle
-   * 404s on your own use `page('*', callback)`.
-   *
-   * @param {Context} ctx
-   * @api private
-   */
-
-  function unhandled(ctx) {
-    var current = window.location.pathname + window.location.search;
-    if (current == ctx.canonicalPath) return;
-    page.stop();
-    ctx.unhandled = true;
-    window.location = ctx.canonicalPath;
-  }
-
-  /**
-   * Initialize a new "request" `Context`
-   * with the given `path` and optional initial `state`.
-   *
-   * @param {String} path
-   * @param {Object} state
-   * @api public
-   */
-
-  function Context(path, state) {
-    if ('/' == path[0] && 0 != path.indexOf(base)) path = base + path;
-    var i = path.indexOf('?');
-
-    this.canonicalPath = path;
-    this.path = path.replace(base, '') || '/';
-
-    this.title = document.title;
-    this.state = state || {};
-    this.state.path = path;
-    this.querystring = ~i ? path.slice(i + 1) : '';
-    this.pathname = ~i ? path.slice(0, i) : path;
-    this.params = [];
-
-    // fragment
-    this.hash = '';
-    if (!~this.path.indexOf('#')) return;
-    var parts = this.path.split('#');
-    this.path = parts[0];
-    this.hash = parts[1] || '';
-    this.querystring = this.querystring.split('#')[0];
-  }
-
-  /**
-   * Expose `Context`.
-   */
-
-  page.Context = Context;
-
-  /**
-   * Push state.
-   *
-   * @api private
-   */
-
-  Context.prototype.pushState = function(){
-    history.pushState(this.state, this.title, this.canonicalPath);
-  };
-
-  /**
-   * Save the context state.
-   *
-   * @api public
-   */
-
-  Context.prototype.save = function(){
-    history.replaceState(this.state, this.title, this.canonicalPath);
-  };
-
-  /**
-   * Initialize `Route` with the given HTTP `path`,
-   * and an array of `callbacks` and `options`.
-   *
-   * Options:
-   *
-   *   - `sensitive`    enable case-sensitive routes
-   *   - `strict`       enable strict matching for trailing slashes
-   *
-   * @param {String} path
-   * @param {Object} options.
-   * @api private
-   */
-
-  function Route(path, options) {
-    options = options || {};
-    this.path = path;
-    this.method = 'GET';
-    this.regexp = pathtoRegexp(path
-      , this.keys = []
-      , options.sensitive
-      , options.strict);
-  }
-
-  /**
-   * Expose `Route`.
-   */
-
-  page.Route = Route;
-
-  /**
-   * Return route middleware with
-   * the given callback `fn()`.
-   *
-   * @param {Function} fn
-   * @return {Function}
-   * @api public
-   */
-
-  Route.prototype.middleware = function(fn){
-    var self = this;
-    return function(ctx, next){
-      if (self.match(ctx.path, ctx.params)) return fn(ctx, next);
-      next();
-    };
-  };
-
-  /**
-   * Check if this route matches `path`, if so
-   * populate `params`.
-   *
-   * @param {String} path
-   * @param {Array} params
-   * @return {Boolean}
-   * @api private
-   */
-
-  Route.prototype.match = function(path, params){
-    var keys = this.keys
-      , qsIndex = path.indexOf('?')
-      , pathname = ~qsIndex ? path.slice(0, qsIndex) : path
-      , m = this.regexp.exec(pathname);
-
-    if (!m) return false;
-
-    for (var i = 1, len = m.length; i < len; ++i) {
-      var key = keys[i - 1];
-
-      var val = 'string' == typeof m[i]
-        ? decodeURIComponent(m[i])
-        : m[i];
-
-      if (key) {
-        params[key.name] = undefined !== params[key.name]
-          ? params[key.name]
-          : val;
-      } else {
-        params.push(val);
-      }
-    }
-
-    return true;
-  };
-
-  /**
-   * Normalize the given path string,
-   * returning a regular expression.
-   *
-   * An empty array should be passed,
-   * which will contain the placeholder
-   * key names. For example "/user/:id" will
-   * then contain ["id"].
-   *
-   * @param  {String|RegExp|Array} path
-   * @param  {Array} keys
-   * @param  {Boolean} sensitive
-   * @param  {Boolean} strict
-   * @return {RegExp}
-   * @api private
-   */
-
-  function pathtoRegexp(path, keys, sensitive, strict) {
-    if (path instanceof RegExp) return path;
-    if (path instanceof Array) path = '(' + path.join('|') + ')';
-    path = path
-      .concat(strict ? '' : '/?')
-      .replace(/\/\(/g, '(?:/')
-      .replace(/(\/)?(\.)?:(\w+)(?:(\(.*?\)))?(\?)?/g, function(_, slash, format, key, capture, optional){
-        keys.push({ name: key, optional: !! optional });
-        slash = slash || '';
-        return ''
-          + (optional ? '' : slash)
-          + '(?:'
-          + (optional ? slash : '')
-          + (format || '') + (capture || (format && '([^/.]+?)' || '([^/]+?)')) + ')'
-          + (optional || '');
-      })
-      .replace(/([\/.])/g, '\\$1')
-      .replace(/\*/g, '(.*)');
-    return new RegExp('^' + path + '$', sensitive ? '' : 'i');
-  }
-
-  /**
-   * Handle "populate" events.
-   */
-
-  function onpopstate(e) {
-    if (e.state) {
-      var path = e.state.path;
-      page.replace(path, e.state);
-    }
-  }
-
-  /**
-   * Handle "click" events.
-   */
-
-  function onclick(e) {
-    if (1 != which(e)) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
-    if (e.defaultPrevented) return;
-
-    // ensure link
-    var el = e.target;
-    while (el && 'A' != el.nodeName) el = el.parentNode;
-    if (!el || 'A' != el.nodeName) return;
-
-    // ensure non-hash for the same path
-    var link = el.getAttribute('href');
-    if (el.pathname == location.pathname && (el.hash || '#' == link)) return;
-
-    // check target
-    if (el.target) return;
-
-    // x-origin
-    if (!sameOrigin(el.href)) return;
-
-    // rebuild path
-    var path = el.pathname + el.search + (el.hash || '');
-
-    // same page
-    var orig = path + el.hash;
-
-    path = path.replace(base, '');
-    if (base && orig == path) return;
-
-    e.preventDefault();
-    page.show(orig);
-  }
-
-  /**
-   * Event button.
-   */
-
-  function which(e) {
-    e = e || window.event;
-    return null == e.which
-      ? e.button
-      : e.which;
-  }
-
-  /**
-   * Check if `href` is the same origin.
-   */
-
-  function sameOrigin(href) {
-    var origin = location.protocol + '//' + location.hostname;
-    if (location.port) origin += ':' + location.port;
-    return 0 == href.indexOf(origin);
-  }
-
-  /**
-   * Expose `page`.
-   */
-
-  if ('undefined' == typeof module) {
-    window.page = page;
-  } else {
-    module.exports = page;
-  }
-
-})();
-
 });
 require.register("serand/index.js", function(exports, require, module){
 var page = require('page');
@@ -4559,20 +4584,26 @@ require.register("layout/three-column.js", function(exports, require, module){
 module.exports = '<div class="three-column">\n    <div class="header"></div>\n\n    <div class="container">\n        <div class="row">\n            <div class="col-md-3 left"></div>\n            <div class="col-md-9 middle"></div>\n        </div>\n    </div>\n</div>';
 });
 require.register("navigation/index.js", function(exports, require, module){
-var serand = require('serand'),
-    page = serand.page;
+var dust = require('dust')();
 
-var navEl;
-
-page('*', 'three-column', function (ctx, next) {
-    var vars = ctx.layout.vars;
-    console.log('adding navigation');
-    navEl || (navEl = $(require('./nav-ui')).appendTo(vars.header));
-    next();
-});
+module.exports.navigation = function (action, options) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./nav-ui'), {}, function (err, out) {
+                if (err) {
+                    return;
+                }
+                options.el.append(out);
+            });
+            break;
+        case 'destroy':
+            options.el.remove('.navigation');
+            break;
+    }
+};
 });
 require.register("navigation/nav-ui.js", function(exports, require, module){
-module.exports = '<div class="navbar navbar-inverse navbar-fixed-top">\n    <div class="container">\n        <div class="navbar-header">\n            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n                <span class="icon-bar"></span>\n                <span class="icon-bar"></span>\n                <span class="icon-bar"></span>\n            </button>\n            <a class="navbar-brand" href="#">Project name</a>\n        </div>\n        <div class="collapse navbar-collapse">\n            <ul class="nav navbar-nav">\n                <li class="active"><a href="#">Home</a></li>\n                <li><a href="#about">About</a></li>\n                <li><a href="#contact">Contact</a></li>\n            </ul>\n        </div>\n        <!--/.nav-collapse -->\n    </div>\n</div>';
+module.exports = '<div class="navigation">\n    <div class="navbar navbar-inverse navbar-fixed-top">\n        <div class="container">\n            <div class="navbar-header">\n                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                </button>\n                <a class="navbar-brand" href="#">Project name</a>\n            </div>\n            <div class="collapse navbar-collapse">\n                <ul class="nav navbar-nav">\n                    <li class="active"><a href="#">Home</a></li>\n                    <li><a href="#about">About</a></li>\n                    <li><a href="#contact">Contact</a></li>\n                </ul>\n            </div>\n            <!--/.nav-collapse -->\n        </div>\n    </div>\n</div>';
 });
 require.register("user/index.js", function(exports, require, module){
 var serand = require('serand'),
@@ -4633,55 +4664,95 @@ require.register("user/nav-ui.js", function(exports, require, module){
 module.exports = '<a id="logo" href="/" title="Back to the index">auto.serandives.com</a>\n<div><a id="logo1" href="/register" title="Back to the index">register</a></div>\n<div><a id="logo2" href="/login" title="Back to the index">login</a></div>\n<div><a id="logo3" href="/logout" title="Back to the index">logout</a></div>';
 });
 require.register("auto/index.js", function(exports, require, module){
-var serand = require('serand'),
-    page = serand.page;
+var dust = require('dust')();
 
-//console.log('registered: module-user');
-
-var listing;
-
-var colors = ['#FFC0CB', '#FF1493', '#DC143C', '#FF0000', '#FFA500', '#BDB76B', '#8B4513', '#6B8E23', '#4169E1', '#696969'];
-
-page('/vehicles', 'three-column', function (ctx, next) {
-    var thumbs = dust.compile(require('./auto-thumbs.dust'), 'auto-thumbs');
-    dust.loadSource(thumbs);
-
-    var t1 = new Date().getTime();
-    for (var i = 0; i < 10; i++) {
-        $.get('/apis/v' + i, (function (i) {
-            return function (data) {
-                //dust.render('auto-thumbs', { vehicles: {}, index: i, color: colors[i]}, function (err, out) {
-                    //$(data).appendTo('.middle');
-                //});
-                console.log(new Date().getTime());
-                console.log('==================' + (new Date().getTime() - t1)/1000);
-            };
-        }(i)));
+module.exports.search = function (action, options) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./search-ui'), {}, function (err, out) {
+                if (err) {
+                    return;
+                }
+                options.el.append(out);
+            });
+            break;
+        case 'destroy':
+            options.el.remove('.search-ui');
+            break;
     }
-    next();
-});
+};
 
-var logout;
-page('/logout', 'three-column', function (ctx, next) {
-    logout || (logout = $(require('./login-ui')).appendTo('.middle'));
-    next();
-});
-
-var navEl;
-
-page('/', 'three-column', function (ctx, next) {
-    console.log('adding navigation');
-    navEl || (navEl = $(require('./nav-ui')).appendTo('.left'));
-    next();
-});
-
-page('/', 'three-column', function(ctx, next) {
-
-});
-
-require('./search');
-require('./listing');
-
+module.exports.listing = function (action, options) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./listing-ui'), [
+                {
+                    title: 'Insight1',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight2',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight3',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight1',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight2',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight3',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                }
+            ], function (err, out) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                options.el.append(out);
+            });
+            break;
+        case 'destroy':
+            options.el.remove('.listing-ui');
+            break;
+    }
+};
 });
 require.register("auto/search.js", function(exports, require, module){
 var page = require('serand').page;
@@ -4702,25 +4773,7 @@ var page = serand.page;
 
 var listingEl;
 
-var dust = require('dust')({
-    slice: function (chunk, context, bodies, params) {
-        return chunk.map(function (chunk) {
-            var ctx = context.current(),
-                length = ctx.length,
-                start = parseInt(params.start, 10) || 0,
-                end = parseInt(params.end, 10) || length,
-                count = parseInt(params.count, 10) || length,
-                size = parseInt(params.size, 10) || length,
-                i = start,
-                c = 0;
-            while (i < end && c++ < count) {
-                console.log(ctx.slice(i, (i + size)));
-                chunk.render(bodies.block, context.push(ctx.slice(i, (i += size))));
-            }
-            chunk.end();
-        });
-    }
-});
+var dust = require('dust')();
 
 page('*', 'three-column', function (ctx, next) {
     var vars = ctx.layout.vars;
@@ -4800,7 +4853,7 @@ require.register("auto/search-ui.js", function(exports, require, module){
 module.exports = '<form role="form">\n    <div class="form-group">\n        <label class="checkbox">\n            <input type="checkbox" value="option1">Honda\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option2">Toyota\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Nissan\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Suzzuki\n        </label>\n        <a href="">More</a>\n    </div>\n    <div class="form-group">\n        <label for="exampleInputPassword1">Password</label>\n        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">\n    </div>\n    <div class="form-group">\n        <label for="exampleInputFile">File input</label>\n        <input type="file" id="exampleInputFile">\n\n        <p class="help-block">Example block-level help text here.</p>\n    </div>\n    <div class="checkbox">\n        <label>\n            <input type="checkbox"> Check me out\n        </label>\n    </div>\n    <button type="submit" class="btn btn-default">Submit</button>\n</form>';
 });
 require.register("auto/listing-ui.js", function(exports, require, module){
-module.exports = '{#slice:autos size="3"}\n<div class="row">\n    {#.}\n    <div class="col-md-4">\n        <div class="thumbnail" href="/vehicles">\n            <a href=""><h3>{title}</h3></a>\n            <img src="{thumbnail}" alt="...">\n\n            <div class="caption">\n                <div class="row">\n                    <div class="col-md-4">Make</div>\n                    <div class="col-md-8">{make}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Model</div>\n                    <div class="col-md-8">{model}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Year</div>\n                    <div class="col-md-8">{year}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Transmission</div>\n                    <div class="col-md-8">{transmission}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Mileage</div>\n                    <div class="col-md-8">{mileage}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Price</div>\n                    <div class="col-md-8">{price}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Location</div>\n                    <div class="col-md-8">{location}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    {/.}\n</div>\n{/slice}';
+module.exports = '{@slice size="2"}\n<div class="row">\n    {#.}\n    <div class="col-md-4">\n        <div class="thumbnail" href="/vehicles">\n            <a href=""><h3>{title}</h3></a>\n            <img src="{thumbnail}" alt="...">\n\n            <div class="caption">\n                <div class="row">\n                    <div class="col-md-4">Make</div>\n                    <div class="col-md-8">{make}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Model</div>\n                    <div class="col-md-8">{model}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Year</div>\n                    <div class="col-md-8">{year}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Transmission</div>\n                    <div class="col-md-8">{transmission}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Mileage</div>\n                    <div class="col-md-8">{mileage}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Price</div>\n                    <div class="col-md-8">{price}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Location</div>\n                    <div class="col-md-8">{location}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    {/.}\n</div>\n{/slice}';
 });
 require.register("auto-search/search.js", function(exports, require, module){
 
@@ -4819,25 +4872,77 @@ require.register("auto-search/template.js", function(exports, require, module){
 module.exports = '<div id="search">\n  Search : <input type="text" on-input="search" placeholder="Search">\n</div>\n';
 });
 require.register("boot/boot.js", function(exports, require, module){
+var page = require('page');
 
-require('layout');
-require('navigation');
-require('auto');
-//require('auto');
-//require('search');
+var dust = require('dust')();
 
-var serand = require('serand');
+var lyout;
 
-serand.init();
+var layout = function (name, fn) {
+    if (lyout == name) {
+        fn();
+        return;
+    }
+    dust.renderSource(require('./' + name), {}, function (err, out) {
+        lyout = name;
+        $('#content').html(out);
+        fn();
+    });
+};
+
+var navigation;
+var autoSearch;
+var autoListing;
+
+page('*', function (ctx) {
+    layout('three-column', function () {
+        var nav;
+        if (!navigation) {
+            nav = require('navigation');
+            nav.navigation('create', {
+                el: $('#header')
+            });
+            navigation = true;
+        }
+
+        var auto;
+        if (!autoSearch) {
+            auto = require('auto');
+            auto.search('create', {
+                el: $('#left')
+            });
+            autoSearch = true;
+        }
+        if (!autoListing) {
+            auto = require('auto');
+            try {
+                auto.listing('create', {
+                    el: $('#middle')
+                });
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        autoListing = true;
+    });
+});
+
+page();
 
 
 
 
 
 });
+require.register("boot/three-column.js", function(exports, require, module){
+module.exports = '<div class="three-column">\n    <div id="header"></div>\n\n    <div class="container">\n        <div class="row">\n            <div id="left" class="col-md-3"></div>\n            <div id="middle" class="col-md-9"></div>\n        </div>\n    </div>\n</div>';
+});
 require.alias("boot/boot.js", "accounts.serandives.com/deps/boot/boot.js");
 require.alias("boot/boot.js", "accounts.serandives.com/deps/boot/index.js");
+require.alias("visionmedia-page.js/index.js", "boot/deps/page/index.js");
+
 require.alias("dust/dust.js", "boot/deps/dust/dust.js");
+require.alias("dust/helpers.js", "boot/deps/dust/helpers.js");
 require.alias("dust/index.js", "boot/deps/dust/index.js");
 require.alias("dust/index.js", "boot/deps/dust/index.js");
 require.alias("dust/index.js", "dust/index.js");
@@ -4860,6 +4965,12 @@ require.alias("layout/index.js", "layout/index.js");
 
 require.alias("navigation/index.js", "boot/deps/navigation/index.js");
 require.alias("navigation/index.js", "boot/deps/navigation/index.js");
+require.alias("dust/dust.js", "navigation/deps/dust/dust.js");
+require.alias("dust/helpers.js", "navigation/deps/dust/helpers.js");
+require.alias("dust/index.js", "navigation/deps/dust/index.js");
+require.alias("dust/index.js", "navigation/deps/dust/index.js");
+require.alias("dust/index.js", "dust/index.js");
+
 require.alias("serand/index.js", "navigation/deps/serand/index.js");
 require.alias("serand/index.js", "navigation/deps/serand/index.js");
 require.alias("visionmedia-page.js/index.js", "serand/deps/page/index.js");
@@ -4884,6 +4995,7 @@ require.alias("auto/search.js", "boot/deps/auto/search.js");
 require.alias("auto/listing.js", "boot/deps/auto/listing.js");
 require.alias("auto/index.js", "boot/deps/auto/index.js");
 require.alias("dust/dust.js", "auto/deps/dust/dust.js");
+require.alias("dust/helpers.js", "auto/deps/dust/helpers.js");
 require.alias("dust/index.js", "auto/deps/dust/index.js");
 require.alias("dust/index.js", "auto/deps/dust/index.js");
 require.alias("dust/index.js", "dust/index.js");

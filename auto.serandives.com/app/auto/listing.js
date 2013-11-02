@@ -3,25 +3,7 @@ var page = serand.page;
 
 var listingEl;
 
-var dust = require('dust')({
-    slice: function (chunk, context, bodies, params) {
-        return chunk.map(function (chunk) {
-            var ctx = context.current(),
-                length = ctx.length,
-                start = parseInt(params.start, 10) || 0,
-                end = parseInt(params.end, 10) || length,
-                count = parseInt(params.count, 10) || length,
-                size = parseInt(params.size, 10) || length,
-                i = start,
-                c = 0;
-            while (i < end && c++ < count) {
-                console.log(ctx.slice(i, (i + size)));
-                chunk.render(bodies.block, context.push(ctx.slice(i, (i += size))));
-            }
-            chunk.end();
-        });
-    }
-});
+var dust = require('dust')();
 
 page('*', 'three-column', function (ctx, next) {
     var vars = ctx.layout.vars;

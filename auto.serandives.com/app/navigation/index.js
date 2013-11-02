@@ -1,11 +1,17 @@
-var serand = require('serand'),
-    page = serand.page;
+var dust = require('dust')();
 
-var navEl;
-
-page('*', 'three-column', function (ctx, next) {
-    var vars = ctx.layout.vars;
-    console.log('adding navigation');
-    navEl || (navEl = $(require('./nav-ui')).appendTo(vars.header));
-    next();
-});
+module.exports.navigation = function (action, options) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./nav-ui'), {}, function (err, out) {
+                if (err) {
+                    return;
+                }
+                options.el.append(out);
+            });
+            break;
+        case 'destroy':
+            options.el.remove('.navigation');
+            break;
+    }
+};

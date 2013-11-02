@@ -10,7 +10,6 @@
 <div id="content"></div>
 <script src="/jquery.js"></script>
 <script src="/bootstrap.min.js"></script>
-<script src="/dust.js"></script>
 <script src="/app.js"></script>
 <script>require('boot')</script>
 </body>

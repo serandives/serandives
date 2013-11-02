@@ -1,48 +1,89 @@
-var serand = require('serand'),
-    page = serand.page;
+var dust = require('dust')();
 
-//console.log('registered: module-user');
-
-var listing;
-
-var colors = ['#FFC0CB', '#FF1493', '#DC143C', '#FF0000', '#FFA500', '#BDB76B', '#8B4513', '#6B8E23', '#4169E1', '#696969'];
-
-page('/vehicles', 'three-column', function (ctx, next) {
-    var thumbs = dust.compile(require('./auto-thumbs.dust'), 'auto-thumbs');
-    dust.loadSource(thumbs);
-
-    var t1 = new Date().getTime();
-    for (var i = 0; i < 10; i++) {
-        $.get('/apis/v' + i, (function (i) {
-            return function (data) {
-                //dust.render('auto-thumbs', { vehicles: {}, index: i, color: colors[i]}, function (err, out) {
-                    //$(data).appendTo('.middle');
-                //});
-                console.log(new Date().getTime());
-                console.log('==================' + (new Date().getTime() - t1)/1000);
-            };
-        }(i)));
+module.exports.search = function (action, options) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./search-ui'), {}, function (err, out) {
+                if (err) {
+                    return;
+                }
+                options.el.append(out);
+            });
+            break;
+        case 'destroy':
+            options.el.remove('.search-ui');
+            break;
     }
-    next();
-});
+};
 
-var logout;
-page('/logout', 'three-column', function (ctx, next) {
-    logout || (logout = $(require('./login-ui')).appendTo('.middle'));
-    next();
-});
-
-var navEl;
-
-page('/', 'three-column', function (ctx, next) {
-    console.log('adding navigation');
-    navEl || (navEl = $(require('./nav-ui')).appendTo('.left'));
-    next();
-});
-
-page('/', 'three-column', function(ctx, next) {
-
-});
-
-require('./search');
-require('./listing');
+module.exports.listing = function (action, options) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./listing-ui'), [
+                {
+                    title: 'Insight1',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight2',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight3',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight1',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight2',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                },
+                {
+                    title: 'Insight3',
+                    thumbnail: '/images/prius.jpeg',
+                    make: 'Toyota',
+                    model: 'Prius',
+                    year: 2013,
+                    price: '4400000LKR',
+                    color: 'Metallic Black'
+                }
+            ], function (err, out) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                options.el.append(out);
+            });
+            break;
+        case 'destroy':
+            options.el.remove('.listing-ui');
+            break;
+    }
+};
