@@ -1,9 +1,0 @@
-{
-    "name": "layout",
-    "description": "layout component",
-    "local": ["serand"],
-    "scripts": ["index.js"],
-    "styles": ["three-column.css"],
-    "templates" : ["three-column.html"],
-    "main": "index.js"
-}

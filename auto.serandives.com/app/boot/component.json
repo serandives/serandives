@@ -1,7 +1,7 @@
 {
     "name": "boot",
     "description": "bootstrap component",
-    "local": ["dust", "serand", "layout", "navigation", "user", "auto", "auto-search"],
+    "local": ["dust", "serand", "navigation", "user", "auto"],
     "dependencies": {
         "visionmedia/page.js": "*"
     },

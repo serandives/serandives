@@ -4481,6 +4481,15 @@ module.exports.on = function (ch, e, fn) {
     event(ch, e).push(fn);
 };
 
+module.exports.off = function (ch, e, fn) {
+    var arr = event(ch, e);
+    var idx = arr.indexOf(fn);
+    if (idx === -1) {
+        return;
+    }
+    arr.splice(idx, 1);
+};
+
 /**
  * Emits the specified event on the specified channel
  * @param ch channel name
@@ -4492,101 +4501,44 @@ module.exports.emit = function (ch, e, data) {
         fn(data);
     });
 };
-
-/**
- *   page('/vehicles', 'three-column-left', fn);
- */
-
-//TODO: register only with existing layouts
-module.exports.page = function (path, lt, fn) {
-    return page(path, function (ctx, next) {
-        if (lt && ctx.layout.name !== lt) {
-            next();
-            return;
-        }
-        fn(ctx, next);
-    });
-};
-
-module.exports.init = function () {
-    page();
-};
-
-module.exports.layout = function (paths, name, layout) {
-    paths = paths instanceof Array ? paths : [paths];
-    paths.forEach(function (path) {
-        page(path, function (ctx, next) {
-            layout.name = name;
-            layout.el = layout.el.appendTo('#content');
-            console.log(layout);
-            ctx.layout = layout;
-            next();
-        });
-    });
-};
-});
-require.register("layout/index.js", function(exports, require, module){
-var serand = require('serand'),
-    page = serand.page;
-
-var layout;
-
-/*page('*', function (ctx, next) {
-    layout || (layout = $(require('./three-column')).appendTo('#content'));
-    next();
-});*/
-
-/*serand.on('layout', 'update', function (name) {
-    if (layout) {
-        if (layout.name === name) {
-            return;
-        }
-        layout.el.remove();
-    }
-    layout = {
-        name: name,
-        el: $(require('./' + name)).appendTo('#content')
-    };
-    serand.on('layout', 'updated', layout.el);
-});*/
-
-var el = $(require('./three-column'));
-
-serand.layout('*', 'three-column', {
-    el: el,
-    vars: {
-        header: $('.header', el),
-        left: $('.left', el),
-        middle: $('.middle', el)
-    }
-});
-
-/*serand.on('user', 'register', function() {
-
- });*/
-/*
-
- page('/login', function(ctx) {
- console.log('login');
- var component = require('auto-list');
- component.start("single");
- $('body').append(require('./login-ui'));
- });
-
- page('/logout', function(ctx) {
- console.log('logout');
- var component = require('auto-list');
- component.start("single");
- });*/
-
-});
-require.register("layout/three-column.js", function(exports, require, module){
-module.exports = '<div class="three-column">\n    <div class="header"></div>\n\n    <div class="container">\n        <div class="row">\n            <div class="col-md-3 left"></div>\n            <div class="col-md-9 middle"></div>\n        </div>\n    </div>\n</div>';
 });
 require.register("navigation/index.js", function(exports, require, module){
 var dust = require('dust')();
+var serand = require('serand');
 
 module.exports.navigation = function (action, options) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./nav-ui'), {}, function (err, out) {
+                if (err) {
+                    return;
+                }
+                var el = $(out).appendTo(options.el);
+                var x;
+                serand.on('user', 'login', x = function (user) {
+                    serand.off('user', 'login', x);
+                    dust.renderSource(require('./user-ui'), user, function (err, out) {
+                        $('.navbar-right', el).html(out);
+                    });
+                });
+            });
+            break;
+        case 'destroy':
+            options.el.remove('.navigation');
+            break;
+    }
+};
+});
+require.register("navigation/nav-ui.js", function(exports, require, module){
+module.exports = '<div class="navigation">\n    <div class="navbar navbar-inverse navbar-fixed-top">\n        <div class="container">\n            <div class="navbar-header">\n                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                </button>\n                <a class="navbar-brand" href="#">Project name</a>\n            </div>\n            <div class="collapse navbar-collapse">\n                <ul class="nav navbar-nav">\n                    <li class="active"><a href="#">Home</a></li>\n                    <li><a href="#about">About</a></li>\n                    <li><a href="#contact">Contact</a></li>\n                </ul>\n                <ul class="nav navbar-nav navbar-right">\n                    <li><a href="#">Login</a></li>\n                    <li><a href="#">Register</a></li>\n                </ul>\n            </div>\n            <!--/.nav-collapse -->\n        </div>\n    </div>\n</div>';
+});
+require.register("navigation/user-ui.js", function(exports, require, module){
+module.exports = '<li class="dropdown">\n    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{username}<b class="caret"></b></a>\n    <ul class="dropdown-menu">\n        <li><a href="#">Account</a></li>\n        <li class="divider"></li>\n        <li><a href="#">Logout</a></li>\n    </ul>\n</li>';
+});
+require.register("user/index.js", function(exports, require, module){
+var dust = require('dust')();
+
+module.exports.links = function (action, options) {
     switch (action) {
         case 'create':
             dust.renderSource(require('./nav-ui'), {}, function (err, out) {
@@ -4597,59 +4549,10 @@ module.exports.navigation = function (action, options) {
             });
             break;
         case 'destroy':
-            options.el.remove('.navigation');
+            options.el.remove('.user-nav');
             break;
     }
 };
-});
-require.register("navigation/nav-ui.js", function(exports, require, module){
-module.exports = '<div class="navigation">\n    <div class="navbar navbar-inverse navbar-fixed-top">\n        <div class="container">\n            <div class="navbar-header">\n                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                </button>\n                <a class="navbar-brand" href="#">Project name</a>\n            </div>\n            <div class="collapse navbar-collapse">\n                <ul class="nav navbar-nav">\n                    <li class="active"><a href="#">Home</a></li>\n                    <li><a href="#about">About</a></li>\n                    <li><a href="#contact">Contact</a></li>\n                </ul>\n            </div>\n            <!--/.nav-collapse -->\n        </div>\n    </div>\n</div>';
-});
-require.register("user/index.js", function(exports, require, module){
-var serand = require('serand'),
-    page = serand.page;
-
-//console.log('registered: module-user');
-
-var loginEl;
-
-page('/register', 'three-column', function (ctx, next) {
-    loginEl || (loginEl = $(require('./login-ui')).appendTo('.right'));
-    $('.right .login').on('click', '.submit', function () {
-        //alert('submitting');
-        serand.emit('user', 'register', { username : 'ruchira' });
-    });
-    next();
-});
-
-var logout;
-page('/logout', 'three-column', function (ctx, next) {
-    logout || (logout = $(require('./login-ui')).appendTo('.middle'));
-    next();
-});
-
-var navEl;
-
-page('*', 'three-column', function (ctx, next) {
-    console.log('adding navigation');
-    navEl || (navEl = $(require('./nav-ui')).appendTo('.left'));
-    next();
-});
-/*
-
- page('/login', function(ctx) {
- console.log('login');
- var component = require('auto-list');
- component.start("single");
- $('body').append(require('./login-ui'));
- });
-
- page('/logout', function(ctx) {
- console.log('logout');
- var component = require('auto-list');
- component.start("single");
- });*/
-
 });
 require.register("user/login.js", function(exports, require, module){
 
@@ -4661,7 +4564,7 @@ require.register("user/login-ui.js", function(exports, require, module){
 module.exports = '<div class="login">\n    <div class="username-wrapper">Username : <input class="username" type="text"/></div>\n    <div class="password-wrapper">Password : <input class="password" type="password"/></div>\n    <div class="button-wrapper"><button class="submit">Login</button></div>\n</div>';
 });
 require.register("user/nav-ui.js", function(exports, require, module){
-module.exports = '<a id="logo" href="/" title="Back to the index">auto.serandives.com</a>\n<div><a id="logo1" href="/register" title="Back to the index">register</a></div>\n<div><a id="logo2" href="/login" title="Back to the index">login</a></div>\n<div><a id="logo3" href="/logout" title="Back to the index">logout</a></div>';
+module.exports = '<div class="user-nav">\n    <a id="logo" href="/" title="Back to the index">auto.serandives.com</a>\n    <div><a id="logo1" href="/register" title="Back to the index">register</a></div>\n    <div><a id="logo2" href="/login" title="Back to the index">login</a></div>\n    <div><a id="logo3" href="/logout" title="Back to the index">logout</a></div>\n</div>';
 });
 require.register("auto/index.js", function(exports, require, module){
 var dust = require('dust')();
@@ -4754,122 +4657,11 @@ module.exports.listing = function (action, options) {
     }
 };
 });
-require.register("auto/search.js", function(exports, require, module){
-var page = require('serand').page;
-
-var searchEl;
-
-page('*', 'three-column', function (ctx, next) {
-    var vars = ctx.layout.vars;
-    console.log('adding auto search');
-    console.log(ctx.layout.header);
-    searchEl || (searchEl = $(require('./search-ui')).appendTo(vars.left));
-    next();
-});
-});
-require.register("auto/listing.js", function(exports, require, module){
-var serand = require('serand');
-var page = serand.page;
-
-var listingEl;
-
-var dust = require('dust')();
-
-page('*', 'three-column', function (ctx, next) {
-    var vars = ctx.layout.vars;
-    console.log('adding auto listing');
-    console.log(ctx.layout.header);
-    var fn = dust.compileFn(require('./listing-ui'));
-    fn({autos: [
-        {
-            title: 'Insight1',
-            thumbnail: '/images/prius.jpeg',
-            make: 'Toyota',
-            model: 'Prius',
-            year: 2013,
-            price: '4400000LKR',
-            color: 'Metallic Black'
-        },
-        {
-            title: 'Insight2',
-            thumbnail: '/images/prius.jpeg',
-            make: 'Toyota',
-            model: 'Prius',
-            year: 2013,
-            price: '4400000LKR',
-            color: 'Metallic Black'
-        },
-        {
-            title: 'Insight3',
-            thumbnail: '/images/prius.jpeg',
-            make: 'Toyota',
-            model: 'Prius',
-            year: 2013,
-            price: '4400000LKR',
-            color: 'Metallic Black'
-        },
-        {
-            title: 'Insight1',
-            thumbnail: '/images/prius.jpeg',
-            make: 'Toyota',
-            model: 'Prius',
-            year: 2013,
-            price: '4400000LKR',
-            color: 'Metallic Black'
-        },
-        {
-            title: 'Insight2',
-            thumbnail: '/images/prius.jpeg',
-            make: 'Toyota',
-            model: 'Prius',
-            year: 2013,
-            price: '4400000LKR',
-            color: 'Metallic Black'
-        },
-        {
-            title: 'Insight3',
-            thumbnail: '/images/prius.jpeg',
-            make: 'Toyota',
-            model: 'Prius',
-            year: 2013,
-            price: '4400000LKR',
-            color: 'Metallic Black'
-        }
-    ]}, function (err, data) {
-        if (!err) {
-            listingEl = $(data).appendTo(vars.middle);
-        }
-    });
-    next();
-});
-});
-require.register("auto/auto-thumbs.dust.js", function(exports, require, module){
-module.exports = '<div class="auto-listing" style="background-color: {color}">\n    <h2>Page Index : {index}</h2>\n    {#vehicles}\n        <div class="vehicle">\n            <div class="title">{title}</div>\n            <div class="price">{price.amount} {price.currency}</div>\n            <div class="make">By {make.brand} in {make.year}</div>\n        </div>\n        <hr/>\n    {/vehicles}\n</div>';
-});
-require.register("auto/nav-ui.js", function(exports, require, module){
-module.exports = '<a id="logo" href="/" title="Back to the index">auto.serandives.com</a>\n<div><a id="logo1" href="/register" title="Back to the index">register</a></div>\n<div><a id="logo2" href="/login" title="Back to the index">login</a></div>\n<div><a id="logo3" href="/logout" title="Back to the index">logout</a></div>';
-});
 require.register("auto/search-ui.js", function(exports, require, module){
 module.exports = '<form role="form">\n    <div class="form-group">\n        <label class="checkbox">\n            <input type="checkbox" value="option1">Honda\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option2">Toyota\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Nissan\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Suzzuki\n        </label>\n        <a href="">More</a>\n    </div>\n    <div class="form-group">\n        <label for="exampleInputPassword1">Password</label>\n        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">\n    </div>\n    <div class="form-group">\n        <label for="exampleInputFile">File input</label>\n        <input type="file" id="exampleInputFile">\n\n        <p class="help-block">Example block-level help text here.</p>\n    </div>\n    <div class="checkbox">\n        <label>\n            <input type="checkbox"> Check me out\n        </label>\n    </div>\n    <button type="submit" class="btn btn-default">Submit</button>\n</form>';
 });
 require.register("auto/listing-ui.js", function(exports, require, module){
-module.exports = '{@slice size="2"}\n<div class="row">\n    {#.}\n    <div class="col-md-4">\n        <div class="thumbnail" href="/vehicles">\n            <a href=""><h3>{title}</h3></a>\n            <img src="{thumbnail}" alt="...">\n\n            <div class="caption">\n                <div class="row">\n                    <div class="col-md-4">Make</div>\n                    <div class="col-md-8">{make}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Model</div>\n                    <div class="col-md-8">{model}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Year</div>\n                    <div class="col-md-8">{year}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Transmission</div>\n                    <div class="col-md-8">{transmission}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Mileage</div>\n                    <div class="col-md-8">{mileage}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Price</div>\n                    <div class="col-md-8">{price}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Location</div>\n                    <div class="col-md-8">{location}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    {/.}\n</div>\n{/slice}';
-});
-require.register("auto-search/search.js", function(exports, require, module){
-
-var page = require('serand').page;
-
-var searchUI;
-
-console.log('module loading');
-
-page('/logout', 'three-column', function() {
-    console.log('logging out');
-    searchUI || (searchUI = $('body').append(require('./template')));
-});
-});
-require.register("auto-search/template.js", function(exports, require, module){
-module.exports = '<div id="search">\n  Search : <input type="text" on-input="search" placeholder="Search">\n</div>\n';
+module.exports = '{@slice size="3"}\n<div class="row">\n    {#.}\n    <div class="col-md-4">\n        <div class="thumbnail" href="/vehicles">\n            <a href=""><h3>{title}</h3></a>\n            <img src="{thumbnail}" alt="...">\n\n            <div class="caption">\n                <div class="row">\n                    <div class="col-md-4">Make</div>\n                    <div class="col-md-8">{make}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Model</div>\n                    <div class="col-md-8">{model}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Year</div>\n                    <div class="col-md-8">{year}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Transmission</div>\n                    <div class="col-md-8">{transmission}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Mileage</div>\n                    <div class="col-md-8">{mileage}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Price</div>\n                    <div class="col-md-8">{price}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Location</div>\n                    <div class="col-md-8">{location}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    {/.}\n</div>\n{/slice}';
 });
 require.register("boot/boot.js", function(exports, require, module){
 var page = require('page');
@@ -4896,38 +4688,34 @@ var autoListing;
 
 page('*', function (ctx) {
     layout('three-column', function () {
-        var nav;
         if (!navigation) {
-            nav = require('navigation');
-            nav.navigation('create', {
+            require('navigation').navigation('create', {
                 el: $('#header')
             });
             navigation = true;
         }
 
-        var auto;
         if (!autoSearch) {
-            auto = require('auto');
-            auto.search('create', {
+            require('auto').search('create', {
                 el: $('#left')
             });
             autoSearch = true;
         }
         if (!autoListing) {
-            auto = require('auto');
-            try {
-                auto.listing('create', {
-                    el: $('#middle')
-                });
-            } catch (e) {
-                console.log(e);
-            }
+            require('auto').listing('create', {
+                el: $('#middle')
+            });
+            autoListing = true;
         }
-        autoListing = true;
     });
 });
 
 page();
+
+setInterval(function () {
+    var serand = require('serand');
+    serand.emit('user', 'login', { username: 'ruchira' + new Date().getTime()});
+}, 2000);
 
 
 
@@ -4953,16 +4741,6 @@ require.alias("visionmedia-page.js/index.js", "serand/deps/page/index.js");
 
 require.alias("serand/index.js", "serand/index.js");
 
-require.alias("layout/index.js", "boot/deps/layout/index.js");
-require.alias("layout/index.js", "boot/deps/layout/index.js");
-require.alias("serand/index.js", "layout/deps/serand/index.js");
-require.alias("serand/index.js", "layout/deps/serand/index.js");
-require.alias("visionmedia-page.js/index.js", "serand/deps/page/index.js");
-
-require.alias("serand/index.js", "serand/index.js");
-
-require.alias("layout/index.js", "layout/index.js");
-
 require.alias("navigation/index.js", "boot/deps/navigation/index.js");
 require.alias("navigation/index.js", "boot/deps/navigation/index.js");
 require.alias("dust/dust.js", "navigation/deps/dust/dust.js");
@@ -4982,6 +4760,12 @@ require.alias("navigation/index.js", "navigation/index.js");
 require.alias("user/index.js", "boot/deps/user/index.js");
 require.alias("user/login.js", "boot/deps/user/login.js");
 require.alias("user/index.js", "boot/deps/user/index.js");
+require.alias("dust/dust.js", "user/deps/dust/dust.js");
+require.alias("dust/helpers.js", "user/deps/dust/helpers.js");
+require.alias("dust/index.js", "user/deps/dust/index.js");
+require.alias("dust/index.js", "user/deps/dust/index.js");
+require.alias("dust/index.js", "dust/index.js");
+
 require.alias("serand/index.js", "user/deps/serand/index.js");
 require.alias("serand/index.js", "user/deps/serand/index.js");
 require.alias("visionmedia-page.js/index.js", "serand/deps/page/index.js");
@@ -4991,8 +4775,6 @@ require.alias("serand/index.js", "serand/index.js");
 require.alias("user/index.js", "user/index.js");
 
 require.alias("auto/index.js", "boot/deps/auto/index.js");
-require.alias("auto/search.js", "boot/deps/auto/search.js");
-require.alias("auto/listing.js", "boot/deps/auto/listing.js");
 require.alias("auto/index.js", "boot/deps/auto/index.js");
 require.alias("dust/dust.js", "auto/deps/dust/dust.js");
 require.alias("dust/helpers.js", "auto/deps/dust/helpers.js");
@@ -5007,16 +4789,6 @@ require.alias("visionmedia-page.js/index.js", "serand/deps/page/index.js");
 require.alias("serand/index.js", "serand/index.js");
 
 require.alias("auto/index.js", "auto/index.js");
-
-require.alias("auto-search/search.js", "boot/deps/auto-search/search.js");
-require.alias("auto-search/search.js", "boot/deps/auto-search/index.js");
-require.alias("serand/index.js", "auto-search/deps/serand/index.js");
-require.alias("serand/index.js", "auto-search/deps/serand/index.js");
-require.alias("visionmedia-page.js/index.js", "serand/deps/page/index.js");
-
-require.alias("serand/index.js", "serand/index.js");
-
-require.alias("auto-search/search.js", "auto-search/index.js");
 
 require.alias("boot/boot.js", "boot/index.js");
 

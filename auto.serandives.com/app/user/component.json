@@ -1,7 +1,7 @@
 {
     "name": "user",
     "description": "user component",
-    "local": ["serand"],
+    "local": ["dust", "serand"],
     "scripts": ["index.js", "login.js"],
     "templates" : ["login-ui.html", "nav-ui.html"],
     "main": "index.js"

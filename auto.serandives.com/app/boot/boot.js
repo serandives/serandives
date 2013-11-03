@@ -22,38 +22,34 @@ var autoListing;
 
 page('*', function (ctx) {
     layout('three-column', function () {
-        var nav;
         if (!navigation) {
-            nav = require('navigation');
-            nav.navigation('create', {
+            require('navigation').navigation('create', {
                 el: $('#header')
             });
             navigation = true;
         }
 
-        var auto;
         if (!autoSearch) {
-            auto = require('auto');
-            auto.search('create', {
+            require('auto').search('create', {
                 el: $('#left')
             });
             autoSearch = true;
         }
         if (!autoListing) {
-            auto = require('auto');
-            try {
-                auto.listing('create', {
-                    el: $('#middle')
-                });
-            } catch (e) {
-                console.log(e);
-            }
+            require('auto').listing('create', {
+                el: $('#middle')
+            });
+            autoListing = true;
         }
-        autoListing = true;
     });
 });
 
 page();
+
+setTimeout(function () {
+    var serand = require('serand');
+    serand.emit('user', 'login', { username: 'ruchira'});
+}, 4000);
 
 
 

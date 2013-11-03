@@ -3,6 +3,6 @@
     "description": "navigation component",
     "local": ["dust", "serand"],
     "scripts": ["index.js"],
-    "templates" : ["nav-ui.html"],
+    "templates" : ["nav-ui.html", "user-ui.html"],
     "main": "index.js"
 }

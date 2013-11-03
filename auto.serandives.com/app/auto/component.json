@@ -2,7 +2,7 @@
     "name": "auto",
     "description": "auto component",
     "local": ["dust", "serand"],
-    "scripts": ["index.js", "search.js", "listing.js"],
-    "templates" : ["auto-thumbs.dust", "nav-ui.html", "search-ui.html", "listing-ui.html"],
+    "scripts": ["index.js"],
+    "templates" : ["search-ui.html", "listing-ui.html"],
     "main": "index.js"
 }

@@ -1,4 +1,5 @@
 var dust = require('dust')();
+var serand = require('serand');
 
 module.exports.navigation = function (action, options) {
     switch (action) {
@@ -7,7 +8,12 @@ module.exports.navigation = function (action, options) {
                 if (err) {
                     return;
                 }
-                options.el.append(out);
+                var el = $(out).appendTo(options.el);
+                serand.on('user', 'login', function (user) {
+                    dust.renderSource(require('./user-ui'), user, function (err, out) {
+                        $('.navbar-right', el).html(out);
+                    });
+                });
             });
             break;
         case 'destroy':
