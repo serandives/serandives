@@ -10,7 +10,6 @@ module.exports = {
                 i = start,
                 c = 0;
             while (i < end && c++ < count) {
-                console.log(ctx.slice(i, (i + size)));
                 chunk.render(bodies.block, context.push(ctx.slice(i, (i += size))));
             }
             chunk.end();

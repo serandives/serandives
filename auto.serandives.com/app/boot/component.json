@@ -7,7 +7,7 @@
     },
     "scripts": ["boot.js"],
     "styles": ["three-column.css"],
-    "templates": ["three-column.html"],
+    "templates": ["component.json", "three-column.html"],
     "images": [
         "images/logo.png",
         "images/logo@2x.png"

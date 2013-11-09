@@ -1,4 +1,5 @@
 var dust = require('dust')();
+var serand = require('serand');
 
 module.exports.links = function (action, options) {
     switch (action) {
@@ -15,3 +16,26 @@ module.exports.links = function (action, options) {
             break;
     }
 };
+
+var user;
+
+serand.on('boot', 'init', function () {
+    $.ajax({
+        url: '/apis/user',
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            serand.emit('user', 'login', data);
+        },
+        error: function () {
+            serand.emit('user', 'error');
+        }
+    });
+});
+/*
+
+ setTimeout(function () {
+ var serand = require('serand');
+ serand.emit('user', 'login', { username: 'ruchira'});
+ }, 4000);*/
+

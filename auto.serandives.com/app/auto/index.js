@@ -1,4 +1,7 @@
 var dust = require('dust')();
+var serand = require('serand');
+
+var user;
 
 module.exports.search = function (action, options) {
     switch (action) {
@@ -16,74 +19,45 @@ module.exports.search = function (action, options) {
     }
 };
 
+var list = function (el, paging) {
+    $.ajax({
+        url: '/apis/vehicles',
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            dust.renderSource(require('./listing-ui'), data, function (err, out) {
+                $('.auto-listing', el).remove();
+                el.off('click', '.auto-sort .btn');
+                el.append(out);
+                el.on('click', '.auto-sort .btn', function () {
+                    var sort = $(this).attr('name');
+                    var serand = require('serand');
+                    serand.emit('auto', 'sort', { sort: sort});
+                    list(el, {
+                        sort: sort
+                    });
+                });
+            });
+        },
+        error: function () {
+
+        }
+    });
+};
+
 module.exports.listing = function (action, options) {
     switch (action) {
         case 'create':
-            dust.renderSource(require('./listing-ui'), [
-                {
-                    title: 'Insight1',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight2',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight3',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight1',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight2',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight3',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                }
-            ], function (err, out) {
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-                options.el.append(out);
+            list(options.el, {
+                sort: 'recent'
             });
             break;
         case 'destroy':
-            options.el.remove('.listing-ui');
+            options.el.remove('.auto-listing');
             break;
     }
 };
+
+serand.on('user', 'login', function (data) {
+    user = data;
+});

@@ -1,6 +1,8 @@
 var dust = require('dust')();
 var serand = require('serand');
 
+var user;
+
 module.exports.navigation = function (action, options) {
     switch (action) {
         case 'create':
@@ -8,12 +10,17 @@ module.exports.navigation = function (action, options) {
                 if (err) {
                     return;
                 }
-                var el = $(out).appendTo(options.el);
-                serand.on('user', 'login', function (user) {
+                var update = function (user) {
                     dust.renderSource(require('./user-ui'), user, function (err, out) {
                         $('.navbar-right', el).html(out);
                     });
-                });
+                };
+                var el = $(out).appendTo(options.el);
+                serand.on('user', 'login', update);
+                if (!user) {
+                    return;
+                }
+                update(user);
             });
             break;
         case 'destroy':
@@ -21,3 +28,7 @@ module.exports.navigation = function (action, options) {
             break;
     }
 };
+
+serand.on('user', 'login', function (data) {
+    user = data;
+});

@@ -1,56 +1,41 @@
 var page = require('page');
-
 var dust = require('dust')();
+var serand = require('serand');
 
 var lyout;
 
+var comps = JSON.parse(require('./component.json'));
+comps.local.forEach(function (comp) {
+    require(comp);
+});
+
 var layout = function (name, fn) {
     if (lyout == name) {
-        fn();
+        fn(false);
         return;
     }
     dust.renderSource(require('./' + name), {}, function (err, out) {
         lyout = name;
         $('#content').html(out);
-        fn();
+        fn(true);
     });
 };
 
-var navigation;
-var autoSearch;
-var autoListing;
-
-page('*', function (ctx) {
-    layout('three-column', function () {
-        if (!navigation) {
-            require('navigation').navigation('create', {
-                el: $('#header')
-            });
-            navigation = true;
-        }
-
-        if (!autoSearch) {
-            require('auto').search('create', {
-                el: $('#left')
-            });
-            autoSearch = true;
-        }
-        if (!autoListing) {
-            require('auto').listing('create', {
-                el: $('#middle')
-            });
-            autoListing = true;
-        }
+page('/index.html', function (ctx) {
+    layout('three-column', function (fresh) {
+        require('navigation').navigation('create', {
+            el: $('#header')
+        });
+        require('auto').search('create', {
+            el: $('#left')
+        });
+        require('auto').listing('create', {
+            el: $('#middle')
+        });
+        serand.emit('page', 'ready');
     });
 });
 
 page();
 
-setTimeout(function () {
-    var serand = require('serand');
-    serand.emit('user', 'login', { username: 'ruchira'});
-}, 4000);
-
-
-
-
+serand.emit('boot', 'init');

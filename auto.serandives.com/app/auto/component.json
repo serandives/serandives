@@ -3,6 +3,7 @@
     "description": "auto component",
     "local": ["dust", "serand"],
     "scripts": ["index.js"],
-    "templates" : ["search-ui.html", "listing-ui.html"],
+    "styles": ["auto.css"],
+    "templates": ["search-ui.html", "listing-ui.html"],
     "main": "index.js"
 }

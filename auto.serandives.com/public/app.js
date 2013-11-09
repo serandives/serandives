@@ -4411,7 +4411,6 @@ module.exports = {
                 i = start,
                 c = 0;
             while (i < end && c++ < count) {
-                console.log(ctx.slice(i, (i + size)));
                 chunk.render(bodies.block, context.push(ctx.slice(i, (i += size))));
             }
             chunk.end();
@@ -4506,6 +4505,8 @@ require.register("navigation/index.js", function(exports, require, module){
 var dust = require('dust')();
 var serand = require('serand');
 
+var user;
+
 module.exports.navigation = function (action, options) {
     switch (action) {
         case 'create':
@@ -4513,14 +4514,17 @@ module.exports.navigation = function (action, options) {
                 if (err) {
                     return;
                 }
-                var el = $(out).appendTo(options.el);
-                var x;
-                serand.on('user', 'login', x = function (user) {
-                    serand.off('user', 'login', x);
+                var update = function (user) {
                     dust.renderSource(require('./user-ui'), user, function (err, out) {
                         $('.navbar-right', el).html(out);
                     });
-                });
+                };
+                var el = $(out).appendTo(options.el);
+                serand.on('user', 'login', update);
+                if (!user) {
+                    return;
+                }
+                update(user);
             });
             break;
         case 'destroy':
@@ -4528,6 +4532,10 @@ module.exports.navigation = function (action, options) {
             break;
     }
 };
+
+serand.on('user', 'login', function (data) {
+    user = data;
+});
 });
 require.register("navigation/nav-ui.js", function(exports, require, module){
 module.exports = '<div class="navigation">\n    <div class="navbar navbar-inverse navbar-fixed-top">\n        <div class="container">\n            <div class="navbar-header">\n                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                </button>\n                <a class="navbar-brand" href="#">Project name</a>\n            </div>\n            <div class="collapse navbar-collapse">\n                <ul class="nav navbar-nav">\n                    <li class="active"><a href="#">Home</a></li>\n                    <li><a href="#about">About</a></li>\n                    <li><a href="#contact">Contact</a></li>\n                </ul>\n                <ul class="nav navbar-nav navbar-right">\n                    <li><a href="#">Login</a></li>\n                    <li><a href="#">Register</a></li>\n                </ul>\n            </div>\n            <!--/.nav-collapse -->\n        </div>\n    </div>\n</div>';
@@ -4537,6 +4545,7 @@ module.exports = '<li class="dropdown">\n    <a href="#" class="dropdown-toggle"
 });
 require.register("user/index.js", function(exports, require, module){
 var dust = require('dust')();
+var serand = require('serand');
 
 module.exports.links = function (action, options) {
     switch (action) {
@@ -4553,6 +4562,30 @@ module.exports.links = function (action, options) {
             break;
     }
 };
+
+var user;
+
+serand.on('boot', 'init', function () {
+    $.ajax({
+        url: '/apis/user',
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            serand.emit('user', 'login', data);
+        },
+        error: function () {
+            serand.emit('user', 'error');
+        }
+    });
+});
+/*
+
+ setTimeout(function () {
+ var serand = require('serand');
+ serand.emit('user', 'login', { username: 'ruchira'});
+ }, 4000);*/
+
+
 });
 require.register("user/login.js", function(exports, require, module){
 
@@ -4568,6 +4601,9 @@ module.exports = '<div class="user-nav">\n    <a id="logo" href="/" title="Back 
 });
 require.register("auto/index.js", function(exports, require, module){
 var dust = require('dust')();
+var serand = require('serand');
+
+var user;
 
 module.exports.search = function (action, options) {
     switch (action) {
@@ -4585,142 +4621,102 @@ module.exports.search = function (action, options) {
     }
 };
 
+var list = function (el, paging) {
+    $.ajax({
+        url: '/apis/vehicles',
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            dust.renderSource(require('./listing-ui'), data, function (err, out) {
+                $('.auto-listing', el).remove();
+                el.off('click', '.auto-sort .btn');
+                el.append(out);
+                el.on('click', '.auto-sort .btn', function () {
+                    var sort = $(this).attr('name');
+                    var serand = require('serand');
+                    serand.emit('auto', 'sort', { sort: sort});
+                    list(el, {
+                        sort: sort
+                    });
+                });
+            });
+        },
+        error: function () {
+
+        }
+    });
+};
+
 module.exports.listing = function (action, options) {
+    var serand = require('serand');
     switch (action) {
         case 'create':
-            dust.renderSource(require('./listing-ui'), [
-                {
-                    title: 'Insight1',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight2',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight3',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight1',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight2',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                },
-                {
-                    title: 'Insight3',
-                    thumbnail: '/images/prius.jpeg',
-                    make: 'Toyota',
-                    model: 'Prius',
-                    year: 2013,
-                    price: '4400000LKR',
-                    color: 'Metallic Black'
-                }
-            ], function (err, out) {
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-                options.el.append(out);
+            list(options.el, {
+                sort: 'recent'
             });
             break;
         case 'destroy':
-            options.el.remove('.listing-ui');
+            options.el.remove('.auto-listing');
             break;
     }
 };
+
+serand.on('user', 'login', function (data) {
+    user = data;
+});
+
 });
 require.register("auto/search-ui.js", function(exports, require, module){
-module.exports = '<form role="form">\n    <div class="form-group">\n        <label class="checkbox">\n            <input type="checkbox" value="option1">Honda\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option2">Toyota\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Nissan\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Suzzuki\n        </label>\n        <a href="">More</a>\n    </div>\n    <div class="form-group">\n        <label for="exampleInputPassword1">Password</label>\n        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">\n    </div>\n    <div class="form-group">\n        <label for="exampleInputFile">File input</label>\n        <input type="file" id="exampleInputFile">\n\n        <p class="help-block">Example block-level help text here.</p>\n    </div>\n    <div class="checkbox">\n        <label>\n            <input type="checkbox"> Check me out\n        </label>\n    </div>\n    <button type="submit" class="btn btn-default">Submit</button>\n</form>';
+module.exports = '<form role="form">\n    <div class="form-group">\n        <label class="checkbox">\n            <input type="checkbox" value="option1">Honda\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option2">Toyota\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Nissan\n        </label>\n        <label class="checkbox">\n            <input type="checkbox" value="option3">Suzzuki\n        </label>\n        <a href="">More</a>\n    </div>\n    <div class="form-group">\n        <label for="auto-model">Model</label>\n        <select id="auto-model" class="form-control">\n            <option>Insight</option>\n            <option>Civic</option>\n        </select>\n    </div>\n    <div class="form-group">\n        <label for="auto-year">Year</label>\n        <select id="auto-year" class="form-control">\n            <option>2013</option>\n        </select>\n    </div>\n    <div class="form-group">\n        <label for="auto-price-min">Price</label>\n        <input type="text" id="auto-price-min" class="form-control">\n\n        <p class="help-block">Expected Minimum Price</p>\n    </div>\n    <div class="form-group">\n        <input type="text" id="auto-price-max" class="form-control">\n\n        <p class="help-block">Expected Maximum Price</p>\n    </div>\n    <div class="form-group">\n        <label for="auto-mileage-min">Mileage</label>\n        <input type="text" id="auto-mileage-min" class="form-control">\n\n        <p class="help-block">Expected Minimum Price</p>\n    </div>\n    <div class="form-group">\n        <input type="text" id="auto-mileage-max" class="form-control">\n\n        <p class="help-block">Expected Maximum Price</p>\n    </div>\n    <div class="form-group">\n        <label for="auto-location-distance">Location</label>\n        <input type="text" id="auto-location-distance" class="form-control">\n\n        <p class="help-block">or</p>\n    </div>\n    <div class="form-group">\n        <input type="text" id="auto-address-city" class="form-control">\n\n        <p class="help-block">City</p>\n    </div>\n    <div class="form-group">\n        <input type="text" id="auto-address-district" class="form-control">\n\n        <p class="help-block">District</p>\n    </div>\n    <div class="form-group">\n        <input type="text" id="auto-address-state" class="form-control">\n\n        <p class="help-block">State/Province</p>\n    </div>\n    <div class="form-group">\n        <input type="text" id="auto-address-country" class="form-control">\n\n        <p class="help-block">Country</p>\n    </div>\n    <button type="submit" class="btn btn-default">Submit</button>\n</form>';
 });
 require.register("auto/listing-ui.js", function(exports, require, module){
-module.exports = '{@slice size="3"}\n<div class="row">\n    {#.}\n    <div class="col-md-4">\n        <div class="thumbnail" href="/vehicles">\n            <a href=""><h3>{title}</h3></a>\n            <img src="{thumbnail}" alt="...">\n\n            <div class="caption">\n                <div class="row">\n                    <div class="col-md-4">Make</div>\n                    <div class="col-md-8">{make}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Model</div>\n                    <div class="col-md-8">{model}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Year</div>\n                    <div class="col-md-8">{year}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Transmission</div>\n                    <div class="col-md-8">{transmission}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Mileage</div>\n                    <div class="col-md-8">{mileage}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Price</div>\n                    <div class="col-md-8">{price}</div>\n                </div>\n                <div class="row">\n                    <div class="col-md-4">Location</div>\n                    <div class="col-md-8">{location}</div>\n                </div>\n            </div>\n        </div>\n    </div>\n    {/.}\n</div>\n{/slice}';
+module.exports = '<div class="auto-listing">\n    <div class="row">\n        <div class="col-md-7"></div>\n        <div class="col-md-5">\n            <div class="row auto-sort">\n                <button type="button" class="btn btn-primary" name="year">Year</button>\n                <button type="button" class="btn btn-success" name="price">Price</button>\n                <button type="button" class="btn btn-info" name="recent">Recent</button>\n                <button type="button" class="btn btn-warning" name="popular">Popular</button>\n            </div>\n        </div>\n    </div>\n\n    {@slice size="3"}\n    <div class="row">\n        {#.}\n        <div class="col-md-4 auto-thumbline">\n            <div class="thumbnail" href="/vehicles">\n                <a href=""><h3>{title}</h3></a>\n                <img src="{thumbnail}" alt="...">\n\n                <div class="caption">\n                    <div class="row">\n                        <div class="col-md-4">Make</div>\n                        <div class="col-md-8">{make}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Model</div>\n                        <div class="col-md-8">{model}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Year</div>\n                        <div class="col-md-8">{year}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Transmission</div>\n                        <div class="col-md-8">{transmission}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Mileage</div>\n                        <div class="col-md-8">{mileage}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Price</div>\n                        <div class="col-md-8">{price}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Location</div>\n                        <div class="col-md-8">{location}</div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        {/.}\n    </div>\n    {/slice}\n</div>';
 });
 require.register("boot/boot.js", function(exports, require, module){
 var page = require('page');
-
 var dust = require('dust')();
+var serand = require('serand');
 
 var lyout;
 
+var comps = JSON.parse(require('./component.json'));
+comps.local.forEach(function (comp) {
+    require(comp);
+});
+
 var layout = function (name, fn) {
     if (lyout == name) {
-        fn();
+        fn(false);
         return;
     }
     dust.renderSource(require('./' + name), {}, function (err, out) {
         lyout = name;
         $('#content').html(out);
-        fn();
+        fn(true);
     });
 };
 
-var navigation;
-var autoSearch;
-var autoListing;
-
-page('*', function (ctx) {
-    layout('three-column', function () {
-        if (!navigation) {
-            require('navigation').navigation('create', {
-                el: $('#header')
-            });
-            navigation = true;
-        }
-
-        if (!autoSearch) {
-            require('auto').search('create', {
-                el: $('#left')
-            });
-            autoSearch = true;
-        }
-        if (!autoListing) {
-            require('auto').listing('create', {
-                el: $('#middle')
-            });
-            autoListing = true;
-        }
+page('/index.html', function (ctx) {
+    layout('three-column', function (fresh) {
+        require('navigation').navigation('create', {
+            el: $('#header')
+        });
+        require('auto').search('create', {
+            el: $('#left')
+        });
+        require('auto').listing('create', {
+            el: $('#middle')
+        });
+        serand.emit('page', 'ready');
     });
 });
 
 page();
 
-setInterval(function () {
-    var serand = require('serand');
-    serand.emit('user', 'login', { username: 'ruchira' + new Date().getTime()});
-}, 2000);
-
-
-
-
-
+serand.emit('boot', 'init');
+});
+require.register("boot/component.json.js", function(exports, require, module){
+module.exports = '{\n    "name": "boot",\n    "description": "bootstrap component",\n    "local": ["dust", "serand", "navigation", "user", "auto"],\n    "dependencies": {\n        "visionmedia/page.js": "*"\n    },\n    "scripts": ["boot.js"],\n    "styles": ["three-column.css"],\n    "templates": ["component.json", "three-column.html"],\n    "images": [\n        "images/logo.png",\n        "images/logo@2x.png"\n    ],\n    "main": "boot.js"\n}\n';
 });
 require.register("boot/three-column.js", function(exports, require, module){
 module.exports = '<div class="three-column">\n    <div id="header"></div>\n\n    <div class="container">\n        <div class="row">\n            <div id="left" class="col-md-3"></div>\n            <div id="middle" class="col-md-9"></div>\n        </div>\n    </div>\n</div>';

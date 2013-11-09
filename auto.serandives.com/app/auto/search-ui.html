@@ -15,19 +15,65 @@
         <a href="">More</a>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <label for="auto-model">Model</label>
+        <select id="auto-model" class="form-control">
+            <option>Insight</option>
+            <option>Civic</option>
+        </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-
-        <p class="help-block">Example block-level help text here.</p>
+        <label for="auto-year">Year</label>
+        <select id="auto-year" class="form-control">
+            <option>2013</option>
+        </select>
     </div>
-    <div class="checkbox">
-        <label>
-            <input type="checkbox"> Check me out
-        </label>
+    <div class="form-group">
+        <label for="auto-price-min">Price</label>
+        <input type="text" id="auto-price-min" class="form-control">
+
+        <p class="help-block">Expected Minimum Price</p>
+    </div>
+    <div class="form-group">
+        <input type="text" id="auto-price-max" class="form-control">
+
+        <p class="help-block">Expected Maximum Price</p>
+    </div>
+    <div class="form-group">
+        <label for="auto-mileage-min">Mileage</label>
+        <input type="text" id="auto-mileage-min" class="form-control">
+
+        <p class="help-block">Expected Minimum Price</p>
+    </div>
+    <div class="form-group">
+        <input type="text" id="auto-mileage-max" class="form-control">
+
+        <p class="help-block">Expected Maximum Price</p>
+    </div>
+    <div class="form-group">
+        <label for="auto-location-distance">Location</label>
+        <input type="text" id="auto-location-distance" class="form-control">
+
+        <p class="help-block">or</p>
+    </div>
+    <div class="form-group">
+        <input type="text" id="auto-address-city" class="form-control">
+
+        <p class="help-block">City</p>
+    </div>
+    <div class="form-group">
+        <input type="text" id="auto-address-district" class="form-control">
+
+        <p class="help-block">District</p>
+    </div>
+    <div class="form-group">
+        <input type="text" id="auto-address-state" class="form-control">
+
+        <p class="help-block">State/Province</p>
+    </div>
+    <div class="form-group">
+        <input type="text" id="auto-address-country" class="form-control">
+
+        <p class="help-block">Country</p>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
