@@ -25,6 +25,15 @@ module.exports.login = function (action, options, fn) {
                     return;
                 }
                 options.el.append(out);
+                options.el.on('click', '.user-login .signin', function (e) {
+                    var el = $('.user-login');
+                    var username = $('.username', el).val();
+                    var password = $('.password', el).val();
+                    serand.emit('user', 'login', {
+                        username: username
+                    });
+                    return false;
+                });
             });
             fn(false);
             break;
@@ -54,7 +63,7 @@ module.exports.register = function (action, options, fn) {
 var user;
 
 serand.on('boot', 'init', function () {
-    $.ajax({
+    /*$.ajax({
         url: '/apis/user',
         contentType: 'application/json',
         dataType: 'json',
@@ -64,7 +73,7 @@ serand.on('boot', 'init', function () {
         error: function () {
             serand.emit('user', 'error');
         }
-    });
+    });*/
 });
 /*
 

@@ -5475,6 +5475,9 @@ module.exports.navigation = function (action, options, fn) {
                 var update = function (user) {
                     dust.renderSource(require('./user-ui'), user, function (err, out) {
                         $('.navbar-right', el).html(out);
+                        $('.navigation-user-ui').on('click', '.logout', function() {
+                            serand.emit('user', 'logout', user);
+                        });
                     });
                 };
                 var el = $(out).appendTo(options.el);
@@ -5494,12 +5497,16 @@ module.exports.navigation = function (action, options, fn) {
 serand.on('user', 'login', function (data) {
     user = data;
 });
+
+serand.on('user', 'logout', function (data) {
+    user = null;
+});
 });
 require.register("navigation/nav-ui.js", function(exports, require, module){
 module.exports = '<div class="navigation">\n    <div class="navbar navbar-inverse navbar-fixed-top">\n        <div class="container">\n            <div class="navbar-header">\n                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                    <span class="icon-bar"></span>\n                </button>\n                <a class="navbar-brand" href="/">Project name</a>\n            </div>\n            <div class="collapse navbar-collapse">\n                <ul class="nav navbar-nav">\n                    <li class="active"><a href="#">Home</a></li>\n                    <li><a href="#about">About</a></li>\n                    <li><a href="#contact">Contact</a></li>\n                </ul>\n                <ul class="nav navbar-nav navbar-right">\n                    <li><a href="/login">Login</a></li>\n                    <li><a href="/register">Register</a></li>\n                </ul>\n            </div>\n            <!--/.nav-collapse -->\n        </div>\n    </div>\n</div>';
 });
 require.register("navigation/user-ui.js", function(exports, require, module){
-module.exports = '<li class="dropdown">\n    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{username}<b class="caret"></b></a>\n    <ul class="dropdown-menu">\n        <li><a href="#">Account</a></li>\n        <li class="divider"></li>\n        <li><a href="#">Logout</a></li>\n    </ul>\n</li>';
+module.exports = '<li class="dropdown navigation-user-ui">\n    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{username}<b class="caret"></b></a>\n    <ul class="dropdown-menu">\n        <li><a href="#" class="account">Account</a></li>\n        <li class="divider"></li>\n        <li><a href="#" class="logout">Logout</a></li>\n    </ul>\n</li>';
 });
 require.register("user/index.js", function(exports, require, module){
 var dust = require('dust')();
@@ -5529,6 +5536,15 @@ module.exports.login = function (action, options, fn) {
                     return;
                 }
                 options.el.append(out);
+                options.el.on('click', '.user-login .signin', function (e) {
+                    var el = $('.user-login');
+                    var username = $('.username', el).val();
+                    var password = $('.password', el).val();
+                    serand.emit('user', 'login', {
+                        username: username
+                    });
+                    return false;
+                });
             });
             fn(false);
             break;
@@ -5558,7 +5574,7 @@ module.exports.register = function (action, options, fn) {
 var user;
 
 serand.on('boot', 'init', function () {
-    $.ajax({
+    /*$.ajax({
         url: '/apis/user',
         contentType: 'application/json',
         dataType: 'json',
@@ -5568,7 +5584,7 @@ serand.on('boot', 'init', function () {
         error: function () {
             serand.emit('user', 'error');
         }
-    });
+    });*/
 });
 /*
 
@@ -5579,20 +5595,14 @@ serand.on('boot', 'init', function () {
 
 
 });
-require.register("user/login.js", function(exports, require, module){
-
-var template = require('login-html');
-
-
-});
 require.register("user/login-ui.js", function(exports, require, module){
-module.exports = '<div class="user-login">\n    <div class="row">\n        <div class="col-md-4"></div>\n        <div class="col-md-4">\n            <form class="form-signin">\n                <h2 class="form-signin-heading">Please sign in</h2>\n                <input type="text" class="form-control" placeholder="Email address" required autofocus>\n                <input type="password" class="form-control" placeholder="Password" required>\n                <label class="checkbox">\n                    <input type="checkbox" value="remember-me"> Remember me\n                </label>\n                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>\n            </form>\n        </div>\n        <div class="col-md-4"></div>\n    </div>\n</div>';
+module.exports = '<div class="user-login">\n    <div class="row">\n        <div class="col-md-4"></div>\n        <div class="col-md-4">\n            <form class="form-signin">\n                <h2 class="form-signin-heading">Sign In</h2>\n                <input type="text" class="form-control username" placeholder="Email address" required autofocus>\n                <input type="password" class="form-control password" placeholder="Password" required>\n                <label class="checkbox">\n                    <input type="checkbox" value="remember-me"> Remember me\n                </label>\n                <button class="btn btn-lg btn-primary btn-block signin" type="submit">Sign in</button>\n            </form>\n        </div>\n        <div class="col-md-4"></div>\n    </div>\n</div>';
 });
 require.register("user/nav-ui.js", function(exports, require, module){
 module.exports = '<div class="user-nav">\n    <a id="logo" href="/" title="Back to the index">auto.serandives.com</a>\n    <div><a id="logo1" href="/register" title="Back to the index">register</a></div>\n    <div><a id="logo2" href="/login" title="Back to the index">login</a></div>\n    <div><a id="logo3" href="/logout" title="Back to the index">logout</a></div>\n</div>';
 });
 require.register("user/register-ui.js", function(exports, require, module){
-module.exports = '<div class="user-register">\n    <div class="row">\n        <div class="col-md-3"></div>\n        <div class="col-md-6">\n            <form class="form-signin">\n                <h2 class="form-signin-heading">Please sign in</h2>\n                <input type="text" class="form-control" placeholder="Email address" required autofocus>\n                <input type="password" class="form-control" placeholder="Password" required>\n                <label class="checkbox">\n                    <input type="checkbox" value="remember-me"> Remember me\n                </label>\n                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>\n            </form>\n        </div>\n        <div class="col-md-3"></div>\n    </div>\n</div>';
+module.exports = '<div class="user-register">\n    <div class="row">\n        <div class="col-md-4"></div>\n        <div class="col-md-4">\n            <form class="form-signin">\n                <h2 class="form-signin-heading">Register</h2>\n                <input type="text" class="form-control" placeholder="Email address" required autofocus>\n                <input type="password" class="form-control" placeholder="Password" required>\n                <input type="password" class="form-control" placeholder="Re-type Password" required>\n                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>\n            </form>\n        </div>\n        <div class="col-md-4"></div>\n    </div>\n</div>';
 });
 require.register("auto/index.js", function(exports, require, module){
 var dust = require('dust')();
@@ -5691,6 +5701,13 @@ var layout = function (name, fn) {
     });
 };
 
+var current = function(path) {
+    var ctx = new page.Context(window.location.pathname + window.location.search);
+    var route = new page.Route(path);
+    route.match(ctx.path, ctx.params);
+    return ctx;
+};
+
 page('/', function (ctx) {
     layout('three-column', function (data, fn) {
         async.parallel([
@@ -5714,7 +5731,6 @@ page('/', function (ctx) {
         });
     });
 });
-
 
 page('/login', function (ctx) {
     layout('single-column', function (data, fn) {
@@ -5744,7 +5760,7 @@ page('/register', function (ctx) {
                 }, fn);
             },
             function (fn) {
-                require('user').login('create', {
+                require('user').register('create', {
                     el: $('#middle', data.el)
                 }, fn);
             }
@@ -5755,6 +5771,16 @@ page('/register', function (ctx) {
 });
 
 page();
+
+serand.on('user', 'login', function (data) {
+    var ctx = current('/:action?val=?');
+    console.log(ctx);
+    page('/');
+});
+
+serand.on('user', 'logout', function (data) {
+    page('/');
+});
 
 serand.emit('boot', 'init');
 });
@@ -5804,7 +5830,6 @@ require.alias("serand/index.js", "serand/index.js");
 require.alias("navigation/index.js", "navigation/index.js");
 
 require.alias("user/index.js", "boot/deps/user/index.js");
-require.alias("user/login.js", "boot/deps/user/login.js");
 require.alias("user/index.js", "boot/deps/user/index.js");
 require.alias("dust/dust.js", "user/deps/dust/dust.js");
 require.alias("dust/helpers.js", "user/deps/dust/helpers.js");

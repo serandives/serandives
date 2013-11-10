@@ -20,6 +20,13 @@ var layout = function (name, fn) {
     });
 };
 
+var current = function(path) {
+    var ctx = new page.Context(window.location.pathname + window.location.search);
+    var route = new page.Route(path);
+    route.match(ctx.path, ctx.params);
+    return ctx;
+};
+
 page('/', function (ctx) {
     layout('three-column', function (data, fn) {
         async.parallel([
@@ -43,7 +50,6 @@ page('/', function (ctx) {
         });
     });
 });
-
 
 page('/login', function (ctx) {
     layout('single-column', function (data, fn) {
@@ -73,7 +79,7 @@ page('/register', function (ctx) {
                 }, fn);
             },
             function (fn) {
-                require('user').login('create', {
+                require('user').register('create', {
                     el: $('#middle', data.el)
                 }, fn);
             }
@@ -84,5 +90,15 @@ page('/register', function (ctx) {
 });
 
 page();
+
+serand.on('user', 'login', function (data) {
+    var ctx = current('/:action?val=?');
+    console.log(ctx);
+    page('/');
+});
+
+serand.on('user', 'logout', function (data) {
+    page('/');
+});
 
 serand.emit('boot', 'init');

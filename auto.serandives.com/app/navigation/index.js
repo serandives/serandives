@@ -14,6 +14,9 @@ module.exports.navigation = function (action, options, fn) {
                 var update = function (user) {
                     dust.renderSource(require('./user-ui'), user, function (err, out) {
                         $('.navbar-right', el).html(out);
+                        $('.navigation-user-ui').on('click', '.logout', function() {
+                            serand.emit('user', 'logout', user);
+                        });
                     });
                 };
                 var el = $(out).appendTo(options.el);
@@ -32,4 +35,8 @@ module.exports.navigation = function (action, options, fn) {
 
 serand.on('user', 'login', function (data) {
     user = data;
+});
+
+serand.on('user', 'logout', function (data) {
+    user = null;
 });
