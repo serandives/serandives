@@ -3,7 +3,7 @@ var serand = require('serand');
 
 var user;
 
-module.exports.search = function (action, options) {
+module.exports.search = function (action, options, fn) {
     switch (action) {
         case 'create':
             dust.renderSource(require('./search-ui'), {}, function (err, out) {
@@ -12,6 +12,7 @@ module.exports.search = function (action, options) {
                 }
                 options.el.append(out);
             });
+            fn(false);
             break;
         case 'destroy':
             options.el.remove('.search-ui');
@@ -45,12 +46,13 @@ var list = function (el, paging) {
     });
 };
 
-module.exports.listing = function (action, options) {
+module.exports.listing = function (action, options, fn) {
     switch (action) {
         case 'create':
             list(options.el, {
                 sort: 'recent'
             });
+            fn(false);
             break;
         case 'destroy':
             options.el.remove('.auto-listing');

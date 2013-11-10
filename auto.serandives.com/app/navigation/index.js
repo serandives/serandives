@@ -3,11 +3,12 @@ var serand = require('serand');
 
 var user;
 
-module.exports.navigation = function (action, options) {
+module.exports.navigation = function (action, options, fn) {
     switch (action) {
         case 'create':
-            dust.renderSource(require('./nav-ui'), {}, function (err, out) {
+            dust.renderSource(require('./nav-ui'), options.data, function (err, out) {
                 if (err) {
+                    fn(err);
                     return;
                 }
                 var update = function (user) {
@@ -17,10 +18,10 @@ module.exports.navigation = function (action, options) {
                 };
                 var el = $(out).appendTo(options.el);
                 serand.on('user', 'login', update);
-                if (!user) {
-                    return;
+                if (user) {
+                    update(user);
                 }
-                update(user);
+                fn(false, options.el);
             });
             break;
         case 'destroy':

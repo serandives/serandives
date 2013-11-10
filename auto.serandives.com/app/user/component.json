@@ -3,6 +3,6 @@
     "description": "user component",
     "local": ["dust", "serand"],
     "scripts": ["index.js", "login.js"],
-    "templates" : ["login-ui.html", "nav-ui.html"],
+    "templates" : ["login-ui.html", "nav-ui.html", "register-ui.html"],
     "main": "index.js"
 }

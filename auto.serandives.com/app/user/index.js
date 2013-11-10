@@ -17,6 +17,40 @@ module.exports.links = function (action, options) {
     }
 };
 
+module.exports.login = function (action, options, fn) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./login-ui'), {}, function (err, out) {
+                if (err) {
+                    return;
+                }
+                options.el.append(out);
+            });
+            fn(false);
+            break;
+        case 'destroy':
+            options.el.remove('.user-login');
+            break;
+    }
+};
+
+module.exports.register = function (action, options, fn) {
+    switch (action) {
+        case 'create':
+            dust.renderSource(require('./register-ui'), {}, function (err, out) {
+                if (err) {
+                    return;
+                }
+                options.el.append(out);
+            });
+            fn(false);
+            break;
+        case 'destroy':
+            options.el.remove('.user-register');
+            break;
+    }
+};
+
 var user;
 
 serand.on('boot', 'init', function () {

@@ -1,8 +1,7 @@
 var page = require('page');
+var async = require('async');
 var dust = require('dust')();
 var serand = require('serand');
-
-var lyout;
 
 var comps = JSON.parse(require('./component.json'));
 comps.local.forEach(function (comp) {
@@ -10,29 +9,77 @@ comps.local.forEach(function (comp) {
 });
 
 var layout = function (name, fn) {
-    if (lyout == name) {
-        fn(false);
-        return;
-    }
     dust.renderSource(require('./' + name), {}, function (err, out) {
-        lyout = name;
-        $('#content').html(out);
-        fn(true);
+        var el = $(out);
+        fn({
+            el: el
+        }, function (err, result) {
+            $('#content').html(el);
+            serand.emit('page', 'ready');
+        });
     });
 };
 
-page('/index.html', function (ctx) {
-    layout('three-column', function (fresh) {
-        require('navigation').navigation('create', {
-            el: $('#header')
+page('/', function (ctx) {
+    layout('three-column', function (data, fn) {
+        async.parallel([
+            function (fn) {
+                require('navigation').navigation('create', {
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('auto').search('create', {
+                    el: $('#left', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('auto').listing('create', {
+                    el: $('#middle', data.el)
+                }, fn);
+            }
+        ], function (err, results) {
+            fn(err, results);
         });
-        require('auto').search('create', {
-            el: $('#left')
+    });
+});
+
+
+page('/login', function (ctx) {
+    layout('single-column', function (data, fn) {
+        async.parallel([
+            function (fn) {
+                require('navigation').navigation('create', {
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('user').login('create', {
+                    el: $('#middle', data.el)
+                }, fn)
+            }
+        ], function (err, results) {
+            fn(err, results);
         });
-        require('auto').listing('create', {
-            el: $('#middle')
+    });
+});
+
+page('/register', function (ctx) {
+    layout('single-column', function (data, fn) {
+        async.parallel([
+            function (fn) {
+                require('navigation').navigation('create', {
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('user').login('create', {
+                    el: $('#middle', data.el)
+                }, fn);
+            }
+        ], function (err, results) {
+            fn(err, results);
         });
-        serand.emit('page', 'ready');
     });
 });
 

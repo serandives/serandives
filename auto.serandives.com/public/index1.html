@@ -5,8 +5,22 @@
     <link rel="stylesheet" href="/bootstrap.min.css">
     <link rel="stylesheet" href="/index.css">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <script>
+        setInterval(function () {
+            var html = $($('.navbar').html());
+            //console.log(html);
+            $('.navbar').empty();
+            setTimeout(function () {
+                $('.foo', html).html(new Date().getTime());
+                $('.navbar').append(html);
+                console.log('adding');
+            }, 10);
+        }, 2000);
+    </script>
 </head>
 <body>
+
+<div class="container">
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -22,14 +36,12 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a class="foo" href="#contact">Contact</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
     </div>
 </div>
-
-<div class="container">
 
     <div class="row">
         <div class="col-md-3">

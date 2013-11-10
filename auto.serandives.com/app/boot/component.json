@@ -1,13 +1,13 @@
 {
     "name": "boot",
     "description": "bootstrap component",
-    "local": ["dust", "serand", "navigation", "user", "auto"],
+    "local": ["async", "dust", "serand", "navigation", "user", "auto"],
     "dependencies": {
         "visionmedia/page.js": "*"
     },
     "scripts": ["boot.js"],
-    "styles": ["three-column.css"],
-    "templates": ["component.json", "three-column.html"],
+    "styles": ["boot.css"],
+    "templates": ["component.json", "single-column.html", "three-column.html"],
     "images": [
         "images/logo.png",
         "images/logo@2x.png"
