@@ -3,24 +3,22 @@ var serand = require('serand');
 
 var user;
 
-module.exports.search = function (action, options, fn) {
-    switch (action) {
-        case 'create':
-            dust.renderSource(require('./search-ui'), {}, function (err, out) {
-                if (err) {
-                    return;
-                }
-                options.el.append(out);
+module.exports.search = function (options) {
+    return function (fn) {
+        dust.renderSource(require('./search-ui'), {}, function (err, out) {
+            if (err) {
+                return;
+            }
+            options.el.append(out);
+            fn(false, function () {
+                options.el.remove('.search-ui');
             });
-            fn(false);
-            break;
-        case 'destroy':
-            options.el.remove('.search-ui');
-            break;
-    }
+        });
+    };
 };
 
-var list = function (el, paging) {
+var list = function (options, paging, fn) {
+    var el = options.el;
     $.ajax({
         url: '/apis/vehicles',
         contentType: 'application/json',
@@ -34,30 +32,32 @@ var list = function (el, paging) {
                     var sort = $(this).attr('name');
                     var serand = require('serand');
                     serand.emit('auto', 'sort', { sort: sort});
-                    list(el, {
+                    list(options, {
                         sort: sort
                     });
+                });
+                if (!fn) {
+                    return;
+                }
+                fn(false, function () {
+                    el.remove('.auto-listing');
                 });
             });
         },
         error: function () {
+            fn(true, function () {
 
+            });
         }
     });
 };
 
-module.exports.listing = function (action, options, fn) {
-    switch (action) {
-        case 'create':
-            list(options.el, {
-                sort: 'recent'
-            });
-            fn(false);
-            break;
-        case 'destroy':
-            options.el.remove('.auto-listing');
-            break;
-    }
+module.exports.listing = function (options) {
+    return function (fn) {
+        list(options, {
+            sort: 'recent'
+        }, fn);
+    };
 };
 
 serand.on('user', 'login', function (data) {

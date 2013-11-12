@@ -5464,34 +5464,31 @@ var serand = require('serand');
 
 var user;
 
-module.exports.navigation = function (action, options, fn) {
-    switch (action) {
-        case 'create':
-            dust.renderSource(require('./nav-ui'), options.data, function (err, out) {
-                if (err) {
-                    fn(err);
-                    return;
-                }
-                var update = function (user) {
-                    dust.renderSource(require('./user-ui'), user, function (err, out) {
-                        $('.navbar-right', el).html(out);
-                        $('.navigation-user-ui').on('click', '.logout', function() {
-                            serand.emit('user', 'logout', user);
-                        });
+module.exports.navigation = function (options) {
+    return function (fn) {
+        dust.renderSource(require('./nav-ui'), options.data, function (err, out) {
+            if (err) {
+                fn(err);
+                return;
+            }
+            var update = function (user) {
+                dust.renderSource(require('./user-ui'), user, function (err, out) {
+                    $('.navbar-right', el).html(out);
+                    $('.navigation-user-ui').on('click', '.logout', function () {
+                        serand.emit('user', 'logout', user);
                     });
-                };
-                var el = $(out).appendTo(options.el);
-                serand.on('user', 'login', update);
-                if (user) {
-                    update(user);
-                }
-                fn(false, options.el);
+                });
+            };
+            var el = $(out).appendTo(options.el);
+            serand.on('user', 'login', update);
+            if (user) {
+                update(user);
+            }
+            fn(false, function () {
+                options.el.remove('.navigation');
             });
-            break;
-        case 'destroy':
-            options.el.remove('.navigation');
-            break;
-    }
+        });
+    };
 };
 
 serand.on('user', 'login', function (data) {
@@ -5512,79 +5509,71 @@ require.register("user/index.js", function(exports, require, module){
 var dust = require('dust')();
 var serand = require('serand');
 
-module.exports.links = function (action, options) {
-    switch (action) {
-        case 'create':
-            dust.renderSource(require('./nav-ui'), {}, function (err, out) {
-                if (err) {
-                    return;
-                }
-                options.el.append(out);
+module.exports.links = function (options) {
+    return function (fn) {
+        dust.renderSource(require('./nav-ui'), {}, function (err, out) {
+            if (err) {
+                return;
+            }
+            options.el.append(out);
+            fn(false, function () {
+                options.el.remove('.user-nav');
             });
-            break;
-        case 'destroy':
-            options.el.remove('.user-nav');
-            break;
-    }
+        });
+    };
 };
 
-module.exports.login = function (action, options, fn) {
-    switch (action) {
-        case 'create':
-            dust.renderSource(require('./login-ui'), {}, function (err, out) {
-                if (err) {
-                    return;
-                }
-                options.el.append(out);
-                options.el.on('click', '.user-login .signin', function (e) {
-                    var el = $('.user-login');
-                    var username = $('.username', el).val();
-                    var password = $('.password', el).val();
-                    serand.emit('user', 'login', {
-                        username: username
-                    });
-                    return false;
+module.exports.login = function (options) {
+    return function (fn) {
+        dust.renderSource(require('./login-ui'), {}, function (err, out) {
+            if (err) {
+                return;
+            }
+            options.el.append(out);
+            options.el.on('click', '.user-login .signin', function (e) {
+                var el = $('.user-login');
+                var username = $('.username', el).val();
+                var password = $('.password', el).val();
+                serand.emit('user', 'login', {
+                    username: username
                 });
+                return false;
             });
-            fn(false);
-            break;
-        case 'destroy':
-            options.el.remove('.user-login');
-            break;
-    }
+            fn(false, function () {
+                options.el.remove('.user-login');
+            });
+        });
+    };
 };
 
-module.exports.register = function (action, options, fn) {
-    switch (action) {
-        case 'create':
-            dust.renderSource(require('./register-ui'), {}, function (err, out) {
-                if (err) {
-                    return;
-                }
-                options.el.append(out);
+module.exports.register = function (options) {
+    return function (fn) {
+        dust.renderSource(require('./register-ui'), {}, function (err, out) {
+            if (err) {
+                return;
+            }
+            options.el.append(out);
+            fn(false, function () {
+                options.el.remove('.user-register');
             });
-            fn(false);
-            break;
-        case 'destroy':
-            options.el.remove('.user-register');
-            break;
-    }
+        });
+    };
 };
 
 var user;
 
 serand.on('boot', 'init', function () {
     /*$.ajax({
-        url: '/apis/user',
-        contentType: 'application/json',
-        dataType: 'json',
-        success: function (data) {
-            serand.emit('user', 'login', data);
-        },
-        error: function () {
-            serand.emit('user', 'error');
-        }
-    });*/
+     url: '/apis/user',
+     contentType: 'application/json',
+     dataType: 'json',
+     success: function (data) {
+     serand.emit('user', 'login', data);
+     },
+     error: function () {
+     serand.emit('user', 'error');
+     }
+     });*/
 });
 /*
 
@@ -5592,8 +5581,6 @@ serand.on('boot', 'init', function () {
  var serand = require('serand');
  serand.emit('user', 'login', { username: 'ruchira'});
  }, 4000);*/
-
-
 });
 require.register("user/login-ui.js", function(exports, require, module){
 module.exports = '<div class="user-login">\n    <div class="row">\n        <div class="col-md-4"></div>\n        <div class="col-md-4">\n            <form class="form-signin">\n                <h2 class="form-signin-heading">Sign In</h2>\n                <input type="text" class="form-control username" placeholder="Email address" required autofocus>\n                <input type="password" class="form-control password" placeholder="Password" required>\n                <label class="checkbox">\n                    <input type="checkbox" value="remember-me"> Remember me\n                </label>\n                <button class="btn btn-lg btn-primary btn-block signin" type="submit">Sign in</button>\n            </form>\n        </div>\n        <div class="col-md-4"></div>\n    </div>\n</div>';
@@ -5610,24 +5597,22 @@ var serand = require('serand');
 
 var user;
 
-module.exports.search = function (action, options, fn) {
-    switch (action) {
-        case 'create':
-            dust.renderSource(require('./search-ui'), {}, function (err, out) {
-                if (err) {
-                    return;
-                }
-                options.el.append(out);
+module.exports.search = function (options) {
+    return function (fn) {
+        dust.renderSource(require('./search-ui'), {}, function (err, out) {
+            if (err) {
+                return;
+            }
+            options.el.append(out);
+            fn(false, function () {
+                options.el.remove('.search-ui');
             });
-            fn(false);
-            break;
-        case 'destroy':
-            options.el.remove('.search-ui');
-            break;
-    }
+        });
+    };
 };
 
-var list = function (el, paging) {
+var list = function (options, paging, fn) {
+    var el = options.el;
     $.ajax({
         url: '/apis/vehicles',
         contentType: 'application/json',
@@ -5641,30 +5626,32 @@ var list = function (el, paging) {
                     var sort = $(this).attr('name');
                     var serand = require('serand');
                     serand.emit('auto', 'sort', { sort: sort});
-                    list(el, {
+                    list(options, {
                         sort: sort
                     });
+                });
+                if (!fn) {
+                    return;
+                }
+                fn(false, function () {
+                    el.remove('.auto-listing');
                 });
             });
         },
         error: function () {
+            fn(true, function () {
 
+            });
         }
     });
 };
 
-module.exports.listing = function (action, options, fn) {
-    switch (action) {
-        case 'create':
-            list(options.el, {
-                sort: 'recent'
-            });
-            fn(false);
-            break;
-        case 'destroy':
-            options.el.remove('.auto-listing');
-            break;
-    }
+module.exports.listing = function (options) {
+    return function (fn) {
+        list(options, {
+            sort: 'recent'
+        }, fn);
+    };
 };
 
 serand.on('user', 'login', function (data) {
@@ -5689,19 +5676,25 @@ comps.local.forEach(function (comp) {
     require(comp);
 });
 
+var callbacks = [];
+
 var layout = function (name, fn) {
+    callbacks.forEach(function (callback) {
+        callback();
+    });
     dust.renderSource(require('./' + name), {}, function (err, out) {
         var el = $(out);
         fn({
             el: el
-        }, function (err, result) {
+        }, function (err, results) {
+            callbacks = results;
             $('#content').html(el);
             serand.emit('page', 'ready');
         });
     });
 };
 
-var current = function(path) {
+var current = function (path) {
     var ctx = new page.Context(window.location.pathname + window.location.search);
     var route = new page.Route(path);
     route.match(ctx.path, ctx.params);
@@ -5711,62 +5704,42 @@ var current = function(path) {
 page('/', function (ctx) {
     layout('three-column', function (data, fn) {
         async.parallel([
-            function (fn) {
-                require('navigation').navigation('create', {
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('auto').search('create', {
-                    el: $('#left', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('auto').listing('create', {
-                    el: $('#middle', data.el)
-                }, fn);
-            }
-        ], function (err, results) {
-            fn(err, results);
-        });
+            require('navigation').navigation({
+                el: $('#header', data.el)
+            }),
+            require('auto').search({
+                el: $('#left', data.el)
+            }),
+            require('auto').listing({
+                el: $('#middle', data.el)
+            })
+        ], fn);
     });
 });
 
 page('/login', function (ctx) {
     layout('single-column', function (data, fn) {
         async.parallel([
-            function (fn) {
-                require('navigation').navigation('create', {
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('user').login('create', {
-                    el: $('#middle', data.el)
-                }, fn)
-            }
-        ], function (err, results) {
-            fn(err, results);
-        });
+            require('navigation').navigation({
+                el: $('#header', data.el)
+            }),
+            require('user').login({
+                el: $('#middle', data.el)
+            })
+        ], fn);
     });
 });
 
 page('/register', function (ctx) {
     layout('single-column', function (data, fn) {
         async.parallel([
-            function (fn) {
-                require('navigation').navigation('create', {
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('user').register('create', {
-                    el: $('#middle', data.el)
-                }, fn);
-            }
-        ], function (err, results) {
-            fn(err, results);
-        });
+            require('navigation').navigation({
+                el: $('#header', data.el)
+            }),
+            require('user').register({
+                el: $('#middle', data.el)
+            })
+        ], fn);
     });
 });
 
