@@ -1,9 +1,11 @@
 var dust = require('dust')();
 var serand = require('serand');
 
+dust.loadSource(dust.compile(require('./nav-ui'), 'user-nav'));
+
 module.exports.links = function (options) {
     return function (fn) {
-        dust.renderSource(require('./nav-ui'), {}, function (err, out) {
+        dust.render('user-nav', {}, function (err, out) {
             if (err) {
                 return;
             }
@@ -15,9 +17,11 @@ module.exports.links = function (options) {
     };
 };
 
+dust.loadSource(dust.compile(require('./login-ui'), 'user-login'));
+
 module.exports.login = function (options) {
     return function (fn) {
-        dust.renderSource(require('./login-ui'), {}, function (err, out) {
+        dust.render('user-login', {}, function (err, out) {
             if (err) {
                 return;
             }
@@ -38,9 +42,11 @@ module.exports.login = function (options) {
     };
 };
 
+dust.loadSource(dust.compile(require('./register-ui'), 'user-register'));
+
 module.exports.register = function (options) {
     return function (fn) {
-        dust.renderSource(require('./register-ui'), {}, function (err, out) {
+        dust.render('user-register', {}, function (err, out) {
             if (err) {
                 return;
             }

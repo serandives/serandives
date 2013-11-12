@@ -3,9 +3,11 @@ var serand = require('serand');
 
 var user;
 
+dust.loadSource(dust.compile(require('./nav-ui'), 'navigation-ui'));
+
 module.exports.navigation = function (options) {
     return function (fn) {
-        dust.renderSource(require('./nav-ui'), options.data, function (err, out) {
+        dust.render('navigation-ui', options.data, function (err, out) {
             if (err) {
                 fn(err);
                 return;

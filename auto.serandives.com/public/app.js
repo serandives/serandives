@@ -5464,9 +5464,11 @@ var serand = require('serand');
 
 var user;
 
+dust.loadSource(dust.compile(require('./nav-ui'), 'navigation-ui'));
+
 module.exports.navigation = function (options) {
     return function (fn) {
-        dust.renderSource(require('./nav-ui'), options.data, function (err, out) {
+        dust.render('navigation-ui', options.data, function (err, out) {
             if (err) {
                 fn(err);
                 return;
@@ -5509,9 +5511,11 @@ require.register("user/index.js", function(exports, require, module){
 var dust = require('dust')();
 var serand = require('serand');
 
+dust.loadSource(dust.compile(require('./nav-ui'), 'user-nav'));
+
 module.exports.links = function (options) {
     return function (fn) {
-        dust.renderSource(require('./nav-ui'), {}, function (err, out) {
+        dust.render('user-nav', {}, function (err, out) {
             if (err) {
                 return;
             }
@@ -5523,9 +5527,11 @@ module.exports.links = function (options) {
     };
 };
 
+dust.loadSource(dust.compile(require('./login-ui'), 'user-login'));
+
 module.exports.login = function (options) {
     return function (fn) {
-        dust.renderSource(require('./login-ui'), {}, function (err, out) {
+        dust.render('user-login', {}, function (err, out) {
             if (err) {
                 return;
             }
@@ -5546,9 +5552,11 @@ module.exports.login = function (options) {
     };
 };
 
+dust.loadSource(dust.compile(require('./register-ui'), 'user-register'));
+
 module.exports.register = function (options) {
     return function (fn) {
-        dust.renderSource(require('./register-ui'), {}, function (err, out) {
+        dust.render('user-register', {}, function (err, out) {
             if (err) {
                 return;
             }
@@ -5597,9 +5605,11 @@ var serand = require('serand');
 
 var user;
 
+dust.loadSource(dust.compile(require('./search-ui'), 'auto-search'));
+
 module.exports.search = function (options) {
     return function (fn) {
-        dust.renderSource(require('./search-ui'), {}, function (err, out) {
+        dust.render('auto-search', {}, function (err, out) {
             if (err) {
                 return;
             }
@@ -5618,7 +5628,7 @@ var list = function (options, paging, fn) {
         contentType: 'application/json',
         dataType: 'json',
         success: function (data) {
-            dust.renderSource(require('./listing-ui'), data, function (err, out) {
+            dust.render('auto-listing', data, function (err, out) {
                 $('.auto-listing', el).remove();
                 el.off('click', '.auto-sort .btn');
                 el.append(out);
@@ -5645,6 +5655,8 @@ var list = function (options, paging, fn) {
         }
     });
 };
+
+dust.loadSource(dust.compile(require('./listing-ui'), 'auto-listing'));
 
 module.exports.listing = function (options) {
     return function (fn) {

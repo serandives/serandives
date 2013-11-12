@@ -3,9 +3,11 @@ var serand = require('serand');
 
 var user;
 
+dust.loadSource(dust.compile(require('./search-ui'), 'auto-search'));
+
 module.exports.search = function (options) {
     return function (fn) {
-        dust.renderSource(require('./search-ui'), {}, function (err, out) {
+        dust.render('auto-search', {}, function (err, out) {
             if (err) {
                 return;
             }
@@ -24,7 +26,7 @@ var list = function (options, paging, fn) {
         contentType: 'application/json',
         dataType: 'json',
         success: function (data) {
-            dust.renderSource(require('./listing-ui'), data, function (err, out) {
+            dust.render('auto-listing', data, function (err, out) {
                 $('.auto-listing', el).remove();
                 el.off('click', '.auto-sort .btn');
                 el.append(out);
@@ -51,6 +53,8 @@ var list = function (options, paging, fn) {
         }
     });
 };
+
+dust.loadSource(dust.compile(require('./listing-ui'), 'auto-listing'));
 
 module.exports.listing = function (options) {
     return function (fn) {
