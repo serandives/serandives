@@ -2,7 +2,8 @@ var express = require('express');
 var app = module.exports = express();
 var http = require('http');
 
-app.use(express.bodyParser());
+app.use(express.json());
+app.use(express.urlencoded());
 
 var data = [
     {

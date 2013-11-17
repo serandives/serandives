@@ -4,19 +4,8 @@
     "private": true,
     "dependencies": {
         "express": "*",
-        "css-whitespace": "0.0.4",
-        "rework": "~0.10.2",
-        "component-builder": "~0.6.2",
-        "rework-mixins": "~1.0.2",
-        "debug": "~0.7.0",
-        "string-to-js": "0.0.1",
-        "superagent": "~0.12.0",
-        "mkdirp": "~0.3.4",
-        "peacock": "~0.2.0",
-        "marked": "~0.2.7",
-        "commander": "~1.1.1",
         "dustjs-linkedin": "*",
         "consolidate": "*",
-        "async": "*"
+        "http-proxy": "*"
     }
 }
