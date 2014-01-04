@@ -67,3 +67,7 @@ app.get('/apis/vehicles', function (req, res) {
     data.reverse();
     res.send(data);
 });
+
+app.get('/apis/vehicles/:id', function (req, res) {
+    res.send(data[req.params.id]);
+});

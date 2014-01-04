@@ -75,6 +75,38 @@ page('/register', function (ctx) {
     });
 });
 
+page('/add', function (ctx) {
+    layout('single-column', function (data, fn) {
+        async.parallel([
+            require('navigation').navigation({
+                el: $('#header', data.el)
+            }),
+            require('auto').add({
+                el: $('#middle', data.el)
+            })
+        ], fn);
+    });
+});
+
+page('/vehicles/:id', function (ctx) {
+    layout('three-column', function (data, fn) {
+        async.parallel([
+            require('navigation').navigation({
+                el: $('#header', data.el)
+            }),
+            require('auto').search({
+                el: $('#left', data.el)
+            }),
+            require('auto').details({
+                el: $('#middle', data.el),
+                data: {
+                    id: ctx.params.id
+                }
+            })
+        ], fn);
+    });
+});
+
 page();
 
 serand.on('user', 'login', function (data) {

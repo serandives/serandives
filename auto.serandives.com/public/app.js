@@ -5621,6 +5621,62 @@ module.exports.search = function (options) {
     };
 };
 
+dust.loadSource(dust.compile(require('./add-ui'), 'auto-add'));
+
+module.exports.add = function (options) {
+    return function (fn) {
+        dust.render('auto-add', {}, function (err, out) {
+            if (err) {
+                return;
+            }
+            options.el.append(out);
+            fn(false, function () {
+                options.el.remove('.auto-add');
+            });
+        });
+    };
+};
+
+dust.loadSource(dust.compile(require('./details-ui'), 'auto-details'));
+
+module.exports.details = function (options) {
+    console.log(options.data.id);
+    return function (fn) {
+        var el = options.el;
+        $.ajax({
+            url: '/apis/vehicles/' + options.data.id,
+            contentType: 'application/json',
+            dataType: 'json',
+            success: function (data) {
+                dust.render('auto-details', data, function (err, out) {
+                    $('.auto-listing', el).remove();
+                    el.off('click', '.auto-sort .btn');
+                    el.append(out);
+                    el.on('click', '.auto-sort .btn', function () {
+                        var sort = $(this).attr('name');
+                        var serand = require('serand');
+                        serand.emit('auto', 'sort', { sort: sort});
+                        list(options, {
+                            sort: sort
+                        });
+                    });
+                    if (!fn) {
+                        return;
+                    }
+                    fn(false, function () {
+                        el.remove('.auto-details');
+                    });
+                });
+            },
+            error: function () {
+                fn(true, function () {
+
+                });
+            }
+        });
+    };
+};
+
 var list = function (options, paging, fn) {
     var el = options.el;
     $.ajax({
@@ -5676,6 +5732,12 @@ module.exports = '<form role="form">\n    <div class="form-group">\n        <lab
 });
 require.register("auto/listing-ui.js", function(exports, require, module){
 module.exports = '<div class="auto-listing">\n    <div class="row">\n        <div class="col-md-7"></div>\n        <div class="col-md-5">\n            <div class="row auto-sort">\n                <button type="button" class="btn btn-primary" name="year">Year</button>\n                <button type="button" class="btn btn-success" name="price">Price</button>\n                <button type="button" class="btn btn-info" name="recent">Recent</button>\n                <button type="button" class="btn btn-warning" name="popular">Popular</button>\n            </div>\n        </div>\n    </div>\n\n    {@slice size="3"}\n    <div class="row">\n        {#.}\n        <div class="col-md-4 auto-thumbline">\n            <div class="thumbnail" href="/vehicles">\n                <a href=""><h3>{title}</h3></a>\n                <img src="{thumbnail}" alt="...">\n\n                <div class="caption">\n                    <div class="row">\n                        <div class="col-md-4">Make</div>\n                        <div class="col-md-8">{make}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Model</div>\n                        <div class="col-md-8">{model}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Year</div>\n                        <div class="col-md-8">{year}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Transmission</div>\n                        <div class="col-md-8">{transmission}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Mileage</div>\n                        <div class="col-md-8">{mileage}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Price</div>\n                        <div class="col-md-8">{price}</div>\n                    </div>\n                    <div class="row">\n                        <div class="col-md-4">Location</div>\n                        <div class="col-md-8">{location}</div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        {/.}\n    </div>\n    {/slice}\n</div>';
+});
+require.register("auto/add-ui.js", function(exports, require, module){
+module.exports = '<div class="auto-add">\n    <div class="row">\n        <div class="col-md-4"></div>\n        <div class="col-md-4">\n            <form class="form-signin">\n                <h2 class="form-signin-heading">Add new Vehicle</h2>\n                <input type="text" class="form-control" placeholder="Email address" required autofocus>\n                <input type="password" class="form-control" placeholder="Password" required>\n                <input type="password" class="form-control" placeholder="Re-type Password" required>\n                <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>\n            </form>\n        </div>\n        <div class="col-md-4"></div>\n    </div>\n</div>';
+});
+require.register("auto/details-ui.js", function(exports, require, module){
+module.exports = '<div class="auto-details">\n    <div class="row">\n        <div class="col-md-12">\n            <h2>{title}</h2>\n        </div>\n    </div>\n    <div class="row">\n        <div class="col-md-12">\n            <table class="table-bordered">\n                <tbody>\n                <tr>\n                    <td>Make</td>\n                    <td>{make}</td>\n                </tr>\n                <tr>\n                    <td>Model</td>\n                    <td>{model}</td>\n                </tr>\n                <tr>\n                    <td>Year</td>\n                    <td>{year}</td>\n                </tr>\n                <tr>\n                    <td>Price</td>\n                    <td>{price}</td>\n                </tr>\n                <tr>\n                    <td>Color</td>\n                    <td>{color}</td>\n                </tr>\n                <tr>\n                    <td>Photos</td>\n                    <td><img src="{thumbnail}"/></td>\n                </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n</div>';
 });
 require.register("boot/boot.js", function(exports, require, module){
 var page = require('page');
@@ -5750,6 +5812,38 @@ page('/register', function (ctx) {
             }),
             require('user').register({
                 el: $('#middle', data.el)
+            })
+        ], fn);
+    });
+});
+
+page('/add', function (ctx) {
+    layout('single-column', function (data, fn) {
+        async.parallel([
+            require('navigation').navigation({
+                el: $('#header', data.el)
+            }),
+            require('auto').add({
+                el: $('#middle', data.el)
+            })
+        ], fn);
+    });
+});
+
+page('/vehicles/:id', function (ctx) {
+    layout('three-column', function (data, fn) {
+        async.parallel([
+            require('navigation').navigation({
+                el: $('#header', data.el)
+            }),
+            require('auto').search({
+                el: $('#left', data.el)
+            }),
+            require('auto').details({
+                el: $('#middle', data.el),
+                data: {
+                    id: ctx.params.id
+                }
             })
         ], fn);
     });

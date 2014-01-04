@@ -4,6 +4,6 @@
     "local": ["dust", "serand"],
     "scripts": ["index.js"],
     "styles": ["auto.css"],
-    "templates": ["search-ui.html", "listing-ui.html"],
+    "templates": ["search-ui.html", "listing-ui.html", "add-ui.html", "details-ui.html"],
     "main": "index.js"
 }

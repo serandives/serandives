@@ -1,0 +1,87 @@
+
+UI block
+    - template.html
+    - styles.css
+
+JS component
+    -
+
+
+Page
+    - url to function mapping
+    - mapped function
+        - specify a layout block
+        - specify other blocks with block + data callback
+
+e.g.
+
+page('/user', function(ctx) {
+    print('layout-1', {
+        header: [],
+        footer: [],
+        left:[],
+        body: [
+            require('auto').search({
+                url: function(item) {
+                    return '/vehicles/' + item.id
+                },
+                hover: function(item) {
+
+                },
+                click: function(item) {
+
+                }
+            });
+        ]
+    });
+});
+
+search block
+------------
+
+template:
+
+<div>
+    <a href="/vehicles/1">V1</a>
+    <a href="/vehicles/2">V2</a>
+</div>
+
+style:
+
+.search {
+
+}
+
+javascript:
+
+var search = function(options) {
+    //render cb
+    return function(el) {
+
+        //destroy cb
+        return function() {
+
+        };
+    };
+};
+
+
+render : el
+
+options : {
+    el: {},
+    cb: {
+        url: function(item) {},
+        click: function(item) {}
+    }
+}
+
+$(function() {
+    $('.search a').click(function() {
+        console.log('you clicked');
+    });
+});
+
+return : destroy cb
+
+$('.search a').unbind();
