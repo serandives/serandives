@@ -1,0 +1,9 @@
+{
+    "name": "location",
+    "description": "location component",
+    "local": ["dust", "serand"],
+    "styles": ["location.css"],
+    "scripts": ["index.js"],
+    "templates": ["address-ui.html"],
+    "main": "index.js"
+}

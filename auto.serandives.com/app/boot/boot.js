@@ -36,15 +36,21 @@ var current = function (path) {
 page('/', function (ctx) {
     layout('three-column', function (data, fn) {
         async.parallel([
-            require('navigation').navigation({
-                el: $('#header', data.el)
-            }),
-            require('auto').search({
-                el: $('#left', data.el)
-            }),
-            require('auto').listing({
-                el: $('#middle', data.el)
-            })
+            function (fn) {
+                require('navigation').navigation({
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('auto').search({
+                    el: $('#left', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('auto').listing({
+                    el: $('#middle', data.el)
+                }, fn);
+            }
         ], fn);
     });
 });
@@ -52,12 +58,16 @@ page('/', function (ctx) {
 page('/login', function (ctx) {
     layout('single-column', function (data, fn) {
         async.parallel([
-            require('navigation').navigation({
-                el: $('#header', data.el)
-            }),
-            require('user').login({
-                el: $('#middle', data.el)
-            })
+            function (fn) {
+                require('navigation').navigation({
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('user').login({
+                    el: $('#middle', data.el)
+                }, fn);
+            }
         ], fn);
     });
 });
@@ -65,12 +75,16 @@ page('/login', function (ctx) {
 page('/register', function (ctx) {
     layout('single-column', function (data, fn) {
         async.parallel([
-            require('navigation').navigation({
-                el: $('#header', data.el)
-            }),
-            require('user').register({
-                el: $('#middle', data.el)
-            })
+            function (fn) {
+                require('navigation').navigation({
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('user').register({
+                    el: $('#middle', data.el)
+                }, fn);
+            }
         ], fn);
     });
 });
@@ -78,12 +92,16 @@ page('/register', function (ctx) {
 page('/add', function (ctx) {
     layout('single-column', function (data, fn) {
         async.parallel([
-            require('navigation').navigation({
-                el: $('#header', data.el)
-            }),
-            require('auto').add({
-                el: $('#middle', data.el)
-            })
+            function (fn) {
+                require('navigation').navigation({
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('auto').add({
+                    el: $('#middle', data.el)
+                }, fn);
+            }
         ], fn);
     });
 });
@@ -91,18 +109,24 @@ page('/add', function (ctx) {
 page('/vehicles/:id', function (ctx) {
     layout('three-column', function (data, fn) {
         async.parallel([
-            require('navigation').navigation({
-                el: $('#header', data.el)
-            }),
-            require('auto').search({
-                el: $('#left', data.el)
-            }),
-            require('auto').details({
-                el: $('#middle', data.el),
-                data: {
-                    id: ctx.params.id
-                }
-            })
+            function (fn) {
+                require('navigation').navigation({
+                    el: $('#header', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('auto').search({
+                    el: $('#left', data.el)
+                }, fn);
+            },
+            function (fn) {
+                require('auto').details({
+                    el: $('#middle', data.el),
+                    data: {
+                        id: ctx.params.id
+                    }
+                }, fn);
+            }
         ], fn);
     });
 });

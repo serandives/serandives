@@ -3,59 +3,53 @@ var serand = require('serand');
 
 dust.loadSource(dust.compile(require('./nav-ui'), 'user-nav'));
 
-module.exports.links = function (options) {
-    return function (fn) {
-        dust.render('user-nav', {}, function (err, out) {
-            if (err) {
-                return;
-            }
-            options.el.append(out);
-            fn(false, function () {
-                options.el.remove('.user-nav');
-            });
+module.exports.links = function (options, fn) {
+    dust.render('user-nav', {}, function (err, out) {
+        if (err) {
+            return;
+        }
+        options.el.append(out);
+        fn(false, function () {
+            options.el.remove('.user-nav');
         });
-    };
+    });
 };
 
 dust.loadSource(dust.compile(require('./login-ui'), 'user-login'));
 
-module.exports.login = function (options) {
-    return function (fn) {
-        dust.render('user-login', {}, function (err, out) {
-            if (err) {
-                return;
-            }
-            options.el.append(out);
-            options.el.on('click', '.user-login .signin', function (e) {
-                var el = $('.user-login');
-                var username = $('.username', el).val();
-                var password = $('.password', el).val();
-                serand.emit('user', 'login', {
-                    username: username
-                });
-                return false;
+module.exports.login = function (options, fn) {
+    dust.render('user-login', {}, function (err, out) {
+        if (err) {
+            return;
+        }
+        options.el.append(out);
+        options.el.on('click', '.user-login .signin', function (e) {
+            var el = $('.user-login');
+            var username = $('.username', el).val();
+            var password = $('.password', el).val();
+            serand.emit('user', 'login', {
+                username: username
             });
-            fn(false, function () {
-                options.el.remove('.user-login');
-            });
+            return false;
         });
-    };
+        fn(false, function () {
+            options.el.remove('.user-login');
+        });
+    });
 };
 
 dust.loadSource(dust.compile(require('./register-ui'), 'user-register'));
 
-module.exports.register = function (options) {
-    return function (fn) {
-        dust.render('user-register', {}, function (err, out) {
-            if (err) {
-                return;
-            }
-            options.el.append(out);
-            fn(false, function () {
-                options.el.remove('.user-register');
-            });
+module.exports.register = function (options, fn) {
+    dust.render('user-register', {}, function (err, out) {
+        if (err) {
+            return;
+        }
+        options.el.append(out);
+        fn(false, function () {
+            options.el.remove('.user-register');
         });
-    };
+    });
 };
 
 var user;
