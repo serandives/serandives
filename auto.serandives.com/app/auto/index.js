@@ -33,7 +33,8 @@ module.exports.add = function (options, fn) {
         var location = require('location');
         //TODO: modify others as location.address
         location.address({
-            el: $('.address', el)
+            el: $('.address', el),
+            existing: true
         }, function (err) {
             fn(err, function () {
                 options.el.remove('.auto-add');

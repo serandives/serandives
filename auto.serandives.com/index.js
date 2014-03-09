@@ -37,6 +37,7 @@ app.use(function (req, res, next) {
 
 //dumy data
 app.use(require('autos'));
+app.use(require('locations'));
 
 // mount
 app.use(require('boot'));

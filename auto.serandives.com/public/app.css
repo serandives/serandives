@@ -10,7 +10,9 @@
 .user-register .row .form-control {
     margin-bottom: 15px;
 }
-
+.location-address .address-new {
+    display: none;
+}
 .auto-sort .btn {
     margin-left: 10px;
     margin-bottom: 20px;

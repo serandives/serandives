@@ -5595,6 +5595,8 @@ require.register("location/index.js", function(exports, require, module){
 var dust = require('dust')();
 var serand = require('serand');
 
+var user;
+
 dust.loadSource(dust.compile(require('./address-ui'), 'location-address'));
 
 module.exports.address = function (options, fn) {
@@ -5603,9 +5605,34 @@ module.exports.address = function (options, fn) {
             return;
         }
         options.el.append(out);
+        if (options.existing) {
+            existing($('.existing', options.el));
+        }
+        $('.address-new-add a', options.el).click(function (e) {
+            e.preventDefault();
+            $('.address-new', options.el).show();
+        });
         fn(false, function () {
             options.el.remove('.location-address');
         });
+    });
+};
+
+var existing = function (el) {
+    $.ajax({
+        url: '/apis/locations',
+        contentType: 'application/json',
+        dataType: 'json',
+        success: function (data) {
+            var html = '';
+            data.forEach(function (location) {
+                html += '<option value="' + location + '">' + location.name + '</option>';
+            });
+            $(el).html(html);
+        },
+        error: function () {
+
+        }
     });
 };
 
@@ -5630,7 +5657,7 @@ serand.on('boot', 'init', function () {
  }, 4000);*/
 });
 require.register("location/address-ui.js", function(exports, require, module){
-module.exports = '<div class="location-address">\n    <div class="row">\n        <div class="col-md-12">\n            <div class="form-group">\n                <label>Address Line1\n                    <input type="text" class="form-control line1">\n                </label>\n\n                <p class="help-block">Street address, P.O. box, company name, c/o</p>\n            </div>\n            <div class="form-group">\n                <label>Address Line2\n                    <input type="text" class="form-control line2">\n                </label>\n\n                <p class="help-block">Apartment, suite, unit, building, floor, etc.</p>\n            </div>\n            <div class="form-group">\n                <label>City\n                    <input type="text" class="form-control city">\n                </label>\n            </div>\n            <div class="form-group">\n                <label>District\n                    <input type="text" class="form-control district">\n                </label>\n            </div>\n            <div class="form-group">\n                <label>State/Province\n                    <input type="text" class="form-control state">\n                </label>\n            </div>\n            <div class="form-group">\n                <label>Country\n                    <input type="text" class="form-control country">\n                </label>\n            </div>\n            <div class="form-group">\n                <label>Phone Number\n                    <input type="text" class="form-control phone">\n                </label>\n            </div>\n        </div>\n    </div>\n</div>';
+module.exports = '<div class="location-address">\n    <div class="row">\n        <div class="col-md-12">\n            <form role="form">\n                <div class="form-group">\n                    <label>Existing Address\n                        <select class="form-control existing"></select>\n                    </label>\n                </div>\n                <div class="form-group address-new-add">\n                    <a href="#">New Address</a>\n                </div>\n                <div class="address-new">\n                    <div class="form-group">\n                        <label>Address Line1\n                            <input type="text" class="form-control line1">\n                        </label>\n\n                        <p class="help-block">Street address, P.O. box, company name, c/o</p>\n                    </div>\n                    <div class="form-group">\n                        <label>Address Line2\n                            <input type="text" class="form-control line2">\n                        </label>\n\n                        <p class="help-block">Apartment, suite, unit, building, floor, etc.</p>\n                    </div>\n                    <div class="form-group">\n                        <label>City\n                            <input type="text" class="form-control city">\n                        </label>\n                    </div>\n                    <div class="form-group">\n                        <label>District\n                            <input type="text" class="form-control district">\n                        </label>\n                    </div>\n                    <div class="form-group">\n                        <label>State/Province\n                            <input type="text" class="form-control state">\n                        </label>\n                    </div>\n                    <div class="form-group">\n                        <label>Country\n                            <input type="text" class="form-control country">\n                        </label>\n                    </div>\n                    <div class="form-group">\n                        <label>Phone Number\n                            <input type="text" class="form-control phone">\n                        </label>\n                    </div>\n                </div>\n            </form>\n        </div>\n    </div>\n</div>';
 });
 require.register("auto/index.js", function(exports, require, module){
 var dust = require('dust')();
@@ -5668,7 +5695,8 @@ module.exports.add = function (options, fn) {
         var location = require('location');
         //TODO: modify others as location.address
         location.address({
-            el: $('.address', el)
+            el: $('.address', el),
+            existing: true
         }, function (err) {
             fn(err, function () {
                 options.el.remove('.auto-add');
