@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>auto.serandives.com</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="jquery.fs.selecter.css">
+    <!--<link rel="stylesheet" href="font-awesome.css">-->
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="add.css">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+</head>
+<body>
+
+<div class="container clearfix">
+<div class="row">
+    <div class="col-md-12">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!--<a class="navbar-brand" href="#">Brand</a>-->
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Hotels</a></li>
+                        <li><a href="#">Real States</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!--<form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>-->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                        <!--<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>-->
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </div>
+    <!--<div class="col-md-4">
+        <div class="auth">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default login">Login</button>
+                <button type="button" class="btn btn-default register">Register</button>
+            </div>
+        </div>
+        &lt;!&ndash;<div class="panel panel-default">
+                <div class="panel-body">Login | Register</div>
+            </div>&ndash;&gt;
+            <div>
+                <div class="panel panel-default login">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Panel title</h3>
+                    </div>
+                    <div class="panel-body">
+                        Panel content
+                    </div>
+                </div>
+            </div>
+        </div>-->
+</div>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default login">
+            <div class="panel-heading">
+                <h3 class="panel-title">Add Vehicle</h3>
+            </div>
+            <div class="panel-body">
+                <form role="form">
+                    <div class="form-group">
+                        <!--<label>Make</label>-->
+                        <select class="form-control make">
+                            <option>Honda</option>
+                            <option>Toyota</option>
+                            <option>Mazda</option>
+                            <option>Nissan</option>
+                            <option>Suzzuki</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!--<label>Make</label>-->
+                        <select class="form-control model">
+                            <option>Vezel</option>
+                            <option>Insight</option>
+                            <option>Fit</option>
+                            <option>Civic</option>
+                            <option>CR-V</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <!--<label>Make</label>-->
+                        <select class="form-control year">
+                            <option>Vezel</option>
+                            <option>Insight</option>
+                            <option>Fit</option>
+                            <option>Civic</option>
+                            <option>CR-V</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Condition</label>
+
+                        <div class="options">
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1">Brand New
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox2" value="option2">Unregistered
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox3" value="option3">Used
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Transmission</label>
+
+                        <div class="options">
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1">Automatic
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox2" value="option2">Manual
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox3" value="option3">Manumatic
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Fuel</label>
+
+                        <div class="options">
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox1" value="option1">Petrol
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox2" value="option2">Diesel
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" id="inlineCheckbox3" value="option3">Hybrid
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group price">
+                        <label>Mileage</label>
+                        <input type="text" class="form-control" placeholder="Mileage">
+                    </div>
+                    <div class="form-group price">
+                        <label>Price</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Minimum">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Maximum">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group price">
+                        <label>Description</label>
+                        <textarea class="form-control" rows="6"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default add">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+</div>
+
+<script src="jquery.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="jquery.fs.selecter.js"></script>
+<script src="add.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+@import "http://fonts.googleapis.com/css?family=Nunito:400,700,300";
+@import "http://fonts.googleapis.com/css?family=Oxygen:400,300,700";
+
+.container {
+    margin-top: 20px;
+}
+
+.navbar {
+    /*background-color: #0E75B0;*/
+    /*color: #ECF0F1;*/
+    font-weight: bold;
+    /*border: 1px solid #2980b9;*/
+}
+
+.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    /*background-color: #2980b9;*/
+    /*color: #ECF0F1;*/
+}
+
+.navbar-nav > li > a {
+    /*color: #ECF0F1;*/
+}
+
+.panel {
+    /*border: none; */
+}
+
+.panel-heading {
+    /*padding: 15px;*/
+    /*background-color: #0E75B0;*/
+}
+
+body {
+    overflow: auto;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    /*background-color: #2F2F2F;*/
+    font-family: "Oxygen", Helvetica, Arial, sans-serif;
+}
+
+
+a:active, a:hover {
+    outline: 0 none;
+}
+
+:focus, *:hover, *:active {
+    outline: medium none;
+}
+
+.selecter {
+    max-width: 100%;
+}
+
+/*.form-group label {
+    max-width: 100%;
+    width: 100%;
+}*/
+
+.form-group label * {
+    font-weight: normal;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group .options * {
+    font-weight: normal;
+}
+
+form, .form-control {
+    font-size: 13px;
+}
+
+.radio, .checkbox {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+form label {
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+select.form-control {
+    width: auto;
+}
+
+.navbar .search {
+    display: inline;
+}
