@@ -2,394 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dad5aa47-5f5e-46f4-affb-83cbbb5b3635" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/fonts/glyphicons-halflings-regular.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/fonts/glyphicons-halflings-regular.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/add.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/add.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/add.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/common.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/fonts/glyphicons-halflings-regular.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mockups/auto/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Book.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Book.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Calendar.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Calendar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Chat.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Chat.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Clipboard.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Clipboard.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Compas.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Compas.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Gift-Box.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Gift-Box.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/hello-world/History.md" afterPath="$PROJECT_DIR$/components/hello-world/History.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Infinity-Loop.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Infinity-Loop.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Mail.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Mail.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Map.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Map.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Pensils.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Pensils.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Pocket.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Pocket.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Retina-Ready.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Retina-Ready.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Toilet-Paper.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Toilet-Paper.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/png/Watches.png" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/png/Watches.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-author.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-author.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-1.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-2.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-3.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-3.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-4.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-4.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-5.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-5.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-6.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser-pic-6.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/browser.png" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/browser.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/todo/done-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/todo/done-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/todo/done.png" afterPath="$PROJECT_DIR$/mockups/auto/images/todo/done.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/exaple-image.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/exaple-image.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/images/favicon.ico" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/images/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/images/favicon.ico" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/images/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/boot/images/favicon.ico" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/boot/images/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/favicon.ico" afterPath="$PROJECT_DIR$/mockups/auto/images/favicon.ico" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.eot" afterPath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.ttf" afterPath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.woff" afterPath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/fullscreen-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/fullscreen-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/fullscreen.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/fullscreen.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/html-icon.png" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/html-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/login/icon.png" afterPath="$PROJECT_DIR$/mockups/auto/images/login/icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/login/imac-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/login/imac-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/login/imac.png" afterPath="$PROJECT_DIR$/mockups/auto/images/login/imac.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/jquery.fs.selecter-arrow.png" afterPath="$PROJECT_DIR$/mockups/auto/jquery.fs.selecter-arrow.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.eot" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.ttf" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.woff" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.eot" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.ttf" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.woff" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.eot" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.ttf" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.woff" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.eot" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.ttf" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.woff" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.eot" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.ttf" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.woff" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.eot" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.ttf" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.woff" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/logo-mask-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/logo-mask-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/logo-mask.png" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/logo-mask.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/images/logo.png" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/images/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/boot/images/logo.png" afterPath="$PROJECT_DIR$/auto-ui/public/boot/images/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/images/logo.png" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/images/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/boot/images/logo.png" afterPath="$PROJECT_DIR$/auto.serandives.com/public/boot/images/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/footer/logo.png" afterPath="$PROJECT_DIR$/mockups/auto/images/footer/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/images/logo@2x.png" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/images/logo@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/boot/images/logo@2x.png" afterPath="$PROJECT_DIR$/auto-ui/public/boot/images/logo@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/images/logo@2x.png" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/images/logo@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/boot/images/logo@2x.png" afterPath="$PROJECT_DIR$/auto.serandives.com/public/boot/images/logo@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/switch/mask-square.png" afterPath="$PROJECT_DIR$/mockups/auto/images/switch/mask-square.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/switch/mask.png" afterPath="$PROJECT_DIR$/mockups/auto/images/switch/mask.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/pause-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/pause-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/pause.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/pause.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/play-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/play-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/play.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/play.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/poster.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/video/poster.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/tile/ribbon-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/tile/ribbon-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/tile/ribbon.png" afterPath="$PROJECT_DIR$/mockups/auto/images/tile/ribbon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/todo/search-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/todo/search-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/todo/search.png" afterPath="$PROJECT_DIR$/mockups/auto/images/todo/search.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/todo/todo-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/todo/todo-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/todo/todo.png" afterPath="$PROJECT_DIR$/mockups/auto/images/todo/todo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/v1.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/v1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/demo/video.jpg" afterPath="$PROJECT_DIR$/mockups/auto/images/demo/video.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/volume-full-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/volume-full-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/volume-full.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/volume-full.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/volume-off-2x.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/volume-off-2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/video/volume-off.png" afterPath="$PROJECT_DIR$/mockups/auto/images/video/volume-off.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/.editorconfig" afterPath="$PROJECT_DIR$/mockups/auto/.editorconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/.gitignore" afterPath="$PROJECT_DIR$/mockups/auto/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/layout/3-column.html" afterPath="$PROJECT_DIR$/auto-ui/lib/layout/3-column.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/Makefile" afterPath="$PROJECT_DIR$/auto-ui/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/Makefile" afterPath="$PROJECT_DIR$/auto.serandives.com/Makefile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/NOTES" afterPath="$PROJECT_DIR$/auto.serandives.com/NOTES" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/README.md" afterPath="$PROJECT_DIR$/mockups/auto/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/auto/add-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/auto/add-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/add.html" afterPath="$PROJECT_DIR$/auto.serandives.com/public/add.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/location/address-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/location/address-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/hydra/ajax.js" afterPath="$PROJECT_DIR$/auto-ui/lib/hydra/ajax.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/app.css" afterPath="$PROJECT_DIR$/auto-ui/public/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/app.css" afterPath="$PROJECT_DIR$/auto.serandives.com/public/app.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/auto-api/test/v/user.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/auto-api/test/utils.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/app.js" afterPath="$PROJECT_DIR$/auto-api/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/app.js" afterPath="$PROJECT_DIR$/auto-ui/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/app.js" afterPath="$PROJECT_DIR$/auto-ui/public/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/app.js" afterPath="$PROJECT_DIR$/auto.serandives.com/public/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/app.js" afterPath="$PROJECT_DIR$/mockups/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/js/application.js" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/js/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/application.js" afterPath="$PROJECT_DIR$/mockups/auto/js/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/async/async.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/async/async.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/bin/auto-ui.io" afterPath="$PROJECT_DIR$/auto-ui/bin/auto-ui.io" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/auto/auto.css" afterPath="$PROJECT_DIR$/auto.serandives.com/app/auto/auto.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/bin/auto.serandives.com" afterPath="$PROJECT_DIR$/auto.serandives.com/bin/auto.serandives.com" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/book.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/book.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/boot.css" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/boot.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/boot.js" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/boot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/boot.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/boot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/css/bootstrap-docs.css" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/css/bootstrap-docs.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/bootstrap-select.js" afterPath="$PROJECT_DIR$/mockups/auto/js/bootstrap-select.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/bootstrap-switch.js" afterPath="$PROJECT_DIR$/mockups/auto/js/bootstrap-switch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/bootstrap.min.css" afterPath="$PROJECT_DIR$/auto-ui/public/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/bootstrap.min.css" afterPath="$PROJECT_DIR$/auto.serandives.com/public/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/bootstrap.min.css" afterPath="$PROJECT_DIR$/mockups/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap.min.css" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap.min.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/bootstrap.min.js" afterPath="$PROJECT_DIR$/auto-ui/public/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/bootstrap.min.js" afterPath="$PROJECT_DIR$/auto.serandives.com/public/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/bootstrap.min.js" afterPath="$PROJECT_DIR$/mockups/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap.min.js" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/serandives/build/build.js" afterPath="$PROJECT_DIR$/components/serandives/build/build.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/button-groups.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/button-groups.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/buttons.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/buttons.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/calendar.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/calendar.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/caret.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/caret.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/chat.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/chat.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/checkbox-and-radio.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/checkbox-and-radio.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/clipboard.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/clipboard.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/clocks.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/clocks.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/code.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/code.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/compas.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/compas.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/component/component.js" afterPath="$PROJECT_DIR$/auto-ui/lib/component/component.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/component.json" afterPath="$PROJECT_DIR$/accounts.serandives.com/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/user/component.json" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/user/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/component.json" afterPath="$PROJECT_DIR$/auto-ui/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/components/visionmedia-page.js/component.json" afterPath="$PROJECT_DIR$/auto-ui/components/visionmedia-page.js/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/auto-list/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/auto-list/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/component/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/component/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/error/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/error/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/hydra/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/hydra/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/layout/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/layout/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/list/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/list/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/page/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/page/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/search/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/search/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/serand/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/serand/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/user/component.json" afterPath="$PROJECT_DIR$/auto-ui/lib/user/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/async/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/async/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/auto/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/auto/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/dust/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/dust/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/location/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/location/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/navigation/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/navigation/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/serand/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/serand/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/user/component.json" afterPath="$PROJECT_DIR$/auto.serandives.com/app/user/component.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/component/component.styl" afterPath="$PROJECT_DIR$/auto-ui/lib/component/component.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/components.html" afterPath="$PROJECT_DIR$/mockups/auto/components.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/css/demo.css" afterPath="$PROJECT_DIR$/mockups/auto/css/demo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/demo.html" afterPath="$PROJECT_DIR$/mockups/auto/demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/demo.less" afterPath="$PROJECT_DIR$/mockups/auto/less/demo.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/auto/details-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/auto/details-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/details.html" afterPath="$PROJECT_DIR$/auto.serandives.com/public/details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/css/docs.css" afterPath="$PROJECT_DIR$/mockups/auto/css/docs.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/docs.less" afterPath="$PROJECT_DIR$/mockups/auto/less/docs.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/hydra/dom.js" afterPath="$PROJECT_DIR$/auto-ui/lib/hydra/dom.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/dropdown.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/dropdown.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/dust-helpers.js" afterPath="$PROJECT_DIR$/auto.serandives.com/public/dust-helpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/dust/dust.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/dust/dust.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/hydra/events.js" afterPath="$PROJECT_DIR$/auto-ui/lib/hydra/events.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.svg" afterPath="$PROJECT_DIR$/mockups/auto/fonts/flat-ui-icons-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/css/flat-ui.css" afterPath="$PROJECT_DIR$/mockups/auto/css/flat-ui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/flat-ui.less" afterPath="$PROJECT_DIR$/mockups/auto/less/flat-ui.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/flat.html" afterPath="$PROJECT_DIR$/mockups/auto/flat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/flatui-checkbox.js" afterPath="$PROJECT_DIR$/mockups/auto/js/flatui-checkbox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/flatui-radio.js" afterPath="$PROJECT_DIR$/mockups/auto/js/flatui-radio.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/font-awesome.css" afterPath="$PROJECT_DIR$/mockups/auto/font-awesome.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/footer.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/footer.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/signup/form.dust" afterPath="$PROJECT_DIR$/auto-api/lib/signup/form.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/login/form.jade" afterPath="$PROJECT_DIR$/auto-api/lib/login/form.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/signup/form.jade" afterPath="$PROJECT_DIR$/auto-api/lib/signup/form.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/forms.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/forms.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/gift-box.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/gift-box.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/fonts/glyphicons-halflings-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/glyphicons.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/glyphicons.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/google.js" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/google.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/dust/helpers.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/dust/helpers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/js/holder.js" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/js/holder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/html5shiv.js" afterPath="$PROJECT_DIR$/mockups/auto/js/html5shiv.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/hydra/hydra.min.js" afterPath="$PROJECT_DIR$/auto-ui/lib/hydra/hydra.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/icon-font-ie7.js" afterPath="$PROJECT_DIR$/mockups/auto/js/icon-font-ie7.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/index.css" afterPath="$PROJECT_DIR$/auto.serandives.com/public/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/index.css" afterPath="$PROJECT_DIR$/mockups/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/index.css" afterPath="$PROJECT_DIR$/mockups/auto/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/css/index.css" afterPath="$PROJECT_DIR$/mockups/auto/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/index.dust" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/index.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/boot/index.dust" afterPath="$PROJECT_DIR$/auto-ui/public/boot/index.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/views/index.dust" afterPath="$PROJECT_DIR$/auto-ui/views/index.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/boot/index.dust" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/boot/index.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/index.html" afterPath="$PROJECT_DIR$/mockups/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/index.html" afterPath="$PROJECT_DIR$/mockups/auto/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/index.jade" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/index.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/index.js" afterPath="$PROJECT_DIR$/accounts.serandives.com/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/build/index.js" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/build/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/user/index.js" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/user/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/apis-vehicle/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/apis-vehicle/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/client/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/client/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/client-service/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/client-service/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/code/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/code/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/location/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/location/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/location-service/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/location-service/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/login/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/login/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/pages/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/pages/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/posts/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/posts/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/product/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/product/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/signup/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/signup/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/token/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/token/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/token-service/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/token-service/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/user/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/user/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/user-service/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/user-service/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/utils/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/utils/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/vehicle/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/vehicle/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/vehicle-service/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/vehicle-service/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/index.js" afterPath="$PROJECT_DIR$/auto-ui/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/components/visionmedia-page.js/index.js" afterPath="$PROJECT_DIR$/auto-ui/components/visionmedia-page.js/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/auto-list/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/auto-list/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/build/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/build/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/component/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/component/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/hydra/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/hydra/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/layout/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/layout/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/page/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/page/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/serand/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/serand/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/user/index.js" afterPath="$PROJECT_DIR$/auto-ui/lib/user/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/auto/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/auto/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/dust/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/dust/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/location/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/location/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/navigation/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/navigation/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/sample/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/sample/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/serand/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/serand/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/user/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/app/user/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/autos/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/autos/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/boot/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/boot/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/build/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/build/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/locations/index.js" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/locations/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/index.js" afterPath="$PROJECT_DIR$/mockups/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/index.js" afterPath="$PROJECT_DIR$/mockups/auto/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/boot/index.styl" afterPath="$PROJECT_DIR$/auto-ui/lib/boot/index.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/index1.html" afterPath="$PROJECT_DIR$/auto.serandives.com/public/index1.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/input-groups.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/input-groups.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/input-icons.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/input-icons.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/hydra/jquery-1.10.2.js" afterPath="$PROJECT_DIR$/auto-ui/lib/hydra/jquery-1.10.2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/jquery-1.10.2.min.js" afterPath="$PROJECT_DIR$/mockups/auto/js/jquery-1.10.2.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/jquery-1.8.3.min.js" afterPath="$PROJECT_DIR$/mockups/auto/js/jquery-1.8.3.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/jquery-2.0.3.min.js" afterPath="$PROJECT_DIR$/mockups/auto/js/jquery-2.0.3.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/jquery.fs.selecter.css" afterPath="$PROJECT_DIR$/mockups/auto/jquery.fs.selecter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/jquery.fs.selecter.js" afterPath="$PROJECT_DIR$/mockups/auto/jquery.fs.selecter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/public/jquery.js" afterPath="$PROJECT_DIR$/auto-ui/public/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/jquery.js" afterPath="$PROJECT_DIR$/auto.serandives.com/public/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/jquery.js" afterPath="$PROJECT_DIR$/mockups/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/jquery.js" afterPath="$PROJECT_DIR$/mockups/auto/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/jquery.placeholder.js" afterPath="$PROJECT_DIR$/mockups/auto/js/jquery.placeholder.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/jquery.tagsinput.js" afterPath="$PROJECT_DIR$/mockups/auto/js/jquery.tagsinput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/jquery.ui.touch-punch.min.js" afterPath="$PROJECT_DIR$/mockups/auto/js/jquery.ui.touch-punch.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.svg" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-black.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.svg" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bold.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.svg" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-bolditalic.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.svg" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-italic.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.svg" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-light.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.svg" afterPath="$PROJECT_DIR$/mockups/auto/fonts/lato/lato-regular.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/views/layout.dust" afterPath="$PROJECT_DIR$/auto-ui/views/layout.dust" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/list/list.js" afterPath="$PROJECT_DIR$/auto-ui/lib/list/list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/list/list.styl" afterPath="$PROJECT_DIR$/auto-ui/lib/list/list.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/auto/listing-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/auto/listing-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/local-fonts.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/local-fonts.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/location/location.css" afterPath="$PROJECT_DIR$/auto.serandives.com/app/location/location.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/user/login-ui.html" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/user/login-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/page/login-ui.html" afterPath="$PROJECT_DIR$/auto-ui/lib/page/login-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/user/login-ui.html" afterPath="$PROJECT_DIR$/auto-ui/lib/user/login-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/user/login-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/user/login-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/login.html" afterPath="$PROJECT_DIR$/auto.serandives.com/public/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/user/login.js" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/user/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/layout/login.js" afterPath="$PROJECT_DIR$/auto-ui/lib/layout/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/page/login.js" afterPath="$PROJECT_DIR$/auto-ui/lib/page/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/user/login.js" afterPath="$PROJECT_DIR$/auto-ui/lib/user/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/login.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/login.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/loop.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/loop.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/mail.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/mail.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/map.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/map.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/component/menu.js" afterPath="$PROJECT_DIR$/auto-ui/lib/component/menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/component/menu.styl" afterPath="$PROJECT_DIR$/auto-ui/lib/component/menu.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/mixins.less" afterPath="$PROJECT_DIR$/mockups/auto/less/mixins.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/user/nav-ui.html" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/user/nav-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/layout/nav-ui.html" afterPath="$PROJECT_DIR$/auto-ui/lib/layout/nav-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/user/nav-ui.html" afterPath="$PROJECT_DIR$/auto-ui/lib/user/nav-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/location/nav-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/location/nav-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/navigation/nav-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/navigation/nav-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/user/nav-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/user/nav-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/navbar.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/navbar.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/package.json" afterPath="$PROJECT_DIR$/auto-api/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/package.json" afterPath="$PROJECT_DIR$/auto-ui/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/package.json" afterPath="$PROJECT_DIR$/auto.serandives.com/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/package.json" afterPath="$PROJECT_DIR$/mockups/auto/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/pager.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/pager.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/pagination.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/pagination.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/palette.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/palette.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/paper-bag.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/paper-bag.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/pencils.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/pencils.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/css/prettify.css" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/css/prettify.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/bootstrap/js/google-code-prettify/prettify.js" afterPath="$PROJECT_DIR$/mockups/auto/bootstrap/js/google-code-prettify/prettify.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/sample/profile-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/sample/profile-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/progress-bars.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/progress-bars.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/build/props.js" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/build/props.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/build/props.js" afterPath="$PROJECT_DIR$/auto-ui/lib/build/props.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/build/props.js" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/build/props.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/location/register-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/location/register-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/user/register-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/user/register-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/public/register.html" afterPath="$PROJECT_DIR$/auto.serandives.com/public/register.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/respond.min.js" afterPath="$PROJECT_DIR$/mockups/auto/js/respond.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/retina.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/retina.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/build/rework.js" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/build/rework.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/build/rework.js" afterPath="$PROJECT_DIR$/auto-ui/lib/build/rework.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/build/rework.js" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/build/rework.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/client-service/sanitizer.js" afterPath="$PROJECT_DIR$/auto-api/lib/client-service/sanitizer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/location-service/sanitizer.js" afterPath="$PROJECT_DIR$/auto-api/lib/location-service/sanitizer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/token-service/sanitizer.js" afterPath="$PROJECT_DIR$/auto-api/lib/token-service/sanitizer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/user-service/sanitizer.js" afterPath="$PROJECT_DIR$/auto-api/lib/user-service/sanitizer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/scaffolding.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/scaffolding.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/product/schemas.js" afterPath="$PROJECT_DIR$/auto-api/lib/product/schemas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/auto/search-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/auto/search-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/search/search.js" afterPath="$PROJECT_DIR$/auto-ui/lib/search/search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/search/search.styl" afterPath="$PROJECT_DIR$/auto-ui/lib/search/search.styl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/select.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/select.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/serand/serand.js" afterPath="$PROJECT_DIR$/auto-ui/lib/serand/serand.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/share.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/share.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/single-column.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/single-column.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/slider.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/slider.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/spaces.less" afterPath="$PROJECT_DIR$/mockups/auto/less/spaces.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/switch.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/switch.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/component/syntax.css" afterPath="$PROJECT_DIR$/auto-ui/lib/component/syntax.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/tagsinput.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/tagsinput.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/error/template.html" afterPath="$PROJECT_DIR$/auto-ui/lib/error/template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/list/template.html" afterPath="$PROJECT_DIR$/auto-ui/lib/list/template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/search/template.html" afterPath="$PROJECT_DIR$/auto-ui/lib/search/template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/template.html" afterPath="$PROJECT_DIR$/mockups/auto/template.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/accounts.serandives.com/lib/build/templates.js" afterPath="$PROJECT_DIR$/accounts.serandives.com/lib/build/templates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/build/templates.js" afterPath="$PROJECT_DIR$/auto-ui/lib/build/templates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/lib/build/templates.js" afterPath="$PROJECT_DIR$/auto.serandives.com/lib/build/templates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/text.xml" afterPath="$PROJECT_DIR$/auto-ui/text.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/boot/three-column.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/three-column.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/thumbnails.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/thumbnails.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/tile.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/tile.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/todo.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/todo.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/images/icons/svg/toilet-paper.svg" afterPath="$PROJECT_DIR$/mockups/auto/images/icons/svg/toilet-paper.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/tooltip.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/tooltip.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/type.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/type.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/js/typeahead.js" afterPath="$PROJECT_DIR$/mockups/auto/js/typeahead.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/typeahead.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/typeahead.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/navigation/user-ui.html" afterPath="$PROJECT_DIR$/auto.serandives.com/app/navigation/user-ui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto.serandives.com/app/user/user.css" afterPath="$PROJECT_DIR$/auto.serandives.com/app/user/user.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/variables.less" afterPath="$PROJECT_DIR$/mockups/auto/less/variables.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mockups/auto/less/modules/video.less" afterPath="$PROJECT_DIR$/mockups/auto/less/modules/video.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/error/view.js" afterPath="$PROJECT_DIR$/auto-ui/lib/error/view.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-ui/lib/list/view.js" afterPath="$PROJECT_DIR$/auto-ui/lib/list/view.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serandives.iml" afterPath="$PROJECT_DIR$/serandives.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="serandives.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -453,41 +75,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auto-api/lib/apis-vehicle/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1230">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auto-api/lib/vehicle/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/auto-api/lib/vehicle-service/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/auto.serandives.com/lib/autos/index.js">
+        <entry file="file://$PROJECT_DIR$/auto-api/lib/user-service/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.2037037" vertical-offset="198" max-vertical-offset="1170">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.6701031" vertical-offset="1025" max-vertical-offset="1995">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/auto-api/test/v/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="1200">
+              <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/auto-api/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="855">
+              <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/auto-api/lib/user/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/auto-api/test/utils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="885">
+              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -530,6 +162,13 @@
         <option value="$PROJECT_DIR$/mockups/auto/add.js" />
         <option value="$PROJECT_DIR$/mockups/auto/add.html" />
         <option value="$PROJECT_DIR$/mockups/app.js" />
+        <option value="$PROJECT_DIR$/auto-api/lib/vehicle-service/index.js" />
+        <option value="$PROJECT_DIR$/auto-api/test/user.js" />
+        <option value="$PROJECT_DIR$/auto-api/lib/user/index.js" />
+        <option value="$PROJECT_DIR$/auto-api/test/utils.js" />
+        <option value="$PROJECT_DIR$/auto-api/test/v/user.js" />
+        <option value="$PROJECT_DIR$/auto-api/app.js" />
+        <option value="$PROJECT_DIR$/auto-api/lib/user-service/index.js" />
       </list>
     </option>
   </component>
@@ -537,6 +176,34 @@
     <option name="y" value="22" />
     <option name="width" value="1920" />
     <option name="height" value="1090" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android Lint</id>
+          </State>
+          <State>
+            <id>Code maturity issues</id>
+          </State>
+          <State>
+            <id>JUnit issues</id>
+          </State>
+          <State>
+            <id>Naming conventions</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -566,8 +233,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -586,8 +251,144 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auto-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auto-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auto-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="v" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auto-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auto-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auto-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serandives" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auto-api" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -597,13 +398,16 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="options.lastSelected" value="vcs.Git" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -614,14 +418,14 @@
       <recent name="$PROJECT_DIR$/auto.serandives.com/app/auto" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/auto-api/test/v" />
       <recent name="$PROJECT_DIR$/mockups/auto" />
       <recent name="$PROJECT_DIR$/mockups" />
       <recent name="$PROJECT_DIR$/auto.serandives.com/app" />
       <recent name="$PROJECT_DIR$/auto.serandives.com/lib/auto" />
-      <recent name="$PROJECT_DIR$/auto.serandives.com/lib/auto/search" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js Remote Debug.nodejs">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -636,6 +440,10 @@
       <setting name="passParentEnv" value="true" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSRemoteDebug" factoryName="Node.js Remote Debug">
+      <node-js-remote-debug />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -838,7 +646,15 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="false" name="nodejs" type="NodeJSRemoteDebug" factoryName="Node.js Remote Debug">
+      <node-js-remote-debug />
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Node.js Remote Debug.nodejs" />
+    </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -853,12 +669,13 @@
       <workItem from="1396548728723" duration="1339000" />
       <workItem from="1396591514703" duration="1814000" />
       <workItem from="1397319353540" duration="5774000" />
-      <workItem from="1397762858851" duration="697000" />
+      <workItem from="1397762858851" duration="3259000" />
+      <workItem from="1397932542371" duration="25178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9624000" />
+    <option name="totallyTimeSpent" value="37364000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -882,7 +699,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1090" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -890,20 +707,22 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5240481" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3997996" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1629393" sideWeight="0.67022413" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1629393" sideWeight="0.67022413" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -911,11 +730,9 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.523416" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="UML Diagrams" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Runner" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Graphical Navigator" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -940,131 +757,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/auto-api/node_modules/mongoose/lib/errors/cast.js</url>
+          <line>16</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mockups/auto/add.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="210">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="2445">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="1410">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
-          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="7425">
-          <caret line="57" column="3" selection-start-line="57" selection-start-column="3" selection-end-line="57" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="1110">
-          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/add.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2460" max-vertical-offset="2550">
-          <caret line="164" column="7" selection-start-line="164" selection-start-column="7" selection-end-line="164" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/add.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="210">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="2445">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/common.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="1410">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/auto/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
-          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="90">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mockups/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
@@ -1085,6 +792,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="1110">
           <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1092,7 +800,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="2355">
           <caret line="152" column="22" selection-start-line="152" selection-start-column="22" selection-end-line="152" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1107,7 +814,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="210">
           <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,7 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="2445">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1123,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="1410">
           <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1187,6 +891,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33972913" vertical-offset="224" max-vertical-offset="1110">
           <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1208,7 +913,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1537" max-vertical-offset="2505">
           <caret line="153" column="20" selection-start-line="153" selection-start-column="20" selection-end-line="153" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1230,7 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15432099" vertical-offset="0" max-vertical-offset="972">
           <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1238,7 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.046296295" vertical-offset="0" max-vertical-offset="972">
           <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1246,7 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8919753" vertical-offset="483" max-vertical-offset="1455">
           <caret line="90" column="20" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1278,15 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-25.75" vertical-offset="2427" max-vertical-offset="3375">
           <caret line="203" column="62" selection-start-line="203" selection-start-column="62" selection-end-line="203" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mockups/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1294,7 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1314,9 +1005,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auto-api/lib/vehicle-service/index.js">
+    <entry file="file://$PROJECT_DIR$/auto-api/lib/user-service/sanitizer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1170">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="972">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1324,8 +1015,148 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/auto.serandives.com/lib/autos/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2037037" vertical-offset="198" max-vertical-offset="1170">
+        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1170">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/db_command.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1246" max-vertical-offset="3765">
+          <caret line="93" column="75" selection-start-line="93" selection-start-column="75" selection-end-line="93" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/mongoose/lib/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30201343" vertical-offset="0" max-vertical-offset="10155">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="636" max-vertical-offset="7695">
+          <caret line="64" column="6" selection-start-line="64" selection-start-column="6" selection-end-line="64" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mockups/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13917525" vertical-offset="0" max-vertical-offset="970">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/mongoose/lib/model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="33500" max-vertical-offset="34020">
+          <caret line="2245" column="19" selection-start-line="2245" selection-start-column="18" selection-end-line="2245" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/IntelliJIdea13/extLibs/nodejs-v0.10.26-src/core-modules-sources/lib/assert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4950">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/lib/vehicle-service/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1200">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/test/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="885">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="855">
+          <caret line="33" column="7" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/lib/user/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/test/v/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="1200">
+          <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/mongoose/lib/query.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5949" max-vertical-offset="39255">
+          <caret line="411" column="0" selection-start-line="411" selection-start-column="0" selection-end-line="411" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/mongoose/lib/schema/objectid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19587629" vertical-offset="1505" max-vertical-offset="2850">
+          <caret line="115" column="0" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/express/lib/response.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7587629" vertical-offset="1921" max-vertical-offset="11490">
+          <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/express/node_modules/connect/lib/middleware/errorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62886596" vertical-offset="335" max-vertical-offset="1305">
+          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/node_modules/mongoose/lib/errors/cast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21649484" vertical-offset="0" max-vertical-offset="970">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auto-api/lib/user-service/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6701031" vertical-offset="1025" max-vertical-offset="1995">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>

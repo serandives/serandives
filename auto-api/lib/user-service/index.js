@@ -23,7 +23,6 @@ var fields = {
 app.post('/user/login', function (req, res) {
     User.authenticate(req.body, function (err) {
         if (err) {
-            console.log('user login error');
             res.send({
                 error: true
             });
@@ -42,10 +41,9 @@ app.post('/user/login', function (req, res) {
 app.post('/users', function (req, res) {
     User.create(req.body, function (err) {
         if (err) {
-            //TODO: send proper HTTP code
-            console.log('user create error');
-            res.send({
-                error: true
+            res.send(400, {
+                error: true,
+                message: 'error while adding new user'
             });
             return;
         }
@@ -64,9 +62,9 @@ app.get('/users/:id', function (req, res) {
     })
         .exec(function (err, user) {
             if (err) {
-                console.log('user find error');
-                res.send({
-                    error: true
+                res.send(404, {
+                    error: true,
+                    message: 'specified user cannot be found'
                 });
                 return;
             }
@@ -87,6 +85,25 @@ app.get('/users/:id', function (req, res) {
 });
 
 /**
+ * /users/51bfd3bd5a51f1722d000001
+ */
+app.post('/users/:id', function (req, res) {
+    User.update({
+        _id: req.params.id
+    }, req.body, function (err, user) {
+        if (err) {
+            res.send(404, {
+                error: true
+            });
+            return;
+        }
+        res.send({
+            error: false
+        });
+    });
+});
+
+/**
  * /users?data={}
  */
 app.get('/users', function (req, res) {
@@ -100,9 +117,7 @@ app.get('/users', function (req, res) {
         .sort(data.paging.sort)
         .exec(function (err, users) {
             if (err) {
-                //TODO: send proper HTTP code
-                console.error('user find error');
-                res.send({
+                res.send(404, {
                     error: true
                 });
                 return;

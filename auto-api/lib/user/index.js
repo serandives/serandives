@@ -16,10 +16,11 @@ var user = Schema({
 
 user.set('toJSON', {
     getters: true,
-    virtuals: false,
+    //virtuals: false,
     transform: function (doc, ret, options) {
         delete ret.hash;
         delete ret.salt;
+        delete ret._id;
     }
 });
 
@@ -30,6 +31,10 @@ user.methods.authenticate = function (password, callback) {
 user.virtual('password').set(function (password) {
     this.hash = '######';
     this.salt = '******';
+});
+
+user.virtual('id').get(function () {
+    return this._id;
 });
 /*
  user.statics.find = function (options, callback) {

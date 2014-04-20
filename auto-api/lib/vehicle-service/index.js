@@ -7,7 +7,7 @@ app.use(express.bodyParser());
 /**
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
-app.post('/vehicle/create', function (req, res) {
+app.post('/vehicles', function (req, res) {
     var data = req.body;
     var user = require('user');
     user.findOne({
@@ -58,8 +58,10 @@ app.post('/vehicle/update', function (req, res) {
 /**
  * { "email": "ruchira@serandives.com" }
  */
-app.post('/vehicle/find', function (req, res) {
-    vehicle.find(req.body, function (err, vehicles) {
+app.get('/vehicles/:id', function (req, res) {
+    vehicle.find({
+        id: req.params.id
+    }, function (err, vehicles) {
         if (err) {
             console.log('vehicle find error');
             res.send({

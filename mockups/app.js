@@ -7,4 +7,4 @@ app.use(express.logger('dev'));
 app.use(express.static(__dirname + '/auto'));
 //app.use(express.static(__dirname));
 
-app.listen(4000);
+app.listen(10000);
