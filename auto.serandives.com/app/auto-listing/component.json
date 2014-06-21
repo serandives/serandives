@@ -1,0 +1,9 @@
+{
+    "name": "auto-listing",
+    "description": "auto-listing component",
+    "local": ["dust", "serand", "location"],
+    "scripts": ["index.js"],
+    "styles": ["styles.css"],
+    "templates": ["template.html"],
+    "main": "index.js"
+}

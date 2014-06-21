@@ -1,0 +1,102 @@
+.auto-search .price {
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+.auto-search .price label {
+    margin-bottom: 7px;
+}
+
+.auto-search .search {
+    margin-top: 10px;
+}
+
+/*
+.auto-sort .btn {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.auto-thumbline {
+    margin-bottom: 20px;
+}
+
+.auth {
+    margin-bottom: 20px;
+    height: 35px;
+}
+
+.login {
+    */
+/*background-color: #fff;*//*
+
+}
+
+.search {
+    margin-top: 10px;
+}
+
+.auth {
+    margin-bottom: 20px;
+    height: 35px;
+}
+
+.login {
+    */
+/*background-color: #fff;*//*
+
+}
+
+a:active, a:hover {
+    outline: 0 none;
+}
+
+:focus, *:hover, *:active {
+    outline: medium none;
+}
+
+.selecter {
+    max-width: 100%;
+}
+
+*/
+/*.form-group label {
+    max-width: 100%;
+    width: 100%;
+}*//*
+
+
+.form-group label * {
+    font-weight: normal;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group .options * {
+    font-weight: normal;
+}
+
+form, .form-control {
+    font-size: 13px;
+}
+
+form .price {
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+.radio, .checkbox {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+form label {
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+select.form-control {
+    width: auto;
+}*/

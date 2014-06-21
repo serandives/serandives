@@ -1,0 +1,50 @@
+<div class="auto-listing">
+    <!--<div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-5">
+            <div class="row auto-sort">
+                <button type="button" class="btn btn-primary" name="year">Year</button>
+                <button type="button" class="btn btn-success" name="price">Price</button>
+                <button type="button" class="btn btn-info" name="recent">Recent</button>
+                <button type="button" class="btn btn-warning" name="popular">Popular</button>
+            </div>
+        </div>
+    </div>-->
+
+    {@slice size="3"}
+    <div class="row">
+        {#.}
+        <div class="col-md-4">
+            <a class="thumbnail" href="/vehicles/{id}">
+                <div class="price">{price}</div>
+                <img src="{thumbnail}"/>
+
+                <div class="info">
+                    <table class="table table-condensed">
+                        <!--<tr><td class="name">Price</td><td class="value">10000LKR</td></tr>-->
+                        <tr>
+                            <td class="name">Make</td>
+                            <td class="value">{make}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Model</td>
+                            <td class="value">{model}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Year</td>
+                            <td class="value">{year}</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Mileage</td>
+                            <td class="value">{mileage}</td>
+                        </tr>
+                        <!--<tr><td class="name">Transmission</td><td class="value">Automatic</td></tr>-->
+                        <!--<tr><td class="name">Fuel</td><td class="value">Gasoline</td></tr>-->
+                    </table>
+                </div>
+            </a>
+        </div>
+        {/.}
+    </div>
+    {/slice}
+</div>

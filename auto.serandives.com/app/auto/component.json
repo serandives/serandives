@@ -1,9 +1,0 @@
-{
-    "name": "auto",
-    "description": "auto component",
-    "local": ["dust", "serand", "location"],
-    "scripts": ["index.js"],
-    "styles": ["auto.css"],
-    "templates": ["search-ui.html", "listing-ui.html", "add-ui.html", "details-ui.html"],
-    "main": "index.js"
-}

@@ -7,8 +7,9 @@ app.use(express.urlencoded());
 
 var data = [
     {
+        id: 0,
         title: 'Insight1',
-        thumbnail: '/images/prius.jpeg',
+        thumbnail: '/public/images/prius.jpeg',
         make: 'Toyota',
         model: 'Prius',
         year: 2013,
@@ -16,8 +17,9 @@ var data = [
         color: 'Metallic Black'
     },
     {
+        id: 1,
         title: 'Insight2',
-        thumbnail: '/images/prius.jpeg',
+        thumbnail: '/public/images/prius.jpeg',
         make: 'Toyota',
         model: 'Prius',
         year: 2013,
@@ -25,8 +27,9 @@ var data = [
         color: 'Metallic Black'
     },
     {
+        id: 2,
         title: 'Insight3',
-        thumbnail: '/images/prius.jpeg',
+        thumbnail: '/public/images/prius.jpeg',
         make: 'Toyota',
         model: 'Prius',
         year: 2013,
@@ -34,8 +37,9 @@ var data = [
         color: 'Metallic Black'
     },
     {
+        id: 3,
         title: 'Insight1',
-        thumbnail: '/images/prius.jpeg',
+        thumbnail: '/public/images/prius.jpeg',
         make: 'Toyota',
         model: 'Prius',
         year: 2013,
@@ -43,8 +47,9 @@ var data = [
         color: 'Metallic Black'
     },
     {
+        id: 4,
         title: 'Insight2',
-        thumbnail: '/images/prius.jpeg',
+        thumbnail: '/public/images/prius.jpeg',
         make: 'Toyota',
         model: 'Prius',
         year: 2013,
@@ -52,8 +57,9 @@ var data = [
         color: 'Metallic Black'
     },
     {
+        id: 5,
         title: 'Insight3',
-        thumbnail: '/images/prius.jpeg',
+        thumbnail: '/public/images/prius.jpeg',
         make: 'Toyota',
         model: 'Prius',
         year: 2013,

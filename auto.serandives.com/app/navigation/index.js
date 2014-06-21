@@ -3,29 +3,32 @@ var serand = require('serand');
 
 var user;
 
-dust.loadSource(dust.compile(require('./nav-ui'), 'navigation-ui'));
+dust.loadSource(dust.compile(require('./template'), 'navigation-ui'));
 
-module.exports.navigation = function (options, fn) {
-    dust.render('navigation-ui', options.data, function (err, out) {
+module.exports = function (el, fn, options) {
+    dust.render('navigation-ui', options, function (err, out) {
         if (err) {
             fn(err);
             return;
         }
-        var update = function (user) {
+        var login = function (user) {
             dust.renderSource(require('./user-ui'), user, function (err, out) {
                 $('.navbar-right', el).html(out);
                 $('.navigation-user-ui').on('click', '.logout', function () {
+                    //TODO: fix repeating bug
+                    console.log('=====logout====== fix repeating bug');
                     serand.emit('user', 'logout', user);
                 });
             });
         };
-        var el = $(out).appendTo(options.el);
-        serand.on('user', 'login', update);
+        $(out).appendTo(el);
+        serand.on('user', 'login', login);
+        //user = { username: 'ruchiraw'};
         if (user) {
-            update(user);
+            login(user);
         }
         fn(false, function () {
-            options.el.remove('.navigation');
+            el.remove('.navigation');
         });
     });
 };

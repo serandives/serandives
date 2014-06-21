@@ -12,7 +12,7 @@ var app = module.exports = express();
 
 // middleware
 app.use(express.logger('dev'));
-app.use(express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 app.use(function (req, res, next) {
     var xhost = req.header('x-host');
@@ -32,8 +32,7 @@ app.use(function (req, res, next) {
         return;
     }
     next();
-})
-;
+});
 
 //dumy data
 app.use(require('autos'));

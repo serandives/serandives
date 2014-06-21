@@ -7,4 +7,6 @@ app.use(express.logger('dev'));
 app.use(express.static(__dirname + '/auto'));
 //app.use(express.static(__dirname));
 
-app.listen(10000);
+app.listen(4000);
+
+console.log('server started at port 3000');

@@ -2,7 +2,8 @@
     "name": "navigation",
     "description": "navigation component",
     "local": ["dust", "serand"],
+    "styles": ["styles.css"],
     "scripts": ["index.js"],
-    "templates" : ["nav-ui.html", "user-ui.html"],
+    "templates" : ["template.html", "user-ui.html"],
     "main": "index.js"
 }

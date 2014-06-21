@@ -1,0 +1,37 @@
+.auto-listing .price {
+    margin-top: 6px;
+}
+
+.auto-listing .thumbnail {
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.auto-listing .thumbnail table {
+    margin-bottom: 0;
+}
+
+.auto-listing .thumbnail .value {
+    text-align: right;
+}
+
+.auto-listing .thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+
+.auto-listing .thumbnail {
+    position: relative;
+}
+
+.auto-listing .thumbnail .price {
+    position: absolute;
+    top: -2px;
+    left: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #2ecc71;
+    font-family: "Oxygen", Helvetica, Arial, sans-serif;
+}

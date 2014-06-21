@@ -1,0 +1,9 @@
+{
+    "name": "user-register",
+    "description": "user-register component",
+    "local": ["dust", "serand"],
+    "styles": ["styles.css"],
+    "scripts": ["index.js"],
+    "templates": ["template.html"],
+    "main": "index.js"
+}

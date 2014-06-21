@@ -1,0 +1,8 @@
+
+.navigation .navbar {
+    font-weight: bold;
+}
+
+.navigation .navbar .search {
+    display: inline;
+}

@@ -2,29 +2,12 @@ var page = require('page');
 var async = require('async');
 var dust = require('dust')();
 var serand = require('serand');
+var layout = require('./layout');
 
 var comps = JSON.parse(require('./component.json'));
 comps.local.forEach(function (comp) {
     require(comp);
 });
-
-var callbacks = [];
-
-var layout = function (name, fn) {
-    callbacks.forEach(function (callback) {
-        callback();
-    });
-    dust.renderSource(require('./' + name), {}, function (err, out) {
-        var el = $(out);
-        fn({
-            el: el
-        }, function (err, results) {
-            callbacks = results;
-            $('#content').html(el);
-            serand.emit('page', 'ready');
-        });
-    });
-};
 
 var current = function (path) {
     var ctx = new page.Context(window.location.pathname + window.location.search);
@@ -34,101 +17,54 @@ var current = function (path) {
 };
 
 page('/', function (ctx) {
-    layout('three-column', function (data, fn) {
-        async.parallel([
-            function (fn) {
-                require('navigation').navigation({
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('auto').search({
-                    el: $('#left', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('auto').listing({
-                    el: $('#middle', data.el)
-                }, fn);
-            }
-        ], fn);
-    });
-});
-
-page('/login', function (ctx) {
-    layout('single-column', function (data, fn) {
-        async.parallel([
-            function (fn) {
-                require('navigation').navigation({
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('user').login({
-                    el: $('#middle', data.el)
-                }, fn);
-            }
-        ], fn);
-    });
-});
-
-page('/register', function (ctx) {
-    layout('single-column', function (data, fn) {
-        async.parallel([
-            function (fn) {
-                require('navigation').navigation({
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('user').register({
-                    el: $('#middle', data.el)
-                }, fn);
-            }
-        ], fn);
-    });
-});
-
-page('/add', function (ctx) {
-    layout('single-column', function (data, fn) {
-        async.parallel([
-            function (fn) {
-                require('navigation').navigation({
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('auto').add({
-                    el: $('#middle', data.el)
-                }, fn);
-            }
-        ], fn);
-    });
+    layout('two-column')
+        .area('#header')
+        .add('navigation')
+        .add('breadcrumb')
+        .area('#right')
+        .add('auto-search')
+        .area('#middle')
+        .add('auto-listing')
+        .render();
 });
 
 page('/vehicles/:id', function (ctx) {
-    layout('three-column', function (data, fn) {
-        async.parallel([
-            function (fn) {
-                require('navigation').navigation({
-                    el: $('#header', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('auto').search({
-                    el: $('#left', data.el)
-                }, fn);
-            },
-            function (fn) {
-                require('auto').details({
-                    el: $('#middle', data.el),
-                    data: {
-                        id: ctx.params.id
-                    }
-                }, fn);
-            }
-        ], fn);
-    });
+    layout('single-column')
+        .area('#header')
+        .add('navigation')
+        .add('breadcrumb')
+        .area('#middle')
+        .add('auto-details', {
+            id: ctx.params.id
+        })
+        .render();
+});
+
+page('/login', function (ctx) {
+    layout('single-column')
+        .area('#header')
+        .add('navigation')
+        .area('#middle')
+        .add('user-login')
+        .render();
+});
+
+page('/register', function (ctx) {
+    layout('single-column')
+        .area('#header')
+        .add('navigation')
+        .area('#middle')
+        .add('user-register')
+        .render();
+});
+
+page('/add', function (ctx) {
+    layout('single-column')
+        .area('#header')
+        .add('navigation')
+        .area('#middle')
+        .add('auto-add')
+        .render();
 });
 
 page();

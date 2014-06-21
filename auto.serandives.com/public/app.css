@@ -3,16 +3,33 @@
 
 
 
-.user-login .row .form-control {
-    margin-bottom: 15px;
+.navigation .navbar {
+    font-weight: bold;
 }
 
-.user-register .row .form-control {
-    margin-bottom: 15px;
+.navigation .navbar .search {
+    display: inline;
 }
-.location-address .address-new {
-    display: none;
+.user-login .form-control {
+    margin-bottom: 10px;
 }
+.user-register .form-control {
+    margin-bottom: 10px;
+}
+.auto-search .price {
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+.auto-search .price label {
+    margin-bottom: 7px;
+}
+
+.auto-search .search {
+    margin-top: 10px;
+}
+
+/*
 .auto-sort .btn {
     margin-left: 10px;
     margin-bottom: 20px;
@@ -21,6 +38,177 @@
 .auto-thumbline {
     margin-bottom: 20px;
 }
+
+.auth {
+    margin-bottom: 20px;
+    height: 35px;
+}
+
+.login {
+    */
+/*background-color: #fff;*//*
+
+}
+
+.search {
+    margin-top: 10px;
+}
+
+.auth {
+    margin-bottom: 20px;
+    height: 35px;
+}
+
+.login {
+    */
+/*background-color: #fff;*//*
+
+}
+
+a:active, a:hover {
+    outline: 0 none;
+}
+
+:focus, *:hover, *:active {
+    outline: medium none;
+}
+
+.selecter {
+    max-width: 100%;
+}
+
+*/
+/*.form-group label {
+    max-width: 100%;
+    width: 100%;
+}*//*
+
+
+.form-group label * {
+    font-weight: normal;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group .options * {
+    font-weight: normal;
+}
+
+form, .form-control {
+    font-size: 13px;
+}
+
+form .price {
+    margin-bottom: 10px;
+    margin-top: 6px;
+}
+
+.radio, .checkbox {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+form label {
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+select.form-control {
+    width: auto;
+}*/
+
+.auto-add .form-control {
+    margin-bottom: 10px;
+}
+.location-address .address-new {
+    display: none;
+}
+.auto-listing .price {
+    margin-top: 6px;
+}
+
+.auto-listing .thumbnail {
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.auto-listing .thumbnail table {
+    margin-bottom: 0;
+}
+
+.auto-listing .thumbnail .value {
+    text-align: right;
+}
+
+.auto-listing .thumbnail img {
+    width: 100%;
+    height: 100%;
+}
+
+.auto-listing .thumbnail {
+    position: relative;
+}
+
+.auto-listing .thumbnail .price {
+    position: absolute;
+    top: -2px;
+    left: 4px;
+    padding: 4px 8px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #2ecc71;
+    font-family: "Oxygen", Helvetica, Arial, sans-serif;
+}
+
+.breadcrumb {
+    border: 1px solid #DDDDDD;
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Nunito-Light'), url(http://themes.googleusercontent.com/static/fonts/nunito/v5/1TiHc9yag0wq3lDO9cw0vrO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito-Regular'), url(http://themes.googleusercontent.com/static/fonts/nunito/v5/1D_AI14T6X7H5aa5BXWWyuvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito-Bold'), url(http://themes.googleusercontent.com/static/fonts/nunito/v5/TttUCfJ272GBgSKaOaD7KrO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Oxygen Light'), local('Oxygen-Light'), url(http://themes.googleusercontent.com/static/fonts/oxygen/v3/AwBqWF2kjhlybWamaKMPcbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oxygen'), local('Oxygen-Regular'), url(http://themes.googleusercontent.com/static/fonts/oxygen/v3/eAWT4YudG0otf3rlsJD6zOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+@font-face {
+  font-family: 'Oxygen';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Oxygen Bold'), local('Oxygen-Bold'), url(http://themes.googleusercontent.com/static/fonts/oxygen/v3/yVHpdQrmTj9Kax1tmFSx2rO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+
+.container {
+    margin-top: 20px;
+}
+
 .three-column {
     padding-bottom: 30px;
     padding-top: 70px;
@@ -29,4 +217,56 @@
 .single-column {
     padding-bottom: 30px;
     padding-top: 70px;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+    /*background-color: #2F2F2F;*/
+    font-family: "Oxygen", Helvetica, Arial, sans-serif;
+}
+
+a:active, a:hover {
+    outline: 0 none;
+}
+
+:focus, *:hover, *:active {
+    outline: medium none;
+}
+
+.selecter {
+    max-width: 100%;
+}
+
+/*.form-group label {
+    max-width: 100%;
+    width: 100%;
+}*/
+
+.form-group label * {
+    font-weight: normal;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.form-group .options * {
+    font-weight: normal;
+}
+
+form, .form-control {
+    font-size: 13px;
+}
+
+.radio, .checkbox {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+form label {
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+
+select.form-control {
+    width: auto;
 }
