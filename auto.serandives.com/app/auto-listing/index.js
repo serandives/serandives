@@ -39,8 +39,8 @@ var list = function (el, options, paging, fn) {
 
 dust.loadSource(dust.compile(require('./template'), 'auto-listing'));
 
-module.exports = function (el, fn, options) {
-    list(el, options, {
+module.exports = function (sandbox, fn, options) {
+    list(sandbox, options, {
         sort: 'recent'
     }, fn);
 };

@@ -39,17 +39,17 @@ var list = function (el, options, paging, fn) {
 
 dust.loadSource(dust.compile(require('./template'), 'auto-details'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     $.ajax({
         url: '/apis/vehicles/' + options.id,
         contentType: 'application/json',
         dataType: 'json',
         success: function (data) {
             dust.render('auto-details', data, function (err, out) {
-                $('.auto-details', el).remove();
-                el.off('click', '.auto-sort .btn');
-                el.append(out);
-                el.on('click', '.auto-sort .btn', function () {
+                $('.auto-details', sandbox).remove();
+                sandbox.off('click', '.auto-sort .btn');
+                sandbox.append(out);
+                sandbox.on('click', '.auto-sort .btn', function () {
                     var sort = $(this).attr('name');
                     var serand = require('serand');
                     serand.emit('auto', 'sort', { sort: sort});
@@ -61,7 +61,7 @@ module.exports = function (el, fn, options) {
                     return;
                 }
                 fn(false, function () {
-                    el.remove('.auto-details');
+                    sandbox.remove('.auto-details');
                 });
             });
         },

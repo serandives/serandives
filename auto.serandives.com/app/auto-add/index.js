@@ -3,12 +3,12 @@ var serand = require('serand');
 
 dust.loadSource(dust.compile(require('./template'), 'auto-add'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     dust.render('auto-add', {}, function (err, out) {
         if (err) {
             return;
         }
-        var elem = el.append(out);
+        var elem = sandbox.append(out);
         $('.make', elem).selecter({
             label: 'Make'
         });
@@ -19,7 +19,7 @@ module.exports = function (el, fn, options) {
             label: 'Year'
         });
         fn(false, function () {
-            el.remove('.auto-add');
+            sandbox.remove('.auto-add');
         });
     });
 };

@@ -5466,37 +5466,50 @@ var user;
 
 var elems = [];
 
-var login = function (el, user) {
-    console.log('======login');
+var login = function (sandbox, el, fn) {
     dust.renderSource(require('./user-logged-ui'), user, function (err, out) {
         $('.navbar-right', el).html(out);
         $('.navigation-user-ui', el).on('click', '.logout', function () {
             serand.emit('user', 'logout', user);
         });
+        if (!fn) {
+            return;
+        }
+        fn(false, function () {
+            sandbox.remove('.navigation');
+        });
     });
 };
 
-var anon = function (el) {
-    console.log('======anon');
+var anon = function (sandbox, el, fn) {
     dust.renderSource(require('./user-anon-ui'), {}, function (err, out) {
         $('.navbar-right', el).html(out);
+        if (!fn) {
+            return;
+        }
+        fn(false, function () {
+            sandbox.remove('.navigation');
+        })
     });
 };
 
 dust.loadSource(dust.compile(require('./template'), 'navigation-ui'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     dust.render('navigation-ui', options, function (err, out) {
         if (err) {
             fn(err);
             return;
         }
-        var elem = $(out).appendTo(el);
-        user ? login(elem, user) : anon(elem);
-        elems.push(elem);
-        fn(false, function () {
-            el.remove('.navigation');
+        var el = $(out).appendTo(sandbox);
+        elems.push({
+            sandbox: sandbox,
+            el: el
         });
+        user ? login(sandbox, el, fn) : anon(sandbox, el, fn);
+        /*fn(false, function () {
+         sandbox.remove('.navigation');
+         });*/
     });
 };
 
@@ -5506,20 +5519,20 @@ serand.on('boot', 'page', function (ctx) {
 
 serand.on('user', 'login', function (data) {
     user = data;
-    elems.forEach(function (el) {
-        login(el, user);
+    elems.forEach(function (o) {
+        login(o.sandbox, o.el);
     });
 });
 
 serand.on('user', 'logout', function (data) {
     user = null;
-    elems.forEach(function (el) {
-        anon(el);
+    elems.forEach(function (o) {
+        anon(o.sandbox, o.el);
     });
 });
 });
 require.register("navigation/template.js", function(exports, require, module){
-module.exports = '<div class="navigation row">\n    <div class="col-md-12">\n        <nav class="navbar navbar-default" role="navigation">\n            <div class="container-fluid">\n                <!-- Brand and toggle get grouped for better mobile display -->\n                <div class="navbar-header">\n                    <button type="button" class="navbar-toggle" data-toggle="collapse"\n                            data-target="#bs-example-navbar-collapse-1">\n                        <span class="sr-only">Toggle navigation</span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                    </button>\n                    <a class="navbar-brand" href="/">serandives.com</a>\n                </div>\n\n                <!-- Collect the nav links, forms, and other content for toggling -->\n                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n                    <ul class="nav navbar-nav">\n                        <!--<li class="active"><a href="/">Home</a></li>-->\n                        <li><a href="/add">Jobs</a></li>\n                        <li><a href="#">Hotels</a></li>\n                        <li><a href="#">Real States</a></li>\n                        <li><a href="#">Add</a></li>\n                        <li class="dropdown">\n                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">More\n                                <b class="caret"></b>\n                            </a>\n                            <ul class="dropdown-menu">\n                                <li><a href="#">Action</a></li>\n                                <li><a href="#">Another action</a></li>\n                                <li><a href="#">Something else here</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">Separated link</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">One more separated link</a></li>\n                            </ul>\n                        </li>\n                    </ul>\n\n                    <ul class="nav navbar-nav navbar-right">\n\n                    </ul>\n                    <form class="navbar-form" role="search">\n                        <div class="form-group search">\n                            <div class="input-group">\n                                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>\n                                <input class="form-control" type="text">\n                            </div>\n                        </div>\n                    </form>\n                </div>\n                <!-- /.navbar-collapse -->\n            </div>\n            <!-- /.container-fluid -->\n        </nav>\n    </div>\n</div>';
+module.exports = '<div class="navigation row">\n    <div class="col-md-12">\n        <nav class="navbar navbar-default" role="navigation">\n            <div class="container-fluid">\n                <!-- Brand and toggle get grouped for better mobile display -->\n                <div class="navbar-header">\n                    <button type="button" class="navbar-toggle" data-toggle="collapse"\n                            data-target="#bs-example-navbar-collapse-1">\n                        <span class="sr-only">Toggle navigation</span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                    </button>\n                    <a class="navbar-brand" href="/">serandives.com</a>\n                </div>\n\n                <!-- Collect the nav links, forms, and other content for toggling -->\n                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n                    <ul class="nav navbar-nav">\n                        <!--<li class="active"><a href="/">Home</a></li>-->\n                        <li><a href="/add">Jobs</a></li>\n                        <li><a href="#">Hotels</a></li>\n                        <li><a href="#">Real States</a></li>\n                        <li><a href="#">Add</a></li>\n                        <li class="dropdown">\n                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">More\n                                <b class="caret"></b>\n                            </a>\n                            <ul class="dropdown-menu">\n                                <li><a href="#">Action</a></li>\n                                <li><a href="#">Another action</a></li>\n                                <li><a href="#">Something else here</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">Separated link</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">One more separated link</a></li>\n                            </ul>\n                        </li>\n                    </ul>\n\n                    <ul class="nav navbar-nav navbar-right"></ul>\n                    <form class="navbar-form" role="search">\n                        <div class="form-group search">\n                            <div class="input-group">\n                                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>\n                                <input class="form-control" type="text">\n                            </div>\n                        </div>\n                    </form>\n                </div>\n                <!-- /.navbar-collapse -->\n            </div>\n            <!-- /.container-fluid -->\n        </nav>\n    </div>\n</div>';
 });
 require.register("navigation/user-anon-ui.js", function(exports, require, module){
 module.exports = '<li class="navigation-user-ui"><a href="/login">Login</a></li>\n<li class="navigation-user-ui"><a href="/register">Register</a></li>\n<!--<li class="dropdown">\n    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b\n            class="caret"></b></a>\n    <ul class="dropdown-menu">\n        <li><a href="#">Action</a></li>\n        <li><a href="#">Another action</a></li>\n        <li><a href="#">Something else here</a></li>\n        <li class="divider"></li>\n        <li><a href="#">Separated link</a></li>\n    </ul>\n</li>-->';
@@ -5533,13 +5546,13 @@ var serand = require('serand');
 
 dust.loadSource(dust.compile(require('./template'), 'user-login'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sanbox, fn, options) {
     dust.render('user-login', {}, function (err, out) {
         if (err) {
             return;
         }
-        el.append(out);
-        el.on('click', '.user-login .login', function (e) {
+        sanbox.append(out);
+        sanbox.on('click', '.user-login .login', function (e) {
             var el = $('.user-login');
             var username = $('.username', el).val();
             var password = $('.password', el).val();
@@ -5549,7 +5562,7 @@ module.exports = function (el, fn, options) {
             return false;
         });
         fn(false, function () {
-            el.remove('.user-login');
+            sanbox.remove('.user-login');
         });
     });
 };
@@ -5586,14 +5599,14 @@ var serand = require('serand');
 
 dust.loadSource(dust.compile(require('./template'), 'user-register'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sanbox, fn, options) {
     dust.render('user-register', {}, function (err, out) {
         if (err) {
             return;
         }
-        el.append(out);
+        sanbox.append(out);
         fn(false, function () {
-            el.remove('.user-register');
+            sanbox.remove('.user-register');
         });
     });
 };
@@ -5629,12 +5642,12 @@ var serand = require('serand');
 
 dust.loadSource(dust.compile(require('./template'), 'auto-search'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     dust.render('auto-search', {}, function (err, out) {
         if (err) {
             return;
         }
-        var elem = el.append(out);
+        var elem = sandbox.append(out);
         $('.make', elem).selecter({
             label: 'Make'
         });
@@ -5644,7 +5657,7 @@ module.exports = function (el, fn, options) {
         });
 
         fn(false, function () {
-            el.remove('.search-ui');
+            sandbox.remove('.search-ui');
         });
     });
 };
@@ -5658,12 +5671,12 @@ var serand = require('serand');
 
 dust.loadSource(dust.compile(require('./template'), 'auto-add'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     dust.render('auto-add', {}, function (err, out) {
         if (err) {
             return;
         }
-        var elem = el.append(out);
+        var elem = sandbox.append(out);
         $('.make', elem).selecter({
             label: 'Make'
         });
@@ -5674,7 +5687,7 @@ module.exports = function (el, fn, options) {
             label: 'Year'
         });
         fn(false, function () {
-            el.remove('.auto-add');
+            sandbox.remove('.auto-add');
         });
     });
 };
@@ -5792,8 +5805,8 @@ var list = function (el, options, paging, fn) {
 
 dust.loadSource(dust.compile(require('./template'), 'auto-listing'));
 
-module.exports = function (el, fn, options) {
-    list(el, options, {
+module.exports = function (sandbox, fn, options) {
+    list(sandbox, options, {
         sort: 'recent'
     }, fn);
 };
@@ -5848,17 +5861,17 @@ var list = function (el, options, paging, fn) {
 
 dust.loadSource(dust.compile(require('./template'), 'auto-details'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     $.ajax({
         url: '/apis/vehicles/' + options.id,
         contentType: 'application/json',
         dataType: 'json',
         success: function (data) {
             dust.render('auto-details', data, function (err, out) {
-                $('.auto-details', el).remove();
-                el.off('click', '.auto-sort .btn');
-                el.append(out);
-                el.on('click', '.auto-sort .btn', function () {
+                $('.auto-details', sandbox).remove();
+                sandbox.off('click', '.auto-sort .btn');
+                sandbox.append(out);
+                sandbox.on('click', '.auto-sort .btn', function () {
                     var sort = $(this).attr('name');
                     var serand = require('serand');
                     serand.emit('auto', 'sort', { sort: sort});
@@ -5870,7 +5883,7 @@ module.exports = function (el, fn, options) {
                     return;
                 }
                 fn(false, function () {
-                    el.remove('.auto-details');
+                    sandbox.remove('.auto-details');
                 });
             });
         },
@@ -5898,15 +5911,15 @@ var user;
 
 dust.loadSource(dust.compile(require('./template'), 'breadcrumb-ui'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     dust.render('breadcrumb-ui', options, function (err, out) {
         if (err) {
             fn(err);
             return;
         }
-        $(out).appendTo(el);
+        $(out).appendTo(sandbox);
         fn(false, function () {
-            el.remove('.breadcrumb');
+            sandbox.remove('.breadcrumb');
         });
     });
 };

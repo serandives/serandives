@@ -5,15 +5,15 @@ var user;
 
 dust.loadSource(dust.compile(require('./template'), 'breadcrumb-ui'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sandbox, fn, options) {
     dust.render('breadcrumb-ui', options, function (err, out) {
         if (err) {
             fn(err);
             return;
         }
-        $(out).appendTo(el);
+        $(out).appendTo(sandbox);
         fn(false, function () {
-            el.remove('.breadcrumb');
+            sandbox.remove('.breadcrumb');
         });
     });
 };

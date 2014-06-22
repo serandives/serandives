@@ -3,14 +3,14 @@ var serand = require('serand');
 
 dust.loadSource(dust.compile(require('./template'), 'user-register'));
 
-module.exports = function (el, fn, options) {
+module.exports = function (sanbox, fn, options) {
     dust.render('user-register', {}, function (err, out) {
         if (err) {
             return;
         }
-        el.append(out);
+        sanbox.append(out);
         fn(false, function () {
-            el.remove('.user-register');
+            sanbox.remove('.user-register');
         });
     });
 };
