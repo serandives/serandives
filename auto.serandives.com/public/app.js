@@ -5464,49 +5464,67 @@ var serand = require('serand');
 
 var user;
 
+var elems = [];
+
+var login = function (el, user) {
+    console.log('======login');
+    dust.renderSource(require('./user-logged-ui'), user, function (err, out) {
+        $('.navbar-right', el).html(out);
+        $('.navigation-user-ui', el).on('click', '.logout', function () {
+            serand.emit('user', 'logout', user);
+        });
+    });
+};
+
+var anon = function (el) {
+    console.log('======anon');
+    dust.renderSource(require('./user-anon-ui'), {}, function (err, out) {
+        $('.navbar-right', el).html(out);
+    });
+};
+
 dust.loadSource(dust.compile(require('./template'), 'navigation-ui'));
 
 module.exports = function (el, fn, options) {
     dust.render('navigation-ui', options, function (err, out) {
-        console.log('========nav--------');
         if (err) {
             fn(err);
             return;
         }
-        var login = function (user) {
-            dust.renderSource(require('./user-ui'), user, function (err, out) {
-                $('.navbar-right', el).html(out);
-                $('.navigation-user-ui', el).on('click', '.logout', function () {
-                    //TODO: fix repeating bug
-                    console.log('=====logout====== fix repeating bug');
-                    serand.emit('user', 'logout', user);
-                });
-            });
-        };
-        $(out).appendTo(el);
-        serand.on('user', 'login', login);
-        //user = { username: 'ruchiraw'};
-        if (user) {
-            login(user);
-        }
+        var elem = $(out).appendTo(el);
+        user ? login(elem, user) : anon(elem);
+        elems.push(elem);
         fn(false, function () {
             el.remove('.navigation');
         });
     });
 };
 
+serand.on('boot', 'page', function (ctx) {
+    elems = [];
+});
+
 serand.on('user', 'login', function (data) {
     user = data;
+    elems.forEach(function (el) {
+        login(el, user);
+    });
 });
 
 serand.on('user', 'logout', function (data) {
     user = null;
+    elems.forEach(function (el) {
+        anon(el);
+    });
 });
 });
 require.register("navigation/template.js", function(exports, require, module){
-module.exports = '<div class="navigation row">\n    <div class="col-md-12">\n        <nav class="navbar navbar-default" role="navigation">\n            <div class="container-fluid">\n                <!-- Brand and toggle get grouped for better mobile display -->\n                <div class="navbar-header">\n                    <button type="button" class="navbar-toggle" data-toggle="collapse"\n                            data-target="#bs-example-navbar-collapse-1">\n                        <span class="sr-only">Toggle navigation</span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                    </button>\n                    <a class="navbar-brand" href="/">serandives.com</a>\n                </div>\n\n                <!-- Collect the nav links, forms, and other content for toggling -->\n                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n                    <ul class="nav navbar-nav">\n                        <!--<li class="active"><a href="/">Home</a></li>-->\n                        <li><a href="/add">Jobs</a></li>\n                        <li><a href="#">Hotels</a></li>\n                        <li><a href="#">Real States</a></li>\n                        <li><a href="#">Add</a></li>\n                        <li class="dropdown">\n                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">More\n                                <b class="caret"></b>\n                            </a>\n                            <ul class="dropdown-menu">\n                                <li><a href="#">Action</a></li>\n                                <li><a href="#">Another action</a></li>\n                                <li><a href="#">Something else here</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">Separated link</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">One more separated link</a></li>\n                            </ul>\n                        </li>\n                    </ul>\n\n                    <ul class="nav navbar-nav navbar-right">\n                        <li><a href="/login">Login</a></li>\n                        <li><a href="/register">Register</a></li>\n                        <!--<li class="dropdown">\n                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b\n                                    class="caret"></b></a>\n                            <ul class="dropdown-menu">\n                                <li><a href="#">Action</a></li>\n                                <li><a href="#">Another action</a></li>\n                                <li><a href="#">Something else here</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">Separated link</a></li>\n                            </ul>\n                        </li>-->\n                    </ul>\n                    <form class="navbar-form" role="search">\n                        <div class="form-group search">\n                            <div class="input-group">\n                                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>\n                                <input class="form-control" type="text">\n                            </div>\n                        </div>\n                    </form>\n                </div>\n                <!-- /.navbar-collapse -->\n            </div>\n            <!-- /.container-fluid -->\n        </nav>\n    </div>\n</div>';
+module.exports = '<div class="navigation row">\n    <div class="col-md-12">\n        <nav class="navbar navbar-default" role="navigation">\n            <div class="container-fluid">\n                <!-- Brand and toggle get grouped for better mobile display -->\n                <div class="navbar-header">\n                    <button type="button" class="navbar-toggle" data-toggle="collapse"\n                            data-target="#bs-example-navbar-collapse-1">\n                        <span class="sr-only">Toggle navigation</span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                        <span class="icon-bar"></span>\n                    </button>\n                    <a class="navbar-brand" href="/">serandives.com</a>\n                </div>\n\n                <!-- Collect the nav links, forms, and other content for toggling -->\n                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">\n                    <ul class="nav navbar-nav">\n                        <!--<li class="active"><a href="/">Home</a></li>-->\n                        <li><a href="/add">Jobs</a></li>\n                        <li><a href="#">Hotels</a></li>\n                        <li><a href="#">Real States</a></li>\n                        <li><a href="#">Add</a></li>\n                        <li class="dropdown">\n                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">More\n                                <b class="caret"></b>\n                            </a>\n                            <ul class="dropdown-menu">\n                                <li><a href="#">Action</a></li>\n                                <li><a href="#">Another action</a></li>\n                                <li><a href="#">Something else here</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">Separated link</a></li>\n                                <li class="divider"></li>\n                                <li><a href="#">One more separated link</a></li>\n                            </ul>\n                        </li>\n                    </ul>\n\n                    <ul class="nav navbar-nav navbar-right">\n\n                    </ul>\n                    <form class="navbar-form" role="search">\n                        <div class="form-group search">\n                            <div class="input-group">\n                                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>\n                                <input class="form-control" type="text">\n                            </div>\n                        </div>\n                    </form>\n                </div>\n                <!-- /.navbar-collapse -->\n            </div>\n            <!-- /.container-fluid -->\n        </nav>\n    </div>\n</div>';
 });
-require.register("navigation/user-ui.js", function(exports, require, module){
+require.register("navigation/user-anon-ui.js", function(exports, require, module){
+module.exports = '<li class="navigation-user-ui"><a href="/login">Login</a></li>\n<li class="navigation-user-ui"><a href="/register">Register</a></li>\n<!--<li class="dropdown">\n    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b\n            class="caret"></b></a>\n    <ul class="dropdown-menu">\n        <li><a href="#">Action</a></li>\n        <li><a href="#">Another action</a></li>\n        <li><a href="#">Something else here</a></li>\n        <li class="divider"></li>\n        <li><a href="#">Separated link</a></li>\n    </ul>\n</li>-->';
+});
+require.register("navigation/user-logged-ui.js", function(exports, require, module){
 module.exports = '<li class="dropdown navigation-user-ui">\n    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{username}<b class="caret"></b></a>\n    <ul class="dropdown-menu">\n        <li><a href="#" class="account">Account</a></li>\n        <li class="divider"></li>\n        <li><a href="#" class="logout">Logout</a></li>\n    </ul>\n</li>';
 });
 require.register("user-login/index.js", function(exports, require, module){
@@ -5560,7 +5578,7 @@ serand.on('boot', 'init', function () {
  }, 4000);*/
 });
 require.register("user-login/template.js", function(exports, require, module){
-module.exports = '<div class="user-login panel panel-default">\n    <div class="panel-heading">\n        <h3 class="panel-title">Login</h3>\n    </div>\n    <div class="panel-body">\n        <form role="form">\n            <div class="form-group">\n                <input type="text" class="form-control username" placeholder="Username">\n            </div>\n            <div class="form-group">\n                <input type="text" class="form-control password" placeholder="Password">\n            </div>\n\n            <div class="form-group">\n                <div class="checkbox">\n                    <label>\n                        <input type="checkbox" class="remember">Remember me\n                    </label>\n                </div>\n            </div>\n            <button type="submit" class="btn btn-default login">Login</button>\n        </form>\n    </div>\n</div>';
+module.exports = '<div class="user-login panel panel-default">\n    <div class="panel-heading">\n        <h3 class="panel-title">Login</h3>\n    </div>\n    <div class="panel-body">\n        <form role="form">\n            <div class="form-group">\n                <input type="text" class="form-control username" placeholder="Username" value="ruchiraw">\n            </div>\n            <div class="form-group">\n                <input type="text" class="form-control password" placeholder="Password">\n            </div>\n\n            <div class="form-group">\n                <div class="checkbox">\n                    <label>\n                        <input type="checkbox" class="remember">Remember me\n                    </label>\n                </div>\n            </div>\n            <button type="submit" class="btn btn-default login">Login</button>\n        </form>\n    </div>\n</div>';
 });
 require.register("user-register/index.js", function(exports, require, module){
 var dust = require('dust')();
@@ -5898,11 +5916,18 @@ require.register("breadcrumb/template.js", function(exports, require, module){
 module.exports = '<div class="row">\n    <div class="col-md-12">\n        <ol class="breadcrumb">\n            <li><a href="#">Home</a></li>\n            <li><a href="#">Library</a></li>\n            <li class="active">Data</li>\n        </ol>\n    </div>\n</div>\n';
 });
 require.register("boot/boot.js", function(exports, require, module){
-var page = require('page');
+var pager = require('page');
 var async = require('async');
 var dust = require('dust')();
 var serand = require('serand');
 var layout = require('./layout');
+
+var page = function (path, fn) {
+    pager(path, (fn ? function (ctx) {
+        serand.emit('boot', 'page', ctx);
+        fn(ctx);
+    } : null));
+};
 
 var comps = JSON.parse(require('./component.json'));
 comps.local.forEach(function (comp) {
@@ -5910,8 +5935,8 @@ comps.local.forEach(function (comp) {
 });
 
 var current = function (path) {
-    var ctx = new page.Context(window.location.pathname + window.location.search);
-    var route = new page.Route(path);
+    var ctx = new pager.Context(window.location.pathname + window.location.search);
+    var route = new pager.Route(path);
     route.match(ctx.path, ctx.params);
     return ctx;
 };
@@ -5967,16 +5992,16 @@ page('/add', function (ctx) {
         .render();
 });
 
-page();
+pager();
 
 serand.on('user', 'login', function (data) {
     var ctx = current('/:action?val=?');
     console.log(ctx);
-    page('/');
+    pager('/');
 });
 
 serand.on('user', 'logout', function (data) {
-    page('/');
+    pager('/');
 });
 
 serand.emit('boot', 'init');
@@ -6034,7 +6059,9 @@ Layout.prototype.add = function (comp, opts) {
 };
 
 module.exports = function (layout) {
-    return new Layout(layout);
+    var ly = new Layout(layout);
+    serand.emit('boot', 'layout', ly);
+    return ly;
 };
 });
 require.register("boot/component.json.js", function(exports, require, module){

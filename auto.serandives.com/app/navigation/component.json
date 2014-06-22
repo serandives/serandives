@@ -4,6 +4,6 @@
     "local": ["dust", "serand"],
     "styles": ["styles.css"],
     "scripts": ["index.js"],
-    "templates" : ["template.html", "user-ui.html"],
+    "templates" : ["template.html", "user-anon-ui.html", "user-logged-ui.html"],
     "main": "index.js"
 }

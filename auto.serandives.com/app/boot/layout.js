@@ -50,5 +50,7 @@ Layout.prototype.add = function (comp, opts) {
 };
 
 module.exports = function (layout) {
-    return new Layout(layout);
+    var ly = new Layout(layout);
+    serand.emit('boot', 'layout', ly);
+    return ly;
 };

@@ -1,8 +1,15 @@
-var page = require('page');
+var pager = require('page');
 var async = require('async');
 var dust = require('dust')();
 var serand = require('serand');
 var layout = require('./layout');
+
+var page = function (path, fn) {
+    pager(path, (fn ? function (ctx) {
+        serand.emit('boot', 'page', ctx);
+        fn(ctx);
+    } : null));
+};
 
 var comps = JSON.parse(require('./component.json'));
 comps.local.forEach(function (comp) {
@@ -10,8 +17,8 @@ comps.local.forEach(function (comp) {
 });
 
 var current = function (path) {
-    var ctx = new page.Context(window.location.pathname + window.location.search);
-    var route = new page.Route(path);
+    var ctx = new pager.Context(window.location.pathname + window.location.search);
+    var route = new pager.Route(path);
     route.match(ctx.path, ctx.params);
     return ctx;
 };
@@ -67,16 +74,16 @@ page('/add', function (ctx) {
         .render();
 });
 
-page();
+pager();
 
 serand.on('user', 'login', function (data) {
     var ctx = current('/:action?val=?');
     console.log(ctx);
-    page('/');
+    pager('/');
 });
 
 serand.on('user', 'logout', function (data) {
-    page('/');
+    pager('/');
 });
 
 serand.emit('boot', 'init');
