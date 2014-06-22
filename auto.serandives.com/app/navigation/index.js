@@ -14,16 +14,13 @@ module.exports = function (el, fn, options) {
         var login = function (user) {
             dust.renderSource(require('./user-ui'), user, function (err, out) {
                 $('.navbar-right', el).html(out);
-                $('.navigation-user-ui').on('click', '.logout', function () {
-                    //TODO: fix repeating bug
-                    console.log('=====logout====== fix repeating bug');
+                $('.navigation-user-ui', el).on('click', '.logout', function () {
                     serand.emit('user', 'logout', user);
                 });
             });
         };
         $(out).appendTo(el);
         serand.on('user', 'login', login);
-        //user = { username: 'ruchiraw'};
         if (user) {
             login(user);
         }

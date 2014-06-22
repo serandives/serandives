@@ -5468,6 +5468,7 @@ dust.loadSource(dust.compile(require('./template'), 'navigation-ui'));
 
 module.exports = function (el, fn, options) {
     dust.render('navigation-ui', options, function (err, out) {
+        console.log('========nav--------');
         if (err) {
             fn(err);
             return;
@@ -5475,7 +5476,7 @@ module.exports = function (el, fn, options) {
         var login = function (user) {
             dust.renderSource(require('./user-ui'), user, function (err, out) {
                 $('.navbar-right', el).html(out);
-                $('.navigation-user-ui').on('click', '.logout', function () {
+                $('.navigation-user-ui', el).on('click', '.logout', function () {
                     //TODO: fix repeating bug
                     console.log('=====logout====== fix repeating bug');
                     serand.emit('user', 'logout', user);
