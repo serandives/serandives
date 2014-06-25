@@ -57,32 +57,37 @@ User.findOne({
  * grant_type=password&username=ruchira&password=ruchira
  */
 app.post('/token', function (req, res) {
+    if (req.body.grant_type !== 'password') {
+        res.send(400, {
+            error: 'unsupported grant type'
+        });
+        return;
+    }
     User.findOne({
         email: req.body.username
     }).populate('token').exec(function (err, user) {
         if (err) {
-            res.send({
+            res.send(500, {
                 error: err
             });
             return;
         }
         if (!user) {
-            res.send({
-                error: 'specified user cannot be found'
+            res.send(401, {
+                error: 'user not authorized'
             });
             return;
         }
         user.auth(req.body.password, function (err, auth) {
             if (err) {
-                res.send({
+                res.send(500, {
                     error: err
                 });
                 return;
             }
             if (!auth) {
-                res.send({
-                    error: false,
-                    auth: false
+                res.send(401, {
+                    error: 'user not authorized'
                 });
                 return;
             }
@@ -102,7 +107,7 @@ app.post('/token', function (req, res) {
                 client: sc
             }, function (err, token) {
                 if (err) {
-                    res.send({
+                    res.send(500, {
                         error: err
                     });
                     return;
@@ -113,7 +118,7 @@ app.post('/token', function (req, res) {
                     token: token
                 }, function (err, user) {
                     if (err) {
-                        res.send(404, {
+                        res.send(500, {
                             error: err
                         });
                         return;

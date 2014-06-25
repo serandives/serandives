@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dad5aa47-5f5e-46f4-affb-83cbbb5b3635" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/nunito.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/auto.serandives.com/app/boot/oxygen.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/app.js" afterPath="$PROJECT_DIR$/auto-api/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/token/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/token/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/token-service/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/token-service/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/user/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/user/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/lib/user-service/index.js" afterPath="$PROJECT_DIR$/auto-api/lib/user-service/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auto-api/package.json" afterPath="$PROJECT_DIR$/auto-api/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="serandives.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,8 +109,8 @@
       <file leaf-file-name="index.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/auto-api/lib/user-service/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="2160">
-              <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1283" max-vertical-offset="2265">
+              <caret line="141" column="13" selection-start-line="141" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -156,8 +149,8 @@
       <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/auto-api/lib/token-service/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.62343097" vertical-offset="1069" max-vertical-offset="2025">
-              <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.36087865" vertical-offset="780" max-vertical-offset="2100">
+              <caret line="75" column="27" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -228,9 +221,9 @@
         <option value="$PROJECT_DIR$/auto-api/lib/client/index.js" />
         <option value="$PROJECT_DIR$/auto-api/package.json" />
         <option value="$PROJECT_DIR$/auto-api/lib/user/index.js" />
-        <option value="$PROJECT_DIR$/auto-api/lib/user-service/index.js" />
         <option value="$PROJECT_DIR$/auto-api/lib/token/index.js" />
         <option value="$PROJECT_DIR$/auto-api/app.js" />
+        <option value="$PROJECT_DIR$/auto-api/lib/user-service/index.js" />
         <option value="$PROJECT_DIR$/auto-api/lib/token-service/index.js" />
       </list>
     </option>
@@ -809,12 +802,12 @@
       <workItem from="1403358172933" duration="713000" />
       <workItem from="1403359185041" duration="26782000" />
       <workItem from="1403545724797" duration="3632000" />
-      <workItem from="1403623502957" duration="17339000" />
+      <workItem from="1403623502957" duration="18762000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116638000" />
+    <option name="totallyTimeSpent" value="118061000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1271,16 +1264,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/auto-api/lib/user-service/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="2160">
-          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1283" max-vertical-offset="2265">
+          <caret line="141" column="13" selection-start-line="141" selection-start-column="13" selection-end-line="141" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/auto-api/lib/token-service/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.62343097" vertical-offset="1069" max-vertical-offset="2025">
-          <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.36087865" vertical-offset="780" max-vertical-offset="2100">
+          <caret line="75" column="27" selection-start-line="75" selection-start-column="27" selection-end-line="75" selection-end-column="27" />
           <folding />
         </state>
       </provider>

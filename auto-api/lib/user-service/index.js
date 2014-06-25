@@ -23,30 +23,30 @@ var fields = {
 /**
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
-app.post('/user/login', function (req, res) {
-    User.findOne({
-        email: req.body.email
-    }).exec(function (err, user) {
-        if (err) {
-            res.send({
-                error: err
-            });
-            return;
-        }
-        if (!user) {
-            res.send({
-                error: 'specified user cannot be found'
-            });
-            return;
-        }
-        user.auth(req.body.password, function (err, auth) {
-            res.send({
-                error: err,
-                auth: auth
-            });
-        });
-    });
-});
+/*app.post('/user/login', function (req, res) {
+ User.findOne({
+ email: req.body.email
+ }).exec(function (err, user) {
+ if (err) {
+ res.send(500, {
+ error: err
+ });
+ return;
+ }
+ if (!user) {
+ res.send(404, {
+ error: 'specified user cannot be found'
+ });
+ return;
+ }
+ user.auth(req.body.password, function (err, auth) {
+ res.send({
+ error: err,
+ auth: auth
+ });
+ });
+ });
+ });*/
 
 
 /**
@@ -74,6 +74,12 @@ app.get('/users/:id', function (req, res) {
         _id: req.params.id
     }).exec(function (err, user) {
         if (err) {
+            res.send(500, {
+                error: err
+            });
+            return;
+        }
+        if (!user) {
             res.send(404, {
                 error: 'specified user cannot be found'
             });
@@ -103,11 +109,12 @@ app.post('/users/:id', function (req, res) {
         _id: req.params.id
     }, req.body, function (err, user) {
         if (err) {
-            res.send(404, {
+            res.send(500, {
                 error: err
             });
             return;
         }
+        //TODO: handle 404 case
         res.send({
             error: false
         });
@@ -128,7 +135,7 @@ app.get('/users', function (req, res) {
         .sort(data.paging.sort)
         .exec(function (err, users) {
             if (err) {
-                res.send(404, {
+                res.send(500, {
                     error: err
                 });
                 return;
