@@ -5,7 +5,8 @@ var proxy = require('http-proxy');
 var server = new proxy.RoutingProxy();
 
 var allowed = {
-    'accounts.serandives.com': 4000
+    'accounts.serandives.com': 4000,
+    'localhost': 4000
 };
 
 var app = module.exports = express();

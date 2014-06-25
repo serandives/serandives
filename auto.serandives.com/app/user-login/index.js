@@ -1,6 +1,8 @@
 var dust = require('dust')();
 var serand = require('serand');
 
+var auth;
+
 dust.loadSource(dust.compile(require('./template'), 'user-login'));
 
 module.exports = function (sanbox, fn, options) {
@@ -13,8 +15,28 @@ module.exports = function (sanbox, fn, options) {
             var el = $('.user-login');
             var username = $('.username', el).val();
             var password = $('.password', el).val();
-            serand.emit('user', 'login', {
-                username: username
+            $.ajax({
+                method: 'POST',
+                url: '/apis/v/token',
+                headers: {
+                    'x-host': 'accounts.serandives.com:4000'
+                },
+                data: {
+                    grant_type: 'password',
+                    username: username,
+                    password: password
+                },
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                success: function (data) {
+                    auth = data;
+                    serand.emit('user', 'login', {
+                        username: username
+                    });
+                },
+                error: function () {
+                    serand.emit('user', 'error');
+                }
             });
             return false;
         });

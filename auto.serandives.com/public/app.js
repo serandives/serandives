@@ -5544,6 +5544,8 @@ require.register("user-login/index.js", function(exports, require, module){
 var dust = require('dust')();
 var serand = require('serand');
 
+var auth;
+
 dust.loadSource(dust.compile(require('./template'), 'user-login'));
 
 module.exports = function (sanbox, fn, options) {
@@ -5556,8 +5558,28 @@ module.exports = function (sanbox, fn, options) {
             var el = $('.user-login');
             var username = $('.username', el).val();
             var password = $('.password', el).val();
-            serand.emit('user', 'login', {
-                username: username
+            $.ajax({
+                method: 'POST',
+                url: '/apis/v/token',
+                headers: {
+                    'x-host': 'accounts.serandives.com:4000'
+                },
+                data: {
+                    grant_type: 'password',
+                    username: username,
+                    password: password
+                },
+                contentType: 'application/x-www-form-urlencoded',
+                dataType: 'json',
+                success: function (data) {
+                    auth = data;
+                    serand.emit('user', 'login', {
+                        username: username
+                    });
+                },
+                error: function () {
+                    serand.emit('user', 'error');
+                }
             });
             return false;
         });
@@ -5591,7 +5613,7 @@ serand.on('boot', 'init', function () {
  }, 4000);*/
 });
 require.register("user-login/template.js", function(exports, require, module){
-module.exports = '<div class="user-login panel panel-default">\n    <div class="panel-heading">\n        <h3 class="panel-title">Login</h3>\n    </div>\n    <div class="panel-body">\n        <form role="form">\n            <div class="form-group">\n                <input type="text" class="form-control username" placeholder="Username" value="ruchiraw">\n            </div>\n            <div class="form-group">\n                <input type="text" class="form-control password" placeholder="Password">\n            </div>\n\n            <div class="form-group">\n                <div class="checkbox">\n                    <label>\n                        <input type="checkbox" class="remember">Remember me\n                    </label>\n                </div>\n            </div>\n            <button type="submit" class="btn btn-default login">Login</button>\n        </form>\n    </div>\n</div>';
+module.exports = '<div class="user-login panel panel-default">\n    <div class="panel-heading">\n        <h3 class="panel-title">Login</h3>\n    </div>\n    <div class="panel-body">\n        <form role="form">\n            <div class="form-group">\n                <input type="text" class="form-control username" placeholder="Username" value="admin@serandives.com">\n            </div>\n            <div class="form-group">\n                <input type="password" class="form-control password" placeholder="Password" value="ruchira">\n            </div>\n\n            <div class="form-group">\n                <div class="checkbox">\n                    <label>\n                        <input type="checkbox" class="remember">Remember me\n                    </label>\n                </div>\n            </div>\n            <button type="submit" class="btn btn-default login">Login</button>\n        </form>\n    </div>\n</div>';
 });
 require.register("user-register/index.js", function(exports, require, module){
 var dust = require('dust')();
