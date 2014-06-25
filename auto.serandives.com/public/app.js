@@ -6106,7 +6106,7 @@ require.register("boot/single-column.js", function(exports, require, module){
 module.exports = '<div class="two-column">\n    <div class="container clearfix">\n        <div id="header"></div>\n        <div id="middle">\n        </div>\n    </div>\n</div>';
 });
 require.register("boot/two-column.js", function(exports, require, module){
-module.exports = '<div class="two-column">\n    <div class="container clearfix">\n        <div id="header"></div>\n        <div class="row">\n            <div id="right" class="col-md-3 pull-right"></div>\n            <div id="middle" class="col-md-9 pull-left"></div>\n        </div>\n    </div>\n</div>';
+module.exports = '<div class="two-column">\n    <div class="container clearfix">\n        <div id="header"></div>\n        <div class="row">\n            <div id="right" class="col-md-3"></div>\n            <div id="middle" class="col-md-9"></div>\n        </div>\n    </div>\n</div>';
 });
 require.register("boot/three-column.js", function(exports, require, module){
 module.exports = '<div class="three-column">\n    <div id="header"></div>\n\n    <div class="container">\n        <div class="row">\n            <div id="left" class="col-md-3"></div>\n            <div id="middle" class="col-md-9"></div>\n        </div>\n    </div>\n</div>';
