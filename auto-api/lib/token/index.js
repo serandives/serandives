@@ -4,7 +4,7 @@ var crypto = require('crypto');
 
 var TOKEN_LENGTH = 48;
 
-var validity = 10000;
+var validity = 10 * 60 * 1000;
 
 var token = Schema({
     created: { type: Date, default: Date.now },
@@ -22,8 +22,8 @@ token.statics.search = function (value, cb) {
     this.findOne({
         value: value
     }).select('created validity').exec(function (err, token) {
-            cb(err, (err || !token) ? false : token);
-        });
+        cb(err, (err || !token) ? false : token);
+    });
 };
 
 token.pre('save', function (next) {

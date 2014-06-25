@@ -17,7 +17,7 @@ module.exports = function (sanbox, fn, options) {
             var password = $('.password', el).val();
             $.ajax({
                 method: 'POST',
-                url: '/apis/v/token',
+                url: '/apis/v/tokens',
                 headers: {
                     'x-host': 'accounts.serandives.com:4000'
                 },

@@ -11,6 +11,8 @@ var app = module.exports = express();
 
 app.use(express.bodyParser());
 
+var MIN_TOKEN_VALIDITY = 40 * 1000;
+
 var su = {
     email: 'admin@serandives.com',
     password: 'ruchira'
@@ -53,10 +55,15 @@ User.findOne({
     });
 });
 
+var expires = function (token) {
+    var exin = token.created.getTime() + token.validity - new Date().getTime();
+    return exin > 0 ? exin : 0;
+};
+
 /**
  * grant_type=password&username=ruchira&password=ruchira
  */
-app.post('/token', function (req, res) {
+app.post('/tokens', function (req, res) {
     if (req.body.grant_type !== 'password') {
         res.send(400, {
             error: 'unsupported grant type'
@@ -93,7 +100,7 @@ app.post('/token', function (req, res) {
             }
             var token = user.token;
             if (token) {
-                if (token.created.getTime() + token.validity > new Date().getTime()) {
+                if (expires(token) > MIN_TOKEN_VALIDITY) {
                     res.send({
                         access_token: token.id,
                         expires_in: token.validity
