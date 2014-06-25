@@ -1,6 +1,9 @@
 var utils = require('utils');
 var User = require('user');
+var Token = require('token');
 var sanitizer = require('./sanitizer');
+
+var client = '123456';
 
 var express = require('express');
 var app = module.exports = express();
@@ -21,15 +24,26 @@ var fields = {
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
 app.post('/user/login', function (req, res) {
-    User.authenticate(req.body, function (err) {
+    User.findOne({
+        email: req.body.email
+    }).exec(function (err, user) {
         if (err) {
             res.send({
-                error: true
+                error: err
             });
             return;
         }
-        res.send({
-            error: false
+        if (!user) {
+            res.send({
+                error: 'specified user cannot be found'
+            });
+            return;
+        }
+        user.auth(req.body.password, function (err, auth) {
+            res.send({
+                error: err,
+                auth: auth
+            });
         });
     });
 });
@@ -39,11 +53,10 @@ app.post('/user/login', function (req, res) {
  * { "email": "ruchira@serandives.com", "password": "mypassword" }
  */
 app.post('/users', function (req, res) {
-    User.create(req.body, function (err) {
+    User.create(req.body, function (err, user) {
         if (err) {
             res.send(400, {
-                error: true,
-                message: 'error while adding new user'
+                error: 'error while adding new user'
             });
             return;
         }
@@ -59,29 +72,27 @@ app.post('/users', function (req, res) {
 app.get('/users/:id', function (req, res) {
     User.findOne({
         _id: req.params.id
-    })
-        .exec(function (err, user) {
-            if (err) {
-                res.send(404, {
-                    error: true,
-                    message: 'specified user cannot be found'
-                });
-                return;
-            }
-            var name;
-            var opts = [];
-            for (name in user.addresses) {
-                if (user.addresses.hasOwnProperty(name)) {
-                    opts.push({
-                        model: 'Location',
-                        path: 'addresses.' + name + '.location'
-                    });
-                }
-            }
-            User.populate(user, opts, function (err, u) {
-                res.send(u);
+    }).exec(function (err, user) {
+        if (err) {
+            res.send(404, {
+                error: 'specified user cannot be found'
             });
+            return;
+        }
+        var name;
+        var opts = [];
+        for (name in user.addresses) {
+            if (user.addresses.hasOwnProperty(name)) {
+                opts.push({
+                    model: 'Location',
+                    path: 'addresses.' + name + '.location'
+                });
+            }
+        }
+        User.populate(user, opts, function (err, u) {
+            res.send(u);
         });
+    });
 });
 
 /**
@@ -93,7 +104,7 @@ app.post('/users/:id', function (req, res) {
     }, req.body, function (err, user) {
         if (err) {
             res.send(404, {
-                error: true
+                error: err
             });
             return;
         }
@@ -118,7 +129,7 @@ app.get('/users', function (req, res) {
         .exec(function (err, users) {
             if (err) {
                 res.send(404, {
-                    error: true
+                    error: err
                 });
                 return;
             }

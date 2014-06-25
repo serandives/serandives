@@ -38,6 +38,10 @@ token.pre('save', function (next) {
     });
 });
 
+token.virtual('id').get(function () {
+    return this._id;
+});
+
 /*token.set('toJSON', {
  getters: true,
  virtuals: false,

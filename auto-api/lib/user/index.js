@@ -1,36 +1,54 @@
+var bcrypt = require('bcrypt');
+var SALT_WORK_FACTOR = 10;
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var user = Schema({
     email: String,
-    hash: String,
-    salt: String,
+    password: String,
+    token: { type: Schema.Types.ObjectId, ref: 'Token' },
     alias: String,
     firstname: String,
     lastname: String,
     birthday: Date,
     addresses: {},
-    mobiles:[String],
-    socials:{}
+    mobiles: [String],
+    socials: {}
 });
 
 user.set('toJSON', {
     getters: true,
     //virtuals: false,
     transform: function (doc, ret, options) {
-        delete ret.hash;
-        delete ret.salt;
+        delete ret.password;
         delete ret._id;
     }
 });
 
-user.methods.authenticate = function (password, callback) {
-    return this.hash === password;
+user.methods.auth = function (password, callback) {
+    bcrypt.compare(password, this.password, function (err, res) {
+        callback(err, res);
+    });
 };
 
-user.virtual('password').set(function (password) {
-    this.hash = '######';
-    this.salt = '******';
+user.pre('save', function (next) {
+    var user = this;
+    if (!user.isModified('password')) {
+        return next();
+    }
+    bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
+        if (err) {
+            return next(err);
+        }
+        bcrypt.hash(user.password, salt, function (err, hash) {
+            if (err) {
+                return next(err);
+            }
+            user.password = hash;
+            next();
+        });
+    });
 });
 
 user.virtual('id').get(function () {
