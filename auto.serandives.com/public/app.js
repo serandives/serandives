@@ -5793,8 +5793,10 @@ var user;
 
 var list = function (el, options, paging, fn) {
     $.ajax({
-        url: '/apis/vehicles',
-        contentType: 'application/json',
+        url: '/apis/v/vehicles',
+        headers: {
+            'x-host': 'auto.serandives.com:4000'
+        },
         dataType: 'json',
         success: function (data) {
             dust.render('auto-listing', data, function (err, out) {
@@ -5839,7 +5841,7 @@ serand.on('user', 'login', function (data) {
 
 });
 require.register("auto-listing/template.js", function(exports, require, module){
-module.exports = '<div class="auto-listing">\n    <!--<div class="row">\n        <div class="col-md-7"></div>\n        <div class="col-md-5">\n            <div class="row auto-sort">\n                <button type="button" class="btn btn-primary" name="year">Year</button>\n                <button type="button" class="btn btn-success" name="price">Price</button>\n                <button type="button" class="btn btn-info" name="recent">Recent</button>\n                <button type="button" class="btn btn-warning" name="popular">Popular</button>\n            </div>\n        </div>\n    </div>-->\n\n    {@slice size="3"}\n    <div class="row">\n        {#.}\n        <div class="col-md-4">\n            <a class="thumbnail" href="/vehicles/{id}">\n                <div class="price">{price}</div>\n                <img src="{thumbnail}"/>\n\n                <div class="info">\n                    <table class="table table-condensed">\n                        <!--<tr><td class="name">Price</td><td class="value">10000LKR</td></tr>-->\n                        <tr>\n                            <td class="name">Make</td>\n                            <td class="value">{make}</td>\n                        </tr>\n                        <tr>\n                            <td class="name">Model</td>\n                            <td class="value">{model}</td>\n                        </tr>\n                        <tr>\n                            <td class="name">Year</td>\n                            <td class="value">{year}</td>\n                        </tr>\n                        <tr>\n                            <td class="name">Mileage</td>\n                            <td class="value">{mileage}</td>\n                        </tr>\n                        <!--<tr><td class="name">Transmission</td><td class="value">Automatic</td></tr>-->\n                        <!--<tr><td class="name">Fuel</td><td class="value">Gasoline</td></tr>-->\n                    </table>\n                </div>\n            </a>\n        </div>\n        {/.}\n    </div>\n    {/slice}\n</div>';
+module.exports = '<div class="auto-listing">\n    <!--<div class="row">\n        <div class="col-md-7"></div>\n        <div class="col-md-5">\n            <div class="row auto-sort">\n                <button type="button" class="btn btn-primary" name="year">Year</button>\n                <button type="button" class="btn btn-success" name="price">Price</button>\n                <button type="button" class="btn btn-info" name="recent">Recent</button>\n                <button type="button" class="btn btn-warning" name="popular">Popular</button>\n            </div>\n        </div>\n    </div>-->\n\n    {@slice size="3"}\n    <div class="row">\n        {#.}\n        <div class="col-md-4">\n            <a class="thumbnail" href="/vehicles/{id}">\n                <div class="price">{price}</div>\n                <img src="/public/images/prius.jpeg"/>\n\n                <div class="info">\n                    <table class="table table-condensed">\n                        <!--<tr><td class="name">Price</td><td class="value">10000LKR</td></tr>-->\n                        <tr>\n                            <td class="name">Make</td>\n                            <td class="value">{make}</td>\n                        </tr>\n                        <tr>\n                            <td class="name">Model</td>\n                            <td class="value">{model}</td>\n                        </tr>\n                        <tr>\n                            <td class="name">Year</td>\n                            <td class="value">{year}</td>\n                        </tr>\n                        <tr>\n                            <td class="name">Mileage</td>\n                            <td class="value">{mileage}</td>\n                        </tr>\n                        <!--<tr><td class="name">Transmission</td><td class="value">Automatic</td></tr>-->\n                        <!--<tr><td class="name">Fuel</td><td class="value">Gasoline</td></tr>-->\n                    </table>\n                </div>\n            </a>\n        </div>\n        {/.}\n    </div>\n    {/slice}\n</div>';
 });
 require.register("auto-details/index.js", function(exports, require, module){
 var dust = require('dust')();
@@ -5885,8 +5887,10 @@ dust.loadSource(dust.compile(require('./template'), 'auto-details'));
 
 module.exports = function (sandbox, fn, options) {
     $.ajax({
-        url: '/apis/vehicles/' + options.id,
-        contentType: 'application/json',
+        url: '/apis/v/vehicles/' + options.id,
+        headers: {
+            'x-host': 'auto.serandives.com:4000'
+        },
         dataType: 'json',
         success: function (data) {
             dust.render('auto-details', data, function (err, out) {

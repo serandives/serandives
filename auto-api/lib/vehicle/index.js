@@ -31,4 +31,16 @@ var vehicle = Schema({
     currency: String
 });
 
+vehicle.set('toJSON', {
+    getters: true,
+    //virtuals: false,
+    transform: function (doc, ret, options) {
+        delete ret._id;
+    }
+});
+
+vehicle.virtual('id').get(function () {
+    return this._id;
+});
+
 module.exports = mongoose.model('Vehicle', vehicle);

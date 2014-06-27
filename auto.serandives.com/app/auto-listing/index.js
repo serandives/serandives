@@ -5,8 +5,10 @@ var user;
 
 var list = function (el, options, paging, fn) {
     $.ajax({
-        url: '/apis/vehicles',
-        contentType: 'application/json',
+        url: '/apis/v/vehicles',
+        headers: {
+            'x-host': 'auto.serandives.com:4000'
+        },
         dataType: 'json',
         success: function (data) {
             dust.render('auto-listing', data, function (err, out) {

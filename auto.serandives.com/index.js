@@ -6,6 +6,7 @@ var server = new proxy.RoutingProxy();
 
 var allowed = {
     'accounts.serandives.com': 4000,
+    'auto.serandives.com': 4000,
     'localhost': 4000
 };
 

@@ -2,6 +2,7 @@ var utils = require('utils');
 var Client = require('client');
 var Token = require('token');
 var Code = require('code');
+var mongutil = require('mongutil');
 var async = require('async');
 var sanitizer = require('./sanitizer');
 
@@ -39,6 +40,12 @@ app.post('/clients', function (req, res) {
 });
 
 app.get('/clients/:id', function (req, res) {
+    if (!mongutil.objectId(req.params.id)) {
+        res.send(404, {
+            error: 'specified client cannot be found'
+        });
+        return;
+    }
     Client.findOne({
         _id: req.params.id
     })

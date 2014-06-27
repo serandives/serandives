@@ -1,6 +1,7 @@
 var utils = require('utils');
 var User = require('user');
 var Token = require('token');
+var mongutil = require('mongutil');
 var sanitizer = require('./sanitizer');
 
 var client = '123456';
@@ -8,7 +9,11 @@ var client = '123456';
 var express = require('express');
 var app = module.exports = express();
 
-app.use(express.bodyParser());
+//app.use(express.bodyParser());
+
+app.use(function (req, res, next) {
+    next();
+});
 
 var paging = {
     start: 0,
@@ -95,8 +100,14 @@ app.get('/users/:id', function (req, res) {
                 });
             }
         }
-        User.populate(user, opts, function (err, u) {
-            res.send(u);
+        User.populate(user, opts, function (err, user) {
+            if (err) {
+                res.send(400, {
+                    error: err
+                });
+                return;
+            }
+            res.send(user);
         });
     });
 });
@@ -105,6 +116,12 @@ app.get('/users/:id', function (req, res) {
  * /users/51bfd3bd5a51f1722d000001
  */
 app.post('/users/:id', function (req, res) {
+    if (!mongutil.objectId(req.params.id)) {
+        res.send(404, {
+            error: 'specified user cannot be found'
+        });
+        return;
+    }
     User.update({
         _id: req.params.id
     }, req.body, function (err, user) {
