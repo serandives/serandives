@@ -18,7 +18,6 @@ db.once('open', function callback() {
         open: [
             '^(?!\\/apis(\\/|$)).+',
             '^\/apis\/v\/tokens([\/].*|$)',
-            '^\/apis\/v\/users([\/].*|$)',
             '^\/apis\/v\/vehicles$'
         ]
     }));

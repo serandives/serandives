@@ -71,14 +71,21 @@ app.post('/users', function (req, res) {
  * /users/51bfd3bd5a51f1722d000001
  */
 app.get('/users/:id', function (req, res) {
-    if (!mongutil.objectId(req.params.id)) {
+    var id = req.params.id;
+    if (!mongutil.objectId(id)) {
         res.send(404, {
             error: 'specified user cannot be found'
         });
         return;
     }
+    if (id != req.token.user) {
+        res.send(401, {
+            error: 'unauthorized access for user'
+        });
+        return;
+    }
     User.findOne({
-        _id: req.params.id
+        _id: id
     }).exec(function (err, user) {
         if (err) {
             res.send(500, {

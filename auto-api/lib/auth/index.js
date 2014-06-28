@@ -45,7 +45,7 @@ module.exports = function (options) {
                     });
                     return;
                 }
-                res.token = token;
+                req.token = token;
                 next();
             });
     };
