@@ -5,7 +5,7 @@ var sanitizer = require('./sanitizer');
 var express = require('express');
 var app = module.exports = express();
 
-app.use(express.bodyParser());
+//app.use(express.bodyParser());
 
 /**
  * { "email": "ruchira@serandives.com", "password": "mypassword" }

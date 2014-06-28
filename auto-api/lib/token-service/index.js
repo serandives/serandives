@@ -9,7 +9,8 @@ var sanitizer = require('./sanitizer');
 var express = require('express');
 var app = module.exports = express();
 
-app.use(express.bodyParser());
+app.use(express.json());
+app.use(express.urlencoded());
 
 var MIN_TOKEN_VALIDITY = 40 * 1000;
 

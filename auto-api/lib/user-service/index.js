@@ -9,11 +9,7 @@ var client = '123456';
 var express = require('express');
 var app = module.exports = express();
 
-//app.use(express.bodyParser());
-
-app.use(function (req, res, next) {
-    next();
-});
+app.use(express.json());
 
 var paging = {
     start: 0,
@@ -75,6 +71,12 @@ app.post('/users', function (req, res) {
  * /users/51bfd3bd5a51f1722d000001
  */
 app.get('/users/:id', function (req, res) {
+    if (!mongutil.objectId(req.params.id)) {
+        res.send(404, {
+            error: 'specified user cannot be found'
+        });
+        return;
+    }
     User.findOne({
         _id: req.params.id
     }).exec(function (err, user) {

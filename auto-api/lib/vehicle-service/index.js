@@ -8,7 +8,7 @@ var client = '123456';
 var express = require('express');
 var app = module.exports = express();
 
-app.use(express.bodyParser());
+app.use(express.json());
 
 var paging = {
     start: 0,
@@ -88,6 +88,12 @@ app.get('/vehicles/:id', function (req, res) {
  * /vehicles/51bfd3bd5a51f1722d000001
  */
 app.post('/vehicles/:id', function (req, res) {
+    if (!mongutil.objectId(req.params.id)) {
+        res.send(404, {
+            error: 'specified vehicle cannot be found'
+        });
+        return;
+    }
     Vehicle.update({
         _id: req.params.id
     }, req.body, function (err, vehicle) {

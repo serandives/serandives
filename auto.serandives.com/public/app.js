@@ -5544,7 +5544,16 @@ require.register("user-login/index.js", function(exports, require, module){
 var dust = require('dust')();
 var serand = require('serand');
 
-var auth;
+var user;
+
+var send = XMLHttpRequest.prototype.send;
+
+XMLHttpRequest.prototype.send = function () {
+    if (user) {
+        this.setRequestHeader('Authorization', 'Bearer ' + user.token);
+    }
+    send.apply(this, Array.prototype.slice.call(arguments));
+};
 
 dust.loadSource(dust.compile(require('./template'), 'user-login'));
 
@@ -5572,10 +5581,12 @@ module.exports = function (sanbox, fn, options) {
                 contentType: 'application/x-www-form-urlencoded',
                 dataType: 'json',
                 success: function (data) {
-                    auth = data;
-                    serand.emit('user', 'login', {
-                        username: username
-                    });
+                    user = {
+                        username: username,
+                        token: data.access_token,
+                        expires: data.expires_in
+                    };
+                    serand.emit('user', 'login', user);
                 },
                 error: function () {
                     serand.emit('user', 'error');
@@ -5588,9 +5599,6 @@ module.exports = function (sanbox, fn, options) {
         });
     });
 };
-
-
-var user;
 
 serand.on('boot', 'init', function () {
     /*$.ajax({
@@ -5605,6 +5613,11 @@ serand.on('boot', 'init', function () {
      }
      });*/
 });
+
+serand.on('user', 'logout', function (usr) {
+    user = null;
+});
+
 /*
 
  setTimeout(function () {
@@ -5921,8 +5934,8 @@ module.exports = function (sandbox, fn, options) {
     });
 };
 
-serand.on('user', 'login', function (data) {
-    user = data;
+serand.on('user', 'login', function (usr) {
+    user = usr;
 });
 
 });

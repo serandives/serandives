@@ -9,7 +9,7 @@ var sanitizer = require('./sanitizer');
 var express = require('express');
 var app = module.exports = express();
 
-app.use(express.bodyParser());
+app.use(express.json());
 
 var paging = {
     start: 0,
@@ -91,7 +91,13 @@ app.get('/clients', function (req, res) {
         });
 });
 
-app.del('/clients/:id', function (req, res) {
+app.delete('/clients/:id', function (req, res) {
+    if (!mongutil.objectId(req.params.id)) {
+        res.send(404, {
+            error: 'specified client cannot be found'
+        });
+        return;
+    }
     Client.findOne({
         _id: req.params.id
     })

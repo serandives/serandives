@@ -9,7 +9,7 @@ var v = function(path) {
     return path.replace('/v/', '/v1/');
 };
 
-app.use(express.bodyParser());
+//app.use(express.bodyParser());
 
 /**
  * {

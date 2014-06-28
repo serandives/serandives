@@ -75,6 +75,6 @@ module.exports = function (sandbox, fn, options) {
     });
 };
 
-serand.on('user', 'login', function (data) {
-    user = data;
+serand.on('user', 'login', function (usr) {
+    user = usr;
 });
