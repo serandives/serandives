@@ -1,0 +1,10 @@
+{
+    "name": "upload",
+    "description": "upload component",
+    "dependencies": {},
+    "local": [],
+    "styles": ["jquery.fileupload.css"],
+    "scripts": ["jquery.ui.widget.js", "jquery.iframe-transport.js", "jquery.fileupload.js", "index.js"],
+    "templates": [],
+    "main": "index.js"
+}

@@ -4,14 +4,14 @@ var http = require('http'),
     path = require('path'),
     uuid = require('node-uuid'),
     MultiPartUpload = require('knox-mpu'),
-    formidable = require('formidable'),
+    formidable = require('./formida'),
     StringDecoder = require('string_decoder').StringDecoder,
     server;
 
 var s3Client = knox.createClient({
     secure: false,
-    key: '',
-    secret: '',
+    key: 'AKIAILCXULHWOJBVDNTA',
+    secret: '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',
     bucket: 'auto.serandives.com'
 });
 
@@ -31,7 +31,7 @@ server = http.createServer(function (req, res) {
             '</html>');
     } else if (req.url == '/upload') {
         var form = new formidable.IncomingForm();
-        form.onPart = function (part) {
+        /*form.onPart = function (part) {
             var self = this;
             if (part.filename === undefined) {
                 var value = '',
@@ -52,7 +52,7 @@ server = http.createServer(function (req, res) {
                 return;
             }
             self.emit('file', part);
-            /*console.log('part begining');
+            *//*console.log('part begining');
              console.log(part);
              part.on('data', function (buffer) {
              //console.log(buffer);
@@ -61,8 +61,8 @@ server = http.createServer(function (req, res) {
 
              part.on('end', function () {
              console.log('part end');
-             });*/
-        };
+             });*//*
+        };*/
         form.on('progress', function (rec, exp) {
             console.log('received >>> ' + rec);
             console.log('expected >>> ' + exp);

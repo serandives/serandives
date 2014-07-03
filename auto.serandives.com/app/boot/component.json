@@ -2,6 +2,7 @@
     "name": "boot",
     "description": "bootstrap component",
     "local": [
+        "upload",
         "async",
         "dust",
         "serand",
